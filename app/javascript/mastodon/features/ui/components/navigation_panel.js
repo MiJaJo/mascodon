@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logo from 'mastodon/components/logo';
-import { timelinePreview, showTrends } from 'mastodon/initial_state';
+import { manual_url, me, timelinePreview, showTrends } from 'mastodon/initial_state';
 import ColumnLink from './column_link';
 import DisabledAccountBanner from './disabled_account_banner';
 import FollowRequestsColumnLink from './follow_requests_column_link';
@@ -26,9 +28,16 @@ const messages = defineMessages({
   followsAndFollowers: { id: 'navigation_bar.follows_and_followers', defaultMessage: 'Follows and followers' },
   about: { id: 'navigation_bar.about', defaultMessage: 'About' },
   search: { id: 'navigation_bar.search', defaultMessage: 'Search' },
+  manuals: { id: 'navigation_bar.manuals', defaultMessage: 'Manuals' },
+  profile: { id: 'navigation_bar.profile', defaultMessage: 'Profile' },
 });
 
-export default @injectIntl
+const mapStateToProps = state => ({
+  myAccount: state.getIn(['accounts', me]),
+});
+
+export default @connect(mapStateToProps)
+@injectIntl
 class NavigationPanel extends React.Component {
 
   static contextTypes = {
@@ -38,10 +47,11 @@ class NavigationPanel extends React.Component {
 
   static propTypes = {
     intl: PropTypes.object.isRequired,
+    myAccount: ImmutablePropTypes.map,
   };
 
   render () {
-    const { intl } = this.props;
+    const { intl, myAccount } = this.props;
     const { signedIn, disabledAccountId } = this.context.identity;
 
     return (
@@ -85,12 +95,16 @@ class NavigationPanel extends React.Component {
             <ColumnLink transparent to='/favourites' icon='star' text={intl.formatMessage(messages.favourites)} />
             <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
             <ColumnLink transparent to='/lists' icon='list-ul' text={intl.formatMessage(messages.lists)} />
+            <ColumnLink transparent to={`/@${this.props.myAccount.get('acct')}`} icon='user' text={intl.formatMessage(messages.profile)} />
 
             <ListPanel />
 
             <hr />
 
             <ColumnLink transparent href='/settings/preferences' icon='cog' text={intl.formatMessage(messages.preferences)} />
+            <hr />
+
+            <ColumnLink transparent target='_blank' href={manual_url} icon='book' text={intl.formatMessage(messages.manuals)} />
           </React.Fragment>
         )}
 
