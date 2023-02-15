@@ -108,14 +108,14 @@ class GettingStarted extends ImmutablePureComponent {
 
     navItems.push(
       <ColumnLink key='community_timeline' icon='users' text={intl.formatMessage(messages.community_timeline)} to='/public/local' />,
-      <ColumnLink key='public_timeline' icon='globe' text={intl.formatMessage(messages.public_timeline)} to='/public' />,
+      <ColumnLink key='public_timeline' icon='earth-asia' text={intl.formatMessage(messages.public_timeline)} to='/public' />,
     );
 
     if (signedIn) {
       navItems.push(
         <ColumnSubheading key='header-personal' text={intl.formatMessage(messages.personal)} />,
         <ColumnLink key='home' icon='home' text={intl.formatMessage(messages.home_timeline)} to='/home' />,
-        <ColumnLink key='direct' icon='at' text={intl.formatMessage(messages.direct)} to='/conversations' />,
+        <ColumnLink key='direct' icon='envelope' text={intl.formatMessage(messages.direct)} to='/conversations' />,
         <ColumnLink key='bookmark' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} to='/bookmarks' />,
         <ColumnLink key='favourites' icon='star' text={intl.formatMessage(messages.favourites)} to='/favourites' />,
         <ColumnLink key='lists' icon='list-ul' text={intl.formatMessage(messages.lists)} to='/lists' />,

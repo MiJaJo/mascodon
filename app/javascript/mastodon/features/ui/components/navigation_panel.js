@@ -78,7 +78,7 @@ class NavigationPanel extends React.Component {
         {(signedIn || timelinePreview) && (
           <>
             <ColumnLink transparent to='/public/local' icon='users' text={intl.formatMessage(messages.local)} />
-            <ColumnLink transparent exact to='/public' icon='globe' text={intl.formatMessage(messages.federated)} />
+            <ColumnLink transparent exact to='/public' icon='earth-asia' text={intl.formatMessage(messages.federated)} />
           </>
         )}
 
@@ -91,7 +91,7 @@ class NavigationPanel extends React.Component {
 
         {signedIn && (
           <React.Fragment>
-            <ColumnLink transparent to='/conversations' icon='at' text={intl.formatMessage(messages.direct)} />
+            <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} />
             <ColumnLink transparent to='/favourites' icon='star' text={intl.formatMessage(messages.favourites)} />
             <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
             <ColumnLink transparent to='/lists' icon='list-ul' text={intl.formatMessage(messages.lists)} />
