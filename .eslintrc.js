@@ -5,6 +5,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:import/recommended',
+    'plugin:promise/recommended',
   ],
 
   env: {
@@ -98,7 +100,6 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
-    'no-useless-escape': 'off',
     'object-curly-spacing': ['error', 'always'],
     'padded-blocks': [
       'error',
@@ -178,6 +179,7 @@ module.exports = {
       },
     ],
 
+    // See https://github.com/import-js/eslint-plugin-import/blob/main/config/recommended.js
     'import/extensions': [
       'error',
       'always',
@@ -196,14 +198,17 @@ module.exports = {
         ],
       },
     ],
-    'import/no-unresolved': 'error',
     'import/no-webpack-loader-syntax': 'error',
 
+    'promise/always-return': 'off',
     'promise/catch-or-return': [
       'error',
       {
         allowFinally: true,
       },
     ],
+    'promise/no-callback-in-promise': 'off',
+    'promise/no-nesting': 'off',
+    'promise/no-promise-in-callback': 'off',
   },
 };
