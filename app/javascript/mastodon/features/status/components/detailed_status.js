@@ -192,10 +192,10 @@ class DetailedStatus extends ImmutablePureComponent {
     }
 
     const visibilityIconInfo = {
-      'public': { icon: 'globe', text: intl.formatMessage(messages.public_short) },
+      'public': { icon: 'earth-asia', text: intl.formatMessage(messages.public_short) },
       'unlisted': { icon: 'unlock', text: intl.formatMessage(messages.unlisted_short) },
       'private': { icon: 'lock', text: intl.formatMessage(messages.private_short) },
-      'direct': { icon: 'at', text: intl.formatMessage(messages.direct_short) },
+      'direct': { icon: 'envelope', text: intl.formatMessage(messages.direct_short) },
     };
 
     const visibilityIcon = visibilityIconInfo[status.get('visibility')];
@@ -276,7 +276,7 @@ class DetailedStatus extends ImmutablePureComponent {
           {media}
 
           <div className='detailed-status__meta'>
-            <a className='detailed-status__datetime' href={`/@${status.getIn(['account', 'acct'])}\/${status.get('id')}`} target='_blank' rel='noopener noreferrer'>
+            <a className='detailed-status__datetime' href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} target='_blank' rel='noopener noreferrer'>
               <FormattedDate value={new Date(status.get('created_at'))} hour12={false} year='numeric' month='short' day='numeric' hour='2-digit' minute='2-digit' />
             </a>{edited}{visibilityLink}{applicationLink}{reblogLink} · {favouriteLink}
           </div>

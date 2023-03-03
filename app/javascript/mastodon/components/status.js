@@ -496,10 +496,10 @@ class Status extends ImmutablePureComponent {
     }
 
     const visibilityIconInfo = {
-      'public': { icon: 'globe', text: intl.formatMessage(messages.public_short) },
+      'public': { icon: 'earth-asia', text: intl.formatMessage(messages.public_short) },
       'unlisted': { icon: 'unlock', text: intl.formatMessage(messages.unlisted_short) },
       'private': { icon: 'lock', text: intl.formatMessage(messages.private_short) },
-      'direct': { icon: 'at', text: intl.formatMessage(messages.direct_short) },
+      'direct': { icon: 'envelope', text: intl.formatMessage(messages.direct_short) },
     };
 
     const visibilityIcon = visibilityIconInfo[status.get('visibility')];
@@ -511,7 +511,7 @@ class Status extends ImmutablePureComponent {
 
           <div className={classNames('status', `status-${status.get('visibility')}`, { 'status-reply': !!status.get('in_reply_to_id'), muted: this.props.muted })} data-id={status.get('id')}>
             <div className='status__info'>
-              <a onClick={this.handleClick} href={`/@${status.getIn(['account', 'acct'])}\/${status.get('id')}`} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
+              <a onClick={this.handleClick} href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
                 <span className='status__visibility-icon'><Icon id={visibilityIcon.icon} title={visibilityIcon.text} /></span>
                 <RelativeTimestamp timestamp={status.get('created_at')} />{status.get('edited_at') && <abbr title={intl.formatMessage(messages.edited, { date: intl.formatDate(status.get('edited_at'), { hour12: false, year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) })}> *</abbr>}
               </a>

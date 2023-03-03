@@ -85,10 +85,10 @@ class BoostModal extends ImmutablePureComponent {
     const buttonText = status.get('reblogged') ? messages.cancel_reblog : messages.reblog;
 
     const visibilityIconInfo = {
-      'public': { icon: 'globe', text: intl.formatMessage(messages.public_short) },
+      'public': { icon: 'earth-asia', text: intl.formatMessage(messages.public_short) },
       'unlisted': { icon: 'unlock', text: intl.formatMessage(messages.unlisted_short) },
       'private': { icon: 'lock', text: intl.formatMessage(messages.private_short) },
-      'direct': { icon: 'at', text: intl.formatMessage(messages.direct_short) },
+      'direct': { icon: 'envelope', text: intl.formatMessage(messages.direct_short) },
     };
 
     const visibilityIcon = visibilityIconInfo[status.get('visibility')];
@@ -98,7 +98,7 @@ class BoostModal extends ImmutablePureComponent {
         <div className='boost-modal__container'>
           <div className={classNames('status', `status-${status.get('visibility')}`, 'light')}>
             <div className='status__info'>
-              <a href={`/@${status.getIn(['account', 'acct'])}\/${status.get('id')}`} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
+              <a href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
                 <span className='status__visibility-icon'><Icon id={visibilityIcon.icon} title={visibilityIcon.text} /></span>
                 <RelativeTimestamp timestamp={status.get('created_at')} />
               </a>
