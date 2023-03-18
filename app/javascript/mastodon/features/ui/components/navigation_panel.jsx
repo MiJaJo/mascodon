@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import Logo from 'mastodon/components/logo';
-import { timelinePreview, showTrends } from 'mastodon/initial_state';
+import { manual_url, timelinePreview, showTrends } from 'mastodon/initial_state';
 import ColumnLink from './column_link';
 import DisabledAccountBanner from './disabled_account_banner';
 import FollowRequestsColumnLink from './follow_requests_column_link';
@@ -26,6 +26,7 @@ const messages = defineMessages({
   followsAndFollowers: { id: 'navigation_bar.follows_and_followers', defaultMessage: 'Follows and followers' },
   about: { id: 'navigation_bar.about', defaultMessage: 'About' },
   search: { id: 'navigation_bar.search', defaultMessage: 'Search' },
+  manuals: { id: 'navigation_bar.manuals', defaultMessage: 'Manuals' },
 });
 
 export default @injectIntl
@@ -68,7 +69,7 @@ class NavigationPanel extends React.Component {
         {(signedIn || timelinePreview) && (
           <>
             <ColumnLink transparent to='/public/local' icon='users' text={intl.formatMessage(messages.local)} />
-            <ColumnLink transparent exact to='/public' icon='globe' text={intl.formatMessage(messages.federated)} />
+            <ColumnLink transparent exact to='/public' icon='earth-asia' text={intl.formatMessage(messages.federated)} />
           </>
         )}
 
@@ -81,7 +82,7 @@ class NavigationPanel extends React.Component {
 
         {signedIn && (
           <React.Fragment>
-            <ColumnLink transparent to='/conversations' icon='at' text={intl.formatMessage(messages.direct)} />
+            <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} />
             <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
             <ColumnLink transparent to='/favourites' icon='star' text={intl.formatMessage(messages.favourites)} />
             <ColumnLink transparent to='/lists' icon='list-ul' text={intl.formatMessage(messages.lists)} />
@@ -91,6 +92,9 @@ class NavigationPanel extends React.Component {
             <hr />
 
             <ColumnLink transparent href='/settings/preferences' icon='cog' text={intl.formatMessage(messages.preferences)} />
+            <hr />
+
+            <ColumnLink transparent target='_blank' href={manual_url} icon='book' text={intl.formatMessage(messages.manuals)} />
           </React.Fragment>
         )}
 

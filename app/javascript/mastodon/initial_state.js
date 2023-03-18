@@ -80,6 +80,8 @@
  * @property {boolean} use_blurhash
  * @property {boolean=} use_pending_items
  * @property {string} version
+ * @property {boolean} translation_enabled
+ * @property {string} manual_url
  */
 
 /**
@@ -132,6 +134,7 @@ export const useBlurhash = getMeta('use_blurhash');
 export const usePendingItems = getMeta('use_pending_items');
 export const version = getMeta('version');
 export const languages = initialState?.languages;
+export const manual_url = getMeta('manual_url');
 export const statusPageUrl = getMeta('status_page_url');
 
 export default initialState;
