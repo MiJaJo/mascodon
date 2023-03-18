@@ -91,6 +91,7 @@ pt-BR:
       moderation:
         active: Ativo
         all: Todos
+        disabled: Desativado
         pending: Pendente
         silenced: Limitado
         suspended: Suspendido
@@ -133,6 +134,7 @@ pt-BR:
       search: Buscar
       search_same_email_domain: Outros usuários com o mesmo domínio de e-mail
       search_same_ip: Outros usuários com o mesmo IP
+      security: Segurança
       security_measures:
         only_password: Apenas senha
         password_and_2fa: Senha e autenticação de dois fatores
@@ -392,6 +394,7 @@ pt-BR:
         create: Criar bloqueio
         hint: O bloqueio de domínio não vai prevenir a criação de entradas de contas na base de dados, mas vai retroativamente e automaticamente aplicar métodos específicos de moderação nessas contas.
         severity:
+          desc_html: "<strong>Silenciar</strong> vai tornar as publicações da conta invisíveis para qualquer um que não estiver lhe seguindo. <strong>Suspender</strong> vai remover todo o conteúdo, mídia e dados de perfil da conta. Use <strong>Nenhum</strong> se você só quer rejeitar arquivos de mídia."
           noop: Nenhum
           silence: Limitar
           suspend: Banir
@@ -426,6 +429,7 @@ pt-BR:
         resolve: Resolver domínio
         title: Nova entrada de lista negra de e-mail
       no_email_domain_block_selected: Nenhum bloco de domínio de e-mail foi alterado, pois nenhum foi selecionado
+      not_permitted: Não permitido
       resolved_dns_records_hint_html: O nome de domínio resolve os seguintes domínios MX, que são responsáveis finais por aceitar o e-mail. Bloquear um domínio MX bloqueará inscrições de qualquer endereço de e-mail que use o mesmo domínio MX, mesmo que o nome de domínio visível seja diferente. <strong>Cuidado para não bloquear os principais provedores de e-mail.</strong>
       resolved_through_html: Resolvido através de %{domain}
       title: Lista de negra de e-mail
@@ -573,17 +577,21 @@ pt-BR:
         mark_as_sensitive_description_html: Os conteúdos de mídia em publicações denunciadas serão marcados como sensíveis e um aviso de violação será mantido para te informar sobre o agravamento caso essa mesma conta comenta infrações no futuro.
         other_description_html: Veja mais opções para controlar o comportamento da conta e personalizar a comunicação com a conta denunciada.
         resolve_description_html: Nenhuma ação será tomada contra a conta denunciada, nenhuma violação será guardada e a denúncia será encerrada.
+        silence_description_html: A conta ficará visível apenas para aqueles que já a seguem ou que a procuram manualmente, limitando severamente seu alcance. Pode ser revertido a qualquer momento. Fecha todas as denúncias desta conta.
       actions_description_html: Decida que medidas tomar para resolver esta denúncia. Se você decidir punir a conta denunciada, ela receberá uma notificação por e-mail, exceto quando for selecionada a categoria <strong>spam</strong> for selecionada.
       add_to_report: Adicionar mais à denúncia
       are_you_sure: Você tem certeza?
       assign_to_self: Atribuir para si
       assigned: Moderador responsável
       by_target_domain: Domínio da conta denunciada
+      cancel: Cancelar
       category: Categoria
       category_description_html: O motivo pelo qual esta conta e/ou conteúdo foi denunciado será citado na comunicação com a conta denunciada
       comment:
         none: Nenhum
       comment_description_html: 'Para fornecer mais informações, %{name} escreveu:'
+      confirm: Confirmar
+      confirm_action: Confirmar a moderação de @%{acct}
       created_at: Denunciado
       delete_and_resolve: Excluir publicações
       forwarded: Encaminhados
@@ -600,6 +608,7 @@ pt-BR:
         placeholder: Descreva quais ações foram tomadas ou quaisquer outras atualizações relacionadas...
         title: Notas
       notes_description_html: Visualize e deixe anotações para outros moderadores e para você mesmo no futuro
+      processed_msg: 'Relatório #%{id} processado com sucesso'
       quick_actions_description_html: 'Tome uma ação rápida ou role para baixo para ver o conteúdo denunciado:'
       remote_user_placeholder: o usuário remoto de %{instance}
       reopen: Reabrir denúncia
@@ -612,9 +621,24 @@ pt-BR:
       status: Estado
       statuses: Conteúdo denunciado
       statuses_description_html: Conteúdo ofensivo será citado em comunicação com a conta denunciada
+      summary:
+        action_preambles:
+          delete_html: 'Você está prestes a <strong>remover</strong> algumas das publicações de <strong>@%{acct}</strong>. Isso irá:'
+          mark_as_sensitive_html: 'Você está prestes a <strong>marcar</strong> algumas das publicações de <strong>@%{acct}</strong> como <strong>sensíveis</strong>. Isso irá:'
+          silence_html: 'Você está prestes a <strong>limitar</strong> <strong>a conta de @%{acct}</strong>. Isso irá:'
+          suspend_html: 'Você está prestes a <strong>suspender</strong> <strong>a conta de @%{acct}</strong>. Isso irá:'
+        actions:
+          delete_html: Remover as publicações ofensivas
+          suspend_html: Suspender <strong>@%{acct}</strong>, tornando seu perfil e conteúdo inacessíveis, impossibilitando a interação
+        close_report: 'Marcar denúncia #%{id} como resolvida'
+        close_reports_html: Marcar <strong>todas</strong> as denúncias contra <strong>@%{acct}</strong> como resolvidas
+        delete_data_html: Exclua o perfil e o conteúdo de <strong>@%{acct}</strong> daqui a 30 dias, a menos que a suspensão seja desfeita nesse meio tempo
+        preview_preamble_html: "<strong>@%{acct}</strong> receberá um aviso com o seguinte conteúdo:"
+        send_email_html: Enviar <strong>@%{acct}</strong> um e-mail de aviso
       target_origin: Origem da conta denunciada
       title: Denúncias
       unassign: Desatribuir
+      unknown_action_msg: 'Ação desconhecida: %{action}'
       unresolved: Não resolvido
       updated_at: Atualizado
       view_profile: Ver perfil
@@ -703,6 +727,7 @@ pt-BR:
         title: Retenção de conteúdo
       default_noindex:
         desc_html: Afeta qualquer usuário que não tenha alterado esta configuração manualmente
+        title: Optar por excluir usuários da indexação de mecanismos de pesquisa por padrão
       discovery:
         follow_recommendations: Seguir recomendações
         preamble: Navegar por um conteúdo interessante é fundamental para integrar novos usuários que podem não conhecer ninguém no Mastodon. Controle como várias características de descoberta funcionam no seu servidor.
@@ -764,6 +789,7 @@ pt-BR:
         suspend: "%{name} suspendeu a conta de %{target}"
       appeal_approved: Revisado
       appeal_pending: Revisão pendente
+      appeal_rejected: Revisão rejeitada
     system_checks:
       database_schema_check:
         message_html: Existem migrações de banco de dados pendentes. Execute-as para garantir que o aplicativo se comporte como esperado
@@ -930,6 +956,7 @@ pt-BR:
   applications:
     created: Aplicativo criado com sucesso
     destroyed: Aplicativo excluído com sucesso
+    logout: Sair
     regenerate_token: Gerar código de acesso
     token_regenerated: Código de acesso gerado
     warning: Tenha cuidado com estes dados. Nunca compartilhe com alguém!
@@ -937,6 +964,8 @@ pt-BR:
   auth:
     apply_for_account: Solicitar uma conta
     change_password: Senha
+    confirmations:
+      wrong_email_hint: Se esse endereço de e-mail não estiver correto, você pode alterá-lo nas configurações da conta.
     delete_account: Excluir conta
     delete_account_html: Se você deseja excluir sua conta, você pode <a href="%{path}">fazer isso aqui</a>. Uma confirmação será solicitada.
     description:
@@ -964,6 +993,9 @@ pt-BR:
     resend_confirmation: Reenviar instruções de confirmação
     reset_password: Redefinir senha
     rules:
+      accept: Aceitar
+      back: Voltar
+      preamble: Estes são definidos e aplicados pelos moderadores de %{domain}.
       title: Algumas regras básicas.
     security: Segurança
     set_new_password: Definir uma nova senha
@@ -1110,7 +1142,7 @@ pt-BR:
   featured_tags:
     add_new: Adicionar hashtag
     errors:
-      limit: Você atingiu o limite de hashtags em destaque
+      limit: Você já destacou o número máximo de hashtags
     hint_html: "<strong>O que são hashtags em destaque?</strong> Elas são exibidas no seu perfil público e permitem que as pessoas acessem suas publicações públicos que contenham especificamente essas hashtags. São uma excelente ferramenta para acompanhar os trabalhos criativos ou os projetos de longo prazo."
   filters:
     contexts:
@@ -1154,8 +1186,6 @@ pt-BR:
       index:
         hint: Este filtro se aplica a publicações individuais, independentemente de outros critérios. Você pode adicionar mais postagens a este filtro a partir da interface web.
         title: Publicações filtradas
-  footer:
-    trending_now: Em alta no momento
   generic:
     all: Tudo
     all_items_on_page_selected_html:
@@ -1178,8 +1208,6 @@ pt-BR:
     validation_errors:
       one: Algo não está certo! Analise o erro abaixo
       other: Algo não está certo! Analise os %{count} erros abaixo
-  html_validator:
-    invalid_markup: 'contém HTML inválido: %{error}'
   imports:
     errors:
       invalid_csv_file: 'Arquivo CSV inválido. Erro: %{error}'
@@ -1222,7 +1250,7 @@ pt-BR:
     title: Convidar pessoas
   lists:
     errors:
-      limit: Você atingiu o máximo de listas
+      limit: Você atingiu o número máximo de listas
   login_activities:
     authentication_methods:
       otp: autenticação de dois fatores
@@ -1367,6 +1395,7 @@ pt-BR:
     confirm_remove_selected_followers: Tem certeza que deseja remover os seguidores selecionados?
     confirm_remove_selected_follows: Tem certeza que deseja remover os grupos seguidos selecionados?
     dormant: Inativo
+    follow_failure: Não foi possível seguir algumas das contas selecionadas.
     follow_selected_followers: Seguir os seguidores selecionados
     followers: Seguidores
     following: Seguindo
@@ -1406,6 +1435,7 @@ pt-BR:
       electron: Electron
       firefox: Firefox
       generic: Navegador desconhecido
+      huawei_browser: Navegador Huawei
       ie: Internet Explorer
       micro_messenger: MicroMessenger
       nokia: Navegador Nokia S40 Ovi
@@ -1415,6 +1445,7 @@ pt-BR:
       qq: QQ Browser
       safari: Safari
       uc_browser: UC Browser
+      unknown_browser: Navegador desconhecido
       weibo: Weibo
     current_session: Sessão atual
     description: "%{browser} em %{platform}"
@@ -1427,9 +1458,10 @@ pt-BR:
       chrome_os: ChromeOS
       firefox_os: Firefox OS
       ios: iOS
+      kai_os: KaiOS
       linux: Linux
       mac: MacOS
-      other: Plataforma desconhecida
+      unknown_platform: Plataforma desconhecida
       windows: Windows
       windows_mobile: Windows Mobile
       windows_phone: Windows Phone
@@ -1542,7 +1574,6 @@ pt-BR:
       '7889238': 3 meses
     min_age_label: Validade
     min_favs: Manter publicações favoritadas por ao menos
-    min_favs_hint: Não exclui publicações que receberam pelo menos esta quantidade de favoritos. Deixe em branco para excluir publicações independentemente da quantidade de favoritos
     min_reblogs: Manter publicações impulsionadas por ao menos
     min_reblogs_hint: Não exclui publicações que receberam pelo menos esta quantidade de impulsos. Deixe em branco para excluir publicações independentemente da quantidade de impulsos
   stream_entries:
