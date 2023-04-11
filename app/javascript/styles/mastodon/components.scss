@@ -8574,12 +8574,19 @@ noscript {
     background: lighten($ui-base-color, 4%);
     border-radius: 4px;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 30px;
     font-size: 15px;
 
     &__column {
       box-sizing: border-box;
       width: 50%;
+      padding: 20px;
+    }
+
+    &__singleColumn {
+      box-sizing: border-box;
+      width: 100%;
       padding: 20px;
     }
 
