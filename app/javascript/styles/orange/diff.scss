@@ -422,6 +422,10 @@ html {
   border: 1px solid $ui-base-color;
 }
 
+.modal-layout{
+  background: darken($ui-base-color, 8%);
+}
+
 .admin-wrapper .sidebar ul{
   a.selected:not(.simple-navigation-active-leaf a){
     background: lighten($ui-base-color, 8%);
@@ -431,7 +435,8 @@ html {
   }
 }
 
-body.admin{
+body.admin,
+body.lighter{
   background: darken($ui-base-color, 8%);
 }
 
