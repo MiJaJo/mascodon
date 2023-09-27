@@ -7,7 +7,7 @@ html {
   
   // Change the colors of button texts
   .button {
-    color: $white;
+    color: $black;
   
     &.button-alternative-2 {
       color: $white;
@@ -575,7 +575,7 @@ html {
   .simple_form .hint a,
   .admin-wrapper .content .muted-hint a, 
   body .muted-hint a{
-    color: lighten($ui-color-orange, 25%);
+    color: lighten($ui-color-orange, 50%);
   }
   
   .button.button-tertiary {
