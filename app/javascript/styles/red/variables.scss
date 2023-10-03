@@ -5,40 +5,32 @@ $white: #ffffff;
 $classic-base-color: #282c37;
 $classic-primary-color: #9baec8;
 $classic-secondary-color: #d9e1e8;
-$classic-highlight-color: #72c425;
+$classic-highlight-color: #d64400;
 
 $red-600: #b7253d !default; // Deep Carmine
 $red-500: #df405a !default; // Cerise
-$blurple-600: #ffb20c;
-$blurple-500: #ffbd2f;
-$blurple-400: #ffc853;
-$blurple-300: #ffcf68;
+$blurple-600: #ff672b;
+$blurple-500: #ff784f;
+$blurple-400: #ff9271;
+$blurple-300: #ff9c84;
 $grey-600: #4e4c5a; // Trout
 $grey-100: #dadaf3; // Topaz
 
 // Differences
-$success-green: lighten(#1e8f40, 8%);
-
-/// Pastel Colors
-$ui-color-pink: #FBE4F0;
-$ui-color-yellow: #F1FECC;
-$ui-color-orange: #FCE5A4;
-$ui-color-mint: #93E7E8;
-$ui-color-blue: #98deff;
-$ui-color-green: #6CD3A5;
+$success-green: lighten(#3c754d, 8%);
 
 $base-overlay-background: $white !default;
 $valid-value-color: $success-green !default;
 
-$ui-base-color: $ui-color-mint !default;
-$ui-base-lighter-color: $ui-color-green;
-$ui-primary-color: $ui-color-blue;
+$ui-base-color: #ffab84 !default;
+$ui-base-lighter-color: #be948d;
+$ui-primary-color: #e4aa9c;
 $ui-secondary-color: $classic-base-color !default;
 $ui-highlight-color: $classic-highlight-color !default;
 
 $ui-button-color: $white !default;
 $ui-button-background-color: $blurple-500 !default;
-$ui-button-focus-background-color: $classic-highlight-color !default;
+$ui-button-focus-background-color: $blurple-600 !default;
 $ui-button-focus-outline-color: $blurple-400 !default;
 $ui-button-focus-outline: solid 2px $ui-button-focus-outline-color !default;
 
@@ -47,7 +39,7 @@ $ui-button-secondary-border-color: $grey-100 !default;
 $ui-button-secondary-focus-background-color: $grey-600 !default;
 $ui-button-secondary-focus-color: $white !default;
 
-$ui-button-tertiary-color: $red-500 !default;
+$ui-button-tertiary-color: $classic-highlight-color !default;
 $ui-button-tertiary-border-color: $blurple-300 !default;
 $ui-button-tertiary-focus-background-color: $blurple-600 !default;
 $ui-button-tertiary-focus-color: $white !default;
@@ -60,7 +52,7 @@ $ui-button-icon-hover-background-color: rgba(140, 141, 255, 40%) !default;
 
 $primary-text-color: $black !default;
 $darker-text-color: $classic-base-color !default;
-$highlight-text-color: darken($ui-highlight-color, 15%) !default;
+$highlight-text-color: darken($ui-highlight-color, 8%) !default;
 $dark-text-color: #444b5d;
 $action-button-color: #606984;
 

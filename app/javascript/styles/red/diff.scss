@@ -7,10 +7,10 @@ html {
   
   // Change the colors of button texts
   .button {
-    color: $white;
+    color: $black;
   
     &.button-alternative-2 {
-      color: $white;
+      color: $black;
     }
   
     &.button-tertiary {
@@ -40,17 +40,13 @@ html {
   .column-inline-form,
   .error-column,
   .regeneration-indicator {
-    background: $white;
+    background: darken($ui-base-color, 15%);
     border: 1px solid $ui-base-color;
     border-top: 0;
   }
   
-  .scrollable .account-card{
-        background: $ui-primary-color;
-  }
-  
-  .scrollable .account-card__bio:after{
-    background: linear-gradient(270deg,$ui-primary-color,transparent);
+  .account-card{
+    background: darken($ui-base-color, 4%);
   }
   
   .getting-started__trends{
@@ -100,21 +96,11 @@ html {
     }
   }
   
-  .column-back-button{
-    color: $ui-base-lighter-color;
-  }
-  
   .column-header__back-button,
   .column-header__button,
-  .column-header__button.active{
-    background: $ui-base-color;
-  }
-  
+  .column-header__button.active,
   .account__header {
-    background: darken($ui-primary-color, 15%);
-    &__fields{
-      background: darken($ui-primary-color, 8%) !important;
-    }
+    background: $ui-base-color;
   }
   
   .column-header__button.active {
@@ -157,13 +143,13 @@ html {
   }
   
   .getting-started {
-    background: darken($ui-primary-color, 15%) !important;
+    background: darken($ui-base-color, 8%) !important;
   }
   
   .getting-started,
   .scrollable {
     .column-link {
-      background: darken($ui-primary-color, 8%);
+      background: darken($ui-base-color, 15%);
   
       &:hover,
       &:active,
@@ -180,10 +166,6 @@ html {
     @media screen and (max-width: $no-gap-breakpoint) {
       border-top: 0;
     }
-  }
-  
-  .tabs-bar__wrapper{
-    background: darken($ui-primary-color, 15%);
   }
   
   .compose-form__autosuggest-wrapper,
@@ -216,22 +198,10 @@ html {
   
   .poll__chart{
     background:$ui-base-lighter-color;
-  }
+   }
   
   .search__input {
-    background-color: darken($ui-primary-color, 8%);
-  }
-
-  @media screen and (max-width: $no-gap-breakpoint) {
-    .layout-single-column .ui__header {
-      background: $ui-primary-color;
-    }
-    .columns-area__panels__pane--navigational {
-      .navigation-panel {
-        background: $ui-primary-color;
-        border-left: none;
-      }
-    }
+    background-color: darken($ui-base-color, 15%);
   }
   
   .list-editor .search .search__input {
@@ -266,13 +236,10 @@ html {
     border-top: 0;
   }
   
-  .drawer__inner{
-    background: darken($ui-primary-color, 8%);
+  .drawer__inner,
+  .navigation-bar {
+    background: darken($ui-base-color, 8%);
     border: 1px solid $ui-base-color;
-  }
-  
-  .navigation-bar{
-    background: darken($ui-primary-color, 8%);
   }
   
   .drawer__header{
@@ -281,7 +248,7 @@ html {
   }
   
   .drawer__inner__mastodon {
-    background: darken($ui-primary-color, 15%)
+    background: darken($ui-base-color, 8%)
       url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234.80078 31.757813" width="234.80078" height="31.757812"><path d="M19.599609 0c-1.05 0-2.10039.375-2.90039 1.125L0 16.925781v14.832031h234.80078V17.025391l-16.5-15.900391c-1.6-1.5-4.20078-1.5-5.80078 0l-13.80078 13.099609c-1.6 1.5-4.19883 1.5-5.79883 0L179.09961 1.125c-1.6-1.5-4.19883-1.5-5.79883 0L159.5 14.224609c-1.6 1.5-4.20078 1.5-5.80078 0L139.90039 1.125c-1.6-1.5-4.20078-1.5-5.80078 0l-13.79883 13.099609c-1.6 1.5-4.20078 1.5-5.80078 0L100.69922 1.125c-1.600001-1.5-4.198829-1.5-5.798829 0l-13.59961 13.099609c-1.6 1.5-4.200781 1.5-5.800781 0L61.699219 1.125c-1.6-1.5-4.198828-1.5-5.798828 0L42.099609 14.224609c-1.6 1.5-4.198828 1.5-5.798828 0L22.5 1.125C21.7.375 20.649609 0 19.599609 0z" fill="#{hex-color($ui-base-color)}"/></svg>')
       no-repeat bottom / 100% auto;
   }
@@ -339,8 +306,8 @@ html {
   
   .detailed-status,
   .detailed-status__action-bar {
-    background: $white;
-}
+    background: darken($ui-base-color, 15%);
+  }
   
   // Change the background colors of status__content__spoiler-link
   .reply-indicator__content .status__content__spoiler-link,
@@ -459,7 +426,7 @@ html {
   }
   
   .modal-layout{
-    background: darken($ui-primary-color, 15%);
+    background: darken($ui-base-color, 8%);
   }
   
   .admin-wrapper .sidebar ul{
@@ -471,14 +438,9 @@ html {
     }
   }
   
-  .admin-wrapper .sidebar-wrapper__inner{
-    background: $ui-primary-color;
-  }
-  
   body.admin,
-  body.app-body,
   body.lighter{
-    background: darken($ui-primary-color, 15%);
+      background: darken($ui-base-color, 8%);
   }
   
   .reactions-bar__item:hover,
@@ -551,13 +513,6 @@ html {
     &:active {
       border-color: darken($darker-text-color, 8%);
       color: darken($darker-text-color, 8%);
-    }
-  }
-  
-  .flash-message{
-    a,
-    &.translation-prompt{
-      color: $white;
     }
   }
   
@@ -657,7 +612,6 @@ html {
     textarea,
     select{
       background-color: darken($ui-base-color, 15%);
-      border-color: $ui-base-color;
       
       &::placeholder{
         color: darken($black, 25%);
@@ -791,19 +745,17 @@ html {
   
   .dismissable-banner {
     background-color: rgba($ui-base-color, 0.15);
-  }
+}
   
   .status__content,
   .reply-indicator__content,
   .account__header__bio .account__header__fields {
     a {
-      color: $ui-base-lighter-color;
+      color: lighten($ui-base-lighter-color, 15%);
     }
-  }
-  
-  .account__header__fields .verified{
-    dt,dd{
-      color: $success-green
+    dl{
+      border-bottom-color: lighten($ui-primary-color, 8%);
+      background-color: darken($ui-primary-color, 15%);
     }
   }
   
@@ -817,16 +769,7 @@ html {
   
   .notification__filter-bar button.active::after,
   .account__section-headline a.active::after {
-    border-color: transparent transparent $white;
-  }
-  
-  .notification__filter-bar,
-  .account__section-headline {
-    background: $ui-primary-color;
-  
-    button{
-      background: $ui-primary-color;
-    }
+    border-color: transparent transparent darken($ui-base-color, 15%);
   }
   
   .hero-widget,
