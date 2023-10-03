@@ -780,7 +780,7 @@ html {
   
     &,
     a {
-      color: $ui-highlight-color;
+      color: lighten($ui-highlight-color, 15%);
     }
   }
   
