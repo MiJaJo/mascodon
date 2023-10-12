@@ -290,7 +290,6 @@ class EmojiPickerMenuImpl extends PureComponent {
           showSkinTones={false}
           backgroundImageFn={backgroundImageFn}
           notFound={notFoundFn}
-          autoFocus={this.state.readyToFocus}
           emojiTooltip
         />
 
