@@ -297,7 +297,7 @@
   color: $dark-text-color;
 
   &__chart {
-    background: rgba(darken($ui-primary-color, 14%), 0.7);
+    background: rgba(lighten($ui-base-lighter-color, 8%), 0.7);
 
     &.leading {
       background: rgba($ui-highlight-color, 0.5);
