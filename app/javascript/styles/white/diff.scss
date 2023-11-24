@@ -7,15 +7,10 @@ html {
   
   // Change the colors of button texts
   .button {
-    color: $black;
-  
-    &.button-alternative-2 {
-      color: $black;
-    }
-  
     &.button-tertiary {
       color: $highlight-text-color;
       background: darken($ui-primary-color, 15%);
+      border-color: $highlight-text-color;
     }
   }
   
@@ -605,6 +600,7 @@ html {
     textarea,
     select{
       background-color: darken($ui-base-color, 15%);
+      border: 1px solid lighten($ui-base-color, 15%);
       
       &::placeholder{
         color: darken($black, 25%);
@@ -741,9 +737,14 @@ html {
 }
   
   .status__content,
-  .reply-indicator__content {
+  .reply-indicator__content,
+  .account__header__bio .account__header__fields {
     a {
-      color: $highlight-text-color;
+      color: lighten($ui-base-lighter-color, 15%);
+    }
+    dl{
+      border-bottom-color: lighten($ui-primary-color, 8%);
+      background-color: darken($ui-primary-color, 15%);
     }
   }
   
