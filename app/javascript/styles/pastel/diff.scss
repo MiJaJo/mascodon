@@ -590,13 +590,6 @@ html {
     border-color: $darker-text-color;
     color: $darker-text-color;
     background-color: $ui-base-color;
-  
-    &:hover,
-    &:focus,
-    &:active {
-      border-color: darken($darker-text-color, 8%);
-      color: darken($darker-text-color, 8%);
-    }
   }
   
   .flash-message{
