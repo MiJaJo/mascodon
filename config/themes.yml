@@ -5,6 +5,7 @@ light-orange: styles/orange.scss
 light-blue: styles/blue.scss
 light-pastel: styles/pastel.scss
 light-red: styles/red.scss
+light-white: styles/white.scss
 mastodon-original: styles/mastodon-orig.scss
 contrast-original: styles/contrast-orig.scss
 mastodon-light-original: styles/mastodon-light-orig.scss
