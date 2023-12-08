@@ -70,7 +70,7 @@ class Account < ApplicationRecord
   URL_PREFIX_RE = %r{\Ahttp(s?)://[^/]+}
   USERNAME_ONLY_RE = /\A#{USERNAME_RE}\z/i
 
-  DEFAULT_FIELDS_SIZE = 8
+  DEFAULT_FIELDS_SIZE = 10
 
   include Attachmentable
   include AccountAssociations
