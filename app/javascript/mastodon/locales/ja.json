@@ -54,7 +54,7 @@
   "account.mute_notifications_short": "通知をオフにする",
   "account.mute_short": "ミュート",
   "account.muted": "ミュート済み",
-  "account.newer_profile_information": "このサーバーに一時保存された情報が表示されています。ここをクリックすると、リモートの最新情報を確認できます。",
+  "account.newer_profile_information": "リモートユーザーの情報は、最新ではないことがあります。ここをクリックすると、リモートの最新情報を確認できます。",
   "account.no_bio": "説明が提供されていません。",
   "account.open_original_page": "元のページを開く",
   "account.posts": "投稿",

@@ -119,7 +119,7 @@ export class DisplayName extends React.PureComponent<Props> {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        {displayName} {suffix}
+        {displayName} <wbr /> {suffix}
       </span>
     );
   }
