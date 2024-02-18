@@ -167,7 +167,7 @@ class About extends PureComponent {
             <div className='about__meta__singleColumn'>
             <h4><FormattedMessage id='about.contact' defaultMessage='Contact:' /></h4>
 
-              {isLoading ? <Skeleton width='10ch' /> : <a className='about__mail' href={`mailto:${server.getIn(['contact', 'email'])}`}>{server.getIn(['contact', 'email'])}</a>}
+              {isLoading ? <Skeleton width='10ch' /> : <a className='about__mail' href={`${server.getIn(['contact', 'email'])}`}>{server.getIn(['contact', 'email'])}</a>}
             </div>
           </div>
 
