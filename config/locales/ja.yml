@@ -1134,7 +1134,7 @@ ja:
       caches: 他のサーバーにコンテンツのキャッシュがずっと残る場合があります
       data_removal: あなたの投稿やその他のデータはこのサーバーから完全に削除されます
       email_change_html: アカウントを削除しなくても<a href="%{path}">メールアドレスを変更</a>できます
-      email_contact_html: それでも届かない場合、<a href="mailto:%{email}">%{email}</a>までメールで問い合わせてください
+      email_contact_html: それでも届かない場合、<a href="%{email}">%{email}</a>までメールで問い合わせてください
       email_reconfirmation_html: 確認のメールが届かない場合、<a href="%{path}">もう一度申請</a>できます。
       irreversible: 削除操作の撤回やアカウントの復活はできません
       more_details_html: 詳しくは<a href="%{terms_path}">プライバシーポリシー</a>をご覧ください。
