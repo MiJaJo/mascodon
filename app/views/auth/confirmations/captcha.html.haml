@@ -12,7 +12,7 @@
 
   = render_captcha
 
-  %p.lead= t('auth.captcha_confirmation.help_html', email: mail_to(Setting.site_contact_email, nil))
+  %p.lead= t('auth.captcha_confirmation.help_html', email: link_to(nil, Setting.site_contact_email))
 
   .actions
     = button_tag t('challenge.confirm'), class: 'button', type: :submit
