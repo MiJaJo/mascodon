@@ -754,6 +754,7 @@ ja:
         preamble: 動作のカスタマイズを含む、その他の設定
         title: その他の設定
       registrations:
+        moderation_recommandation: 登録受付を開始する前に、適切かつ迅速なモデレーション・チームを編成してください！
         preamble: あなたのサーバー上でアカウントを作成できるユーザーを制御します。
         title: アカウント作成
       registrations_mode:
@@ -761,6 +762,7 @@ ja:
           approved: 登録には承認が必要
           none: 誰にも許可しない
           open: 誰でも登録可
+        warning_hint: あなたのモデレーションチームがスパムや悪意のある登録をタイムリーに処理できる自信がない限り、「登録には承認が必要」を使用することをおすすめします。
       reject_pattern:
         desc_html: 正規表現パターンを設定してアクティビティ作成内容を検査し、一致する場合はアクティビティを拒否します。
         title: 拒否パターン
