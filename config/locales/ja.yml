@@ -754,6 +754,7 @@ ja:
         preamble: 動作のカスタマイズを含む、その他の設定
         title: その他の設定
       registrations:
+        moderation_recommandation: 登録受付を開始する前に、適切かつ迅速なモデレーション・チームを編成してください！
         preamble: あなたのサーバー上でアカウントを作成できるユーザーを制御します。
         title: アカウント作成
       registrations_mode:
