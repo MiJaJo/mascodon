@@ -44,6 +44,15 @@ class PublicStatusesIndex < Chewy::Index
           sudachi_normalizedform
         ),
       },
+      hashtag: {
+        tokenizer: 'keyword',
+        filter: %w(
+          word_delimiter_graph
+          lowercase
+          asciifolding
+          cjk_width
+        ),
+      },
     },
     tokenizer: {
       sudachi_tokenizer: {
