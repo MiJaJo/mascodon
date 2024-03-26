@@ -310,7 +310,7 @@
   "home.column_settings.basic": "基本設定",
   "home.column_settings.show_reblogs": "ブースト表示",
   "home.column_settings.show_replies": "返信表示",
-  "home.explore_prompt.body": "ユーザーやハッシュタグをフォローすると、この「ホーム」タイムラインに投稿やブーストが流れるようになります。タイムラインをもう少しにぎやかにしてみませんか？",
+  "home.explore_prompt.body": "ユーザーやハッシュタグをフォローすると、この「ホーム」タイムラインに投稿やブーストが流れるようになります。タイムラインをもう少しにぎやかにしてみませんか？使い方やルールがわからない場合は、右側のサイドバーから「マニュアル」も見てみてくださいね。",
   "home.explore_prompt.title": "マスコどん！のタイムラインへようこそ。",
   "home.hide_announcements": "お知らせを隠す",
   "home.pending_critical_update.body": "速やかにマストドンサーバーをアップデートしてください。",
