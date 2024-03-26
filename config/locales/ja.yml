@@ -729,7 +729,7 @@ ja:
         title: ブランディング
       captcha_enabled:
         desc_html: この機能は hCaptcha による外部スクリプトを使用しますが、hCaptcha にはセキュリティとプライバシーの懸念が考えられます。また、<strong>CAPTCHAにより新規登録のアクセシビリティが大幅に損なわれる可能性があり、身体および精神障害者においては特に顕著です。</strong>以上の理由から、承認制や招待制を基本とするなど、代わりの登録手順を提供することを検討してください。
-        title: 新規ユーザーのアカウント確認にCHAPCHAを要求する
+        title: 新規ユーザーのアカウント確認にCAPTCHAを要求する
       content_retention:
         preamble: ユーザーが生成したコンテンツがどのように Mastodon に保存されるかを管理します。
         title: コンテンツの保持
@@ -1065,14 +1065,12 @@ ja:
     resend_confirmation: 確認メールを再送
     reset_password: パスワードを再発行
     rules:
-      accept: 同意する
-      back: 戻る
+      accept: わかりました！
+      back: やっぱりやめます...
       invited_by: '以下のユーザーから %{domain} への招待を受けました:'
       preamble: これらは %{domain} モデレータによって設定され、実施されます。
       preamble_invited: 次に進む前に、 %{domain} のモデレーターが定めたルールを確認してください。
       title: いくつかのルールがあります。
-      accept: わかりました！
-      back: やっぱりやめます...
       title_invited: このサーバーに招待されています。
     security: セキュリティ
     set_new_password: 新しいパスワード
