@@ -1,14 +1,11 @@
 import Rails from '@rails/ujs';
 
 export function start() {
-  require('@fortawesome/fontawesome-free/css/fontawesome.css');
-  require('@fortawesome/fontawesome-free/css/brands.css');
-  require('@fortawesome/fontawesome-free/css/solid.css');
-  require.context('../images/', true);
+  require.context('../images/', true, /\.(jpg|png|svg)$/);
 
   try {
     Rails.start();
-  } catch (e) {
+  } catch {
     // If called twice
   }
 }
