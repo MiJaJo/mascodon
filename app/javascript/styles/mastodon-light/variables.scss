@@ -36,7 +36,7 @@ $ui-button-tertiary-border-color: $blurple-500 !default;
 
 $primary-text-color: $black !default;
 $darker-text-color: $classic-base-color !default;
-$highlight-text-color: $ui-highlight-color !default;
+$highlight-text-color: darken($ui-highlight-color, 20%) !default;
 $dark-text-color: hsl(240deg, 16%, 32%);
 $action-button-color: hsl(240deg, 16%, 45%);
 
