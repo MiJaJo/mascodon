@@ -19,6 +19,7 @@ import ListAltActiveIcon from '@/material-icons/400-24px/list_alt-fill.svg?react
 import ListAltIcon from '@/material-icons/400-24px/list_alt.svg?react';
 import AdministrationIcon from '@/material-icons/400-24px/manufacturing.svg?react';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
+import ManualIcon from '@/material-icons/400-24px/push_pin.svg?react';
 import NotificationsActiveIcon from '@/material-icons/400-24px/notifications-fill.svg?react';
 import NotificationsIcon from '@/material-icons/400-24px/notifications.svg?react';
 import PersonAddActiveIcon from '@/material-icons/400-24px/person_add-fill.svg?react';
@@ -133,8 +134,6 @@ class NavigationPanel extends Component {
       );
     }
 
-    let banner = undefined;
-
     if(transientSingleColumn)
       banner = (<div className='switch-to-advanced'>
         {intl.formatMessage(messages.openedInClassicInterface)}
@@ -197,7 +196,7 @@ class NavigationPanel extends Component {
 
               <hr />
 
-              <ColumnLink transparent target='_blank' href={manual_url} icon='book' text={intl.formatMessage(messages.manuals)} />
+              <ColumnLink transparent target='_blank' href={manual_url} icon='manual' iconComponent={ManualIcon} text={intl.formatMessage(messages.manuals)} />
 
               {canManageReports(permissions) && <ColumnLink optional transparent href='/admin/reports' icon='flag' iconComponent={ModerationIcon} text={intl.formatMessage(messages.moderation)} />}
               {canViewAdminDashboard(permissions) && <ColumnLink optional transparent href='/admin/dashboard' icon='tachometer' iconComponent={AdministrationIcon} text={intl.formatMessage(messages.administration)} />}

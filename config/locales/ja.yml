@@ -1778,7 +1778,7 @@ ja:
     mastodon-original: Mastodon (ダーク)
     contrast-original: Mastodon (ハイコントラスト)
     mastodon-light-original: Mastodon (ライト)
-    system: 自動 (システムのテーマを使用)
+    system: 自動 (システムのテーマで くろ と しろ を切り替え)
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"

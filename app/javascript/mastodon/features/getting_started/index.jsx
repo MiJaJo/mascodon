@@ -18,6 +18,7 @@ import HomeIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import ListAltIcon from '@/material-icons/400-24px/list_alt.svg?react';
 import AdministrationIcon from '@/material-icons/400-24px/manufacturing.svg?react';
 import MenuIcon from '@/material-icons/400-24px/menu.svg?react';
+import ManualIcon from '@/material-icons/400-24px/push_pin.svg?react';
 import PersonAddIcon from '@/material-icons/400-24px/person_add.svg?react';
 import PublicIcon from '@/material-icons/400-24px/public.svg?react';
 import SettingsIcon from '@/material-icons/400-24px/settings-fill.svg?react';
@@ -153,7 +154,7 @@ class GettingStarted extends ImmutablePureComponent {
     }
     navItems.push(
       <ColumnSubheading key='header-others' text={intl.formatMessage(messages.others_subheading)} />,
-      <ColumnLink target='_blank' key='manuals' icon='book' text={intl.formatMessage(messages.manuals)} href={manual_url} />,
+      <ColumnLink target='_blank' key='manuals' icon='manual' iconComponent={ManualIcon} text={intl.formatMessage(messages.manuals)} href={manual_url} />,
     );
 
     return (

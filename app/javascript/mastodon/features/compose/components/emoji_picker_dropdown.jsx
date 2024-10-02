@@ -392,7 +392,7 @@ class EmojiPickerDropdown extends PureComponent {
           title={title}
           aria-expanded={active}
           active={active}
-          iconComponent={`${assetHost}/shantu.svg`}
+          iconComponent={MoodIcon}
           onClick={this.onToggle}
           inverted
         />

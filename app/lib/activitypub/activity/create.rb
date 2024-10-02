@@ -397,6 +397,10 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     Tombstone.exists?(uri: object_uri)
   end
 
+  def reject_pattern?
+    Setting.reject_pattern.present? && @object['content']&.match?(Setting.reject_pattern)
+  end
+
   def forward_for_reply
     return unless @status.distributable? && @json['signature'].present? && reply_to_local?
 
