@@ -535,3 +535,7 @@ a.sparkline {
 ::-webkit-scrollbar-thumb {
   opacity: 0.25;
 }
+
+.admin-wrapper .sidebar ul .simple-navigation-active-leaf a{
+  color: $white;
+}
