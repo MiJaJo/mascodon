@@ -40,6 +40,7 @@ class Status < ApplicationRecord
   include Status::ThreadingConcern
 
   MEDIA_ATTACHMENTS_LIMIT = 4
+  MEDIA_ATTACHMENTS_LIMIT_FROM_REMOTE = 32
 
   rate_limit by: :account, family: :statuses
 
@@ -288,7 +289,7 @@ class Status < ApplicationRecord
     else
       map = media_attachments.index_by(&:id)
       ordered_media_attachment_ids.filter_map { |media_attachment_id| map[media_attachment_id] }
-    end.take(MEDIA_ATTACHMENTS_LIMIT)
+    end.take(media_attachments_max)
   end
 
   def replies_count
@@ -471,5 +472,9 @@ class Status < ApplicationRecord
 
   def trigger_update_webhooks
     TriggerWebhookWorker.perform_async('status.updated', 'Status', id) if local?
+  end
+
+  def media_attachments_max
+    local? ? MEDIA_ATTACHMENTS_LIMIT : MEDIA_ATTACHMENTS_LIMIT_FROM_REMOTE
   end
 end
