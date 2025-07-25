@@ -170,6 +170,10 @@ const messages = defineMessages({
     id: 'confirmations.remove_from_followers.confirm',
     defaultMessage: 'Remove follower',
   },
+  newer_profile_information: {
+    id: 'account.newer_profile_information',
+    defaultMessage: 'Here you can see the information cached for this instance. To see the latest profiles and toots, click here to view remote profiles.',
+  },
 });
 
 const titleFromAccount = (account: Account) => {
@@ -879,8 +883,12 @@ export const AccountHeader: React.FC<{
             </h1>
           </div>
 
+          {(isRemote) && (
+            <div className="flash-message"><a href={account.get('url')} rel='noopener noreferrer' target='_blank'>{intl.formatMessage(messages.newer_profile_information)}</a></div>
+          )}
+
           {badges.length > 0 && (
-            <div className='account__header__badges'>{badges}</div>
+            <div className={`account__header__badges user-role-${account.getIn(['roles', 0, 'id'])}`}>{badges}</div>
           )}
 
           {account.id !== me && signedIn && !(suspended || hidden) && (
@@ -917,7 +925,7 @@ export const AccountHeader: React.FC<{
                         value={account.created_at}
                         year='numeric'
                         month='short'
-                        day='2-digit'
+                        day='numeric'
                       />
                     </dd>
                   </dl>

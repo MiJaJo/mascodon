@@ -26,6 +26,7 @@ import SettingsIcon from '@/material-icons/400-24px/settings.svg?react';
 import StarActiveIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarIcon from '@/material-icons/400-24px/star.svg?react';
 import TrendingUpIcon from '@/material-icons/400-24px/trending_up.svg?react';
+import ManualIcon from '@/material-icons/400-24px/push_pin.svg?react';
 import { fetchFollowRequests } from 'mastodon/actions/accounts';
 import { openNavigation, closeNavigation } from 'mastodon/actions/navigation';
 import { Account } from 'mastodon/components/account';
@@ -35,7 +36,7 @@ import { Search } from 'mastodon/features/compose/components/search';
 import { ColumnLink } from 'mastodon/features/ui/components/column_link';
 import { useBreakpoint } from 'mastodon/features/ui/hooks/useBreakpoint';
 import { useIdentity } from 'mastodon/identity_context';
-import { timelinePreview, trendsEnabled, me } from 'mastodon/initial_state';
+import { manual_url, timelinePreview, trendsEnabled, me } from 'mastodon/initial_state';
 import { transientSingleColumn } from 'mastodon/is_mobile';
 import { selectUnreadNotificationGroupsCount } from 'mastodon/selectors/notifications';
 import { useAppSelector, useAppDispatch } from 'mastodon/store';
@@ -87,6 +88,7 @@ const messages = defineMessages({
   },
   logout: { id: 'navigation_bar.logout', defaultMessage: 'Logout' },
   compose: { id: 'tabs_bar.publish', defaultMessage: 'New Post' },
+  manuals: { id: 'navigation_bar.manuals', defaultMessage: 'Manuals' },
 });
 
 const NotificationsLink = () => {
@@ -312,6 +314,16 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
               icon='cog'
               iconComponent={SettingsIcon}
               text={intl.formatMessage(messages.preferences)}
+            />
+
+            <hr />
+
+            <ColumnLink
+              transparent target='_blank'
+              href={manual_url}
+              icon='manual'
+              iconComponent={ManualIcon}
+              text={intl.formatMessage(messages.manuals)}
             />
 
             <MoreLink />

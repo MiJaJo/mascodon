@@ -8,8 +8,11 @@ import { Dropdown } from 'mastodon/components/dropdown_menu';
 import { Icon } from 'mastodon/components/icon';
 import { useIdentity } from 'mastodon/identity_context';
 import type { MenuItem } from 'mastodon/models/dropdown_menu';
+import ManualIcon from '@/material-icons/400-24px/push_pin.svg?react';
 import { canManageReports, canViewAdminDashboard } from 'mastodon/permissions';
 import { useAppDispatch } from 'mastodon/store';
+
+import { manual_url } from 'mastodon/initial_state';
 
 const messages = defineMessages({
   blocks: { id: 'navigation_bar.blocks', defaultMessage: 'Blocked users' },
@@ -40,6 +43,10 @@ const messages = defineMessages({
   privacyAndReach: {
     id: 'navigation_bar.privacy_and_reach',
     defaultMessage: 'Privacy and reach',
+  },
+  manuals: {
+    id: 'navigation_bar.manuals',
+    defaultMessage: 'Manuals',
   },
 });
 
@@ -105,6 +112,15 @@ export const MoreLink: React.FC = () => {
     return arr;
   }, [intl, dispatch, permissions]);
 
+  const manual = useMemo(() => {
+    const arr: MenuItem[] = [
+      {
+        text: intl.formatMessage(messages.manuals),
+        href: manual_url??""
+      },
+    ];
+  }, [intl]);
+
   return (
     <Dropdown items={menu}>
       <button className='column-link column-link--transparent'>
@@ -113,5 +129,12 @@ export const MoreLink: React.FC = () => {
         <FormattedMessage id='navigation_bar.more' defaultMessage='More' />
       </button>
     </Dropdown>
-  );
+    <Dropdown items={manual}>
+    <button className='column-link column-link--transparent'>
+      <Icon id='' icon={ManualIcon} className='column-link__icon' />
+
+      <FormattedMessage id='navigation_bar.more' defaultMessage='More' />
+    </button>
+  </Dropdown>
+);
 };
