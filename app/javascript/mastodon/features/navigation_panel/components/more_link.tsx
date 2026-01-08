@@ -135,7 +135,7 @@ export const MoreLink: React.FC = () => {
         <FormattedMessage id='navigation_bar.more' defaultMessage='More' />
       </button>
     </Dropdown>
-    <Dropdown items={manual}>
+    <Dropdown items={manual} />
     <button className='column-link column-link--transparent'>
       <Icon id='' icon={ManualIcon} className='column-link__icon' />
 
