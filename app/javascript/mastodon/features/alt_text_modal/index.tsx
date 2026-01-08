@@ -261,7 +261,9 @@ export const AltTextModal = forwardRef<ModalRef, Props & Partial<RestoreProps>>(
     );
     const lang = useAppSelector(
       (state) =>
-        (state.compose as ImmutableMap<string, unknown>).get('lang') as string,
+        (state.compose as ImmutableMap<string, unknown>).get(
+          'language',
+        ) as string,
     );
     const focusX =
       (media?.getIn(['meta', 'focus', 'x'], 0) as number | undefined) ?? 0;
@@ -328,7 +330,7 @@ export const AltTextModal = forwardRef<ModalRef, Props & Partial<RestoreProps>>(
         });
     }, [dispatch, setIsSaving, mediaId, onClose, position, description]);
 
-    const handleKeyUp = useCallback(
+    const handleKeyDown = useCallback(
       (e: React.KeyboardEvent) => {
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
           e.preventDefault();
@@ -455,7 +457,7 @@ export const AltTextModal = forwardRef<ModalRef, Props & Partial<RestoreProps>>(
                   id='description'
                   value={isDetecting ? ' ' : description}
                   onChange={handleDescriptionChange}
-                  onKeyUp={handleKeyUp}
+                  onKeyDown={handleKeyDown}
                   lang={lang}
                   placeholder={intl.formatMessage(
                     type === 'audio'
