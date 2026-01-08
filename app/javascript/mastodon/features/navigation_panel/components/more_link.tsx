@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
 
@@ -122,25 +122,29 @@ export const MoreLink: React.FC = () => {
     const arr: MenuItem[] = [
       {
         text: intl.formatMessage(messages.manuals),
-        href: manual_url??""
+        href: manual_url ?? '',
       },
     ];
+    return arr;
   }, [intl]);
 
   return (
-    <Dropdown items={menu} placement='bottom-start'>
-      <button className='column-link column-link--transparent'>
-        <Icon id='' icon={MoreHorizIcon} className='column-link__icon' />
+    <>
+      <Dropdown items={menu} placement='bottom-start'>
+        <button className='column-link column-link--transparent'>
+          <Icon id='' icon={MoreHorizIcon} className='column-link__icon' />
 
-        <FormattedMessage id='navigation_bar.more' defaultMessage='More' />
-      </button>
-    </Dropdown>
-    <Dropdown items={manual} />
-    <button className='column-link column-link--transparent'>
-      <Icon id='' icon={ManualIcon} className='column-link__icon' />
+          <FormattedMessage id='navigation_bar.more' defaultMessage='More' />
+        </button>
+      </Dropdown>
 
-      <FormattedMessage id='navigation_bar.more' defaultMessage='More' />
-    </button>
-  </Dropdown>
-);
+      <Dropdown items={manual} placement='bottom-start'>
+        <button className='column-link column-link--transparent'>
+          <Icon id='' icon={ManualIcon} className='column-link__icon' />
+
+          <FormattedMessage {...messages.manuals} />
+        </button>
+      </Dropdown>
+    </>
+  );
 };
