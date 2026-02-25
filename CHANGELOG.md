@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.3.20] - 2026-02-24
+
+### Added
+
+- Add `--suspended-only` option to `tootctl emoji purge` (#37828 and #37861 by @ClearlyClaire and @mjankowski)
+
+### Fixed
+
+- Fix processing of object updates with duplicate hashtags (#37756 by @ClearlyClaire)
+
+## [4.3.19] - 2026-02-03
+
+### Security
+
+- Fix ActivityPub collection caching logic for pinned posts and featured tags not checking blocked accounts ([GHSA-ccpr-m53r-mfwr](https://github.com/mastodon/mastodon/security/advisories/GHSA-ccpr-m53r-mfwr))
+
+### Fixed
+
+- Fix relationship cache not being cleared when handling account migrations (#37664 by @ClearlyClaire)
+- Fix error when encountering invalid tag in updated object (#37635 by @ClearlyClaire)
+- Fix recycled connections not being immediately closed (#37335 and #37674 by @ClearlyClaire and @shleeable)
+
 ## [4.3.18] - 2026-01-20
 
 ### Security
