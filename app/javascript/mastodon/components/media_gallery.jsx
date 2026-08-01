@@ -307,7 +307,7 @@ class MediaGallery extends PureComponent {
 
     if (this.isFullSizeEligible()) {
       style.aspectRatio = `${this.props.media.getIn([0, 'meta', 'small', 'aspect'])}`;
-    } else {
+    } else if (size <= 4) {
       style.aspectRatio = '3 / 2';
     }
 
