@@ -624,6 +624,29 @@ RSpec.describe ActivityPub::Activity::Create do
         end
       end
 
+      context 'with more than four media attachments' do
+        let(:object_json) do
+          build_object(
+            attachment: Array.new(5) do |i|
+              {
+                type: 'Document',
+                mediaType: 'image/png',
+                url: "http://example.com/attachment#{i}.png",
+              }
+            end
+          )
+        end
+
+        it 'creates status with all media attachments' do
+          expect { subject.perform }.to change(sender.statuses, :count).by(1)
+
+          status = sender.statuses.first
+
+          expect(status).to_not be_nil
+          expect(status.ordered_media_attachments.map(&:remote_url)).to eq Array.new(5) { |i| "http://example.com/attachment#{i}.png" }
+        end
+      end
+
       context 'with media attachments with long description' do
         let(:object_json) do
           build_object(
