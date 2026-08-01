@@ -1362,6 +1362,44 @@ ja:
       your_appeal_rejected: 申し立ては拒否されました
   edit_profile:
     other: その他
+    privacy_redesign_body: フォローとフォロワーを表示するかどうかは、プロフィールページから直接設定できるようになりました
+    redesign_body: プロフィールは、プロフィールページから直接編集できるようになりました
+    redesign_button: 移動する
+    redesign_title: プロフィール編集の操作が変わりました
+  email_subscription_mailer:
+    confirmation:
+      action: メールアドレスを確認
+      instructions_to_confirm: '%{name}（@%{acct}）が新しい投稿を公開したときにメールを受け取りたいことを確認してください。'
+      instructions_to_ignore: このメールの受け取り理由が不明な場合は、削除して構いません。上記のリンクをクリックしない限り登録されません。
+      subject: メールアドレスを確認してください
+      title: '%{name} からのメール通知を受け取りますか？'
+    notification:
+      create_account: Mastodon アカウントを作成
+      footer:
+        privacy_html: メールは Mastodon によって運用される %{domain} から送信されます。このサーバーが個人データをどのように処理するかについては、<a href="%{privacy_policy_path}">プライバシーポリシー</a>を参照してください。
+        reason_for_email_html: '%{name} からのメール更新を受け取るために登録しています。これらのメールを受け取りたくない場合は、<a href="%{unsubscribe_path}">配信停止</a>してください。'
+      interact_with_this_post:
+        one: この投稿に反応して、似た内容をもっと見つけてください。
+        other: これらの投稿に反応して、もっと見つけてください。
+      subject:
+        plural: '%{name} からの新しい投稿'
+        singular: '新しい投稿: "%{excerpt}"'
+      title:
+        plural: '%{name} からの新しい投稿'
+        singular: '新しい投稿: "%{excerpt}"'
+  email_subscriptions:
+    active: 有効
+    confirmations:
+      show:
+        changed_your_mind: 気が変わりましたか？
+        success_html: '%{name} が新しい投稿を公開したときにメールを受け取るようになりました。これらの投稿が迷惑メールに入らないように、%{sender} を連絡先に追加してください。'
+        title: 登録完了
+        unsubscribe: 配信停止
+    disabled: 無効
+    inactive: 非アクティブ
+    no_access: アクセスなし
+    status: ステータス
+    subscribers: 購読者
   emoji_styles:
     auto: 自動
     native: ネイティブ
