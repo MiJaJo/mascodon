@@ -92,6 +92,10 @@ class Item extends PureComponent {
 
     let badges = [], thumbnail;
 
+    const smallWidth = attachment.getIn(['meta', 'small', 'width']);
+    const smallHeight = attachment.getIn(['meta', 'small', 'height']);
+    const itemStyle = attachment.get('type') === 'image' && smallWidth && smallHeight ? { aspectRatio: `${smallWidth} / ${smallHeight}` } : undefined;
+
     let width  = 50;
     let height = 100;
 
@@ -152,7 +156,7 @@ class Item extends PureComponent {
             sizes={sizes}
             alt={description}
             lang={lang}
-            style={{ objectPosition: `${x}% ${y}%` }}
+            style={{ objectPosition: `${x}% ${y}%`, objectFit: 'contain' }}
             onLoad={this.handleImageLoad}
             onError={this.handleImageError}
           />
@@ -190,7 +194,7 @@ class Item extends PureComponent {
     }
 
     return (
-      <div className={classNames('media-gallery__item', { standalone, 'media-gallery__item--error': this.state.error, 'media-gallery__item--tall': height === 100, 'media-gallery__item--wide': width === 100 })} key={attachment.get('id')}>
+      <div className={classNames('media-gallery__item', { standalone, 'media-gallery__item--error': this.state.error, 'media-gallery__item--tall': height === 100, 'media-gallery__item--wide': width === 100 })} key={attachment.get('id')} style={itemStyle}>
         <Blurhash
           hash={attachment.get('blurhash')}
           dummy={!useBlurhash}
@@ -303,6 +307,8 @@ class MediaGallery extends PureComponent {
 
     let children;
 
+    const size = media.size;
+    const uncached = media.every(attachment => attachment.get('type') === 'unknown');
     const style = {};
 
     if (this.isFullSizeEligible()) {
@@ -310,9 +316,6 @@ class MediaGallery extends PureComponent {
     } else if (size <= 4) {
       style.aspectRatio = '3 / 2';
     }
-
-    const size     = media.size;
-    const uncached = media.every(attachment => attachment.get('type') === 'unknown');
 
     if (this.isFullSizeEligible()) {
       children = <Item standalone autoplay={autoplay} onClick={this.handleClick} attachment={media.get(0)} lang={lang} displayWidth={width} visible={visible} />;
