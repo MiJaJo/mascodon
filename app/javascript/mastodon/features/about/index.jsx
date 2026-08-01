@@ -22,6 +22,7 @@ import { LinkFooter} from 'mastodon/features/ui/components/link_footer';
 import { Section } from './components/section';
 import { RulesSection } from './components/rules';
 import { getColumnSkipLinkId } from '../ui/components/skip_links';
+import { getContactHref } from 'mastodon/utils/contact_link';
 
 const messages = defineMessages({
   title: { id: 'column.about', defaultMessage: 'About' },
@@ -81,6 +82,8 @@ class About extends PureComponent {
   render () {
     const { multiColumn, intl, server, extendedDescription, domainBlocks, locale } = this.props;
     const isLoading = server.isLoading;
+    const contactEmail = server.item?.contact?.email;
+    const contactHref = getContactHref(contactEmail);
 
     return (
       <Column bindToDocument={!multiColumn} label={intl.formatMessage(messages.title)}>
@@ -112,7 +115,7 @@ class About extends PureComponent {
             <div className='about__meta__column'>
               <h4><FormattedMessage id='about.contact' defaultMessage='Contact:' /></h4>
 
-              {isLoading ? <Skeleton width='10ch' /> : <a className='about__mail' href={`mailto:${server.item?.contact?.email}`}>{server.item?.contact?.email}</a>}
+              {isLoading ? <Skeleton width='10ch' /> : contactEmail ? <a className='about__mail' href={contactHref}>{contactEmail}</a> : null}
             </div>
           </div>
 

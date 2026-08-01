@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { fetchServer } from 'mastodon/actions/server';
 import { useAppDispatch, useAppSelector } from 'mastodon/store';
+import { getContactHref } from 'mastodon/utils/contact_link';
 
 import classes from '../styles.module.scss';
 
@@ -13,6 +14,7 @@ export const Footer = () => {
   const dispatch = useAppDispatch();
   const server = useAppSelector((state) => state.server.server);
   const email = server.item?.contact.email ?? '';
+  const href = getContactHref(email);
 
   useEffect(() => {
     void dispatch(fetchServer());
@@ -25,7 +27,7 @@ export const Footer = () => {
           id='custom_homepage.contact'
           defaultMessage='Contact:'
         />
-        <a href={`mailto:${email}`}>{email}</a>
+        {email ? <a href={href}>{email}</a> : null}
       </div>
 
       <Link to='/privacy-policy' rel='privacy-policy'>
