@@ -87,8 +87,9 @@ class PostStatusService < BaseService
   def normalize_custom_emoji_spacing(text)
     return text unless text.is_a?(String)
 
-    text.gsub(/ (?=:[^:\s]+:)/, "\u200B")
-        .gsub(/(?<=:[^:\s]+:) /, "\u200B")
+    text
+      .gsub(/ (?=:[^:\s]+:)/, "\u200B")
+      .gsub(/(:[^:\s]+:) /) { |match| "#{Regexp.last_match(1)}\u200B" }
   end
 
   def process_status!
