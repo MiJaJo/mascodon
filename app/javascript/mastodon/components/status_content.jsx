@@ -18,6 +18,7 @@ import { languages as preloadedLanguages } from 'mastodon/initial_state';
 import { EmojiHTML } from './emoji/html';
 import { injectIntl } from './intl';
 import { HandledLink } from './status/handled_link';
+import { anyEmojiRegex } from '../features/emoji/utils';
 import { compareUrls } from '../utils/compare_urls';
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
@@ -29,6 +30,92 @@ const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
  */
 export function getStatusContent(status) {
   return status.getIn(['translation', 'contentHtml']) || status.get('contentHtml');
+}
+
+function getSingleEmojiText(text) {
+  const normalizedText = text.replace(/[\u200B-\u200D\u2060]/g, '').trim();
+
+  if (!normalizedText) {
+    return null;
+  }
+
+  const matches = Array.from(normalizedText.matchAll(anyEmojiRegex()));
+
+  if (matches.length !== 1) {
+    return null;
+  }
+
+  const [match] = matches;
+
+  if (match.index !== 0 || match[0].length !== normalizedText.length) {
+    return null;
+  }
+
+  return match[0];
+}
+
+function isMentionNode(node) {
+  if (!(node instanceof HTMLElement)) {
+    return false;
+  }
+
+  return node.classList.contains('mention') && ['a', 'span'].includes(node.tagName.toLowerCase());
+}
+
+export function prepareSingleEmojiContent(content) {
+  if (!content || typeof document === 'undefined') {
+    return content;
+  }
+
+  const template = document.createElement('template');
+  template.innerHTML = content;
+
+  const paragraphs = template.content.querySelectorAll('p');
+
+  paragraphs.forEach((paragraph) => {
+    const childNodes = Array.from(paragraph.childNodes);
+
+    if (childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) {
+      const emoji = getSingleEmojiText(childNodes[0].textContent ?? '');
+
+      if (!emoji) {
+        return;
+      }
+
+      const span = document.createElement('span');
+      span.className = 'mcd__singleEmoji';
+      span.textContent = emoji;
+      paragraph.replaceChild(span, childNodes[0]);
+      return;
+    }
+
+    if (childNodes.length !== 2) {
+      return;
+    }
+
+    const mentionNode = childNodes.find(isMentionNode);
+    const textNode = childNodes.find(node => node.nodeType === Node.TEXT_NODE);
+
+    if (!mentionNode || !textNode) {
+      return;
+    }
+
+    const emoji = getSingleEmojiText(textNode.textContent ?? '');
+
+    if (!emoji) {
+      return;
+    }
+
+    const span = document.createElement('span');
+    span.className = 'mcd__singleEmoji';
+    span.textContent = emoji;
+    const lineBreak = document.createElement('br');
+
+    paragraph.insertBefore(lineBreak, textNode);
+    paragraph.replaceChild(span, textNode);
+  });
+
+  return template.innerHTML;
 }
 
 class TranslateButton extends PureComponent {
@@ -190,7 +277,7 @@ class StatusContent extends PureComponent {
     const targetLanguages = this.props.languages?.[status.get('language') || 'und'];
     const renderTranslate = this.props.onTranslate && this.props.identity.signedIn && ['public', 'unlisted'].includes(status.get('visibility')) && status.get('search_index').trim().length > 0 && targetLanguages?.includes(contentLocale);
 
-    const content = statusContent ?? getStatusContent(status);
+    const content = prepareSingleEmojiContent(statusContent ?? getStatusContent(status));
     const language = status.getIn(['translation', 'language']) || status.get('language');
     const classNames = classnames('status__content', {
       'status__content--with-action': this.props.onClick && this.props.history,
