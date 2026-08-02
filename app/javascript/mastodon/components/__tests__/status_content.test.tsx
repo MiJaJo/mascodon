@@ -16,4 +16,14 @@ describe('prepareSingleEmojiContent', () => {
       '<a href="https://example.com/@foo" class="mention">@foo</a><br><span class="mcd__singleEmoji">😀</span>',
     );
   });
+
+  it('wraps a single custom emoji shortcode after a mention and line break', () => {
+    const content = prepareSingleEmojiContent(
+      '<p><a href="https://example.com/@foo" class="mention">@foo</a><br>:custom_emoji:</p>',
+    );
+
+    expect(content).toContain(
+      '<a href="https://example.com/@foo" class="mention">@foo</a><br><span class="mcd__singleEmoji">:custom_emoji:</span>',
+    );
+  });
 });

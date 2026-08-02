@@ -41,17 +41,21 @@ function getSingleEmojiText(text) {
 
   const matches = Array.from(normalizedText.matchAll(anyEmojiRegex()));
 
-  if (matches.length !== 1) {
-    return null;
+  if (matches.length === 1) {
+    const [match] = matches;
+
+    if (match.index === 0 && match[0].length === normalizedText.length) {
+      return match[0];
+    }
   }
 
-  const [match] = matches;
+  const shortcodeMatch = normalizedText.match(/^:([a-z0-9_]+):$/i);
 
-  if (match.index !== 0 || match[0].length !== normalizedText.length) {
-    return null;
+  if (shortcodeMatch) {
+    return normalizedText;
   }
 
-  return match[0];
+  return null;
 }
 
 function isMentionNode(node) {
@@ -89,16 +93,16 @@ export function prepareSingleEmojiContent(content) {
       return;
     }
 
-    if (childNodes.length !== 2) {
+    const mentionNodes = childNodes.filter(isMentionNode);
+    const textNodes = childNodes.filter(node => node.nodeType === Node.TEXT_NODE);
+    const breakNodes = childNodes.filter(node => node.nodeName.toLowerCase() === 'br');
+
+    if (mentionNodes.length !== 1 || textNodes.length !== 1) {
       return;
     }
 
-    const mentionNode = childNodes.find(isMentionNode);
-    const textNode = childNodes.find(node => node.nodeType === Node.TEXT_NODE);
-
-    if (!mentionNode || !textNode) {
-      return;
-    }
+    const [mentionNode] = mentionNodes;
+    const [textNode] = textNodes;
 
     const emoji = getSingleEmojiText(textNode.textContent ?? '');
 
@@ -109,9 +113,12 @@ export function prepareSingleEmojiContent(content) {
     const span = document.createElement('span');
     span.className = 'mcd__singleEmoji';
     span.textContent = emoji;
-    const lineBreak = document.createElement('br');
 
-    paragraph.insertBefore(lineBreak, textNode);
+    if (breakNodes.length === 0) {
+      const lineBreak = document.createElement('br');
+      paragraph.insertBefore(lineBreak, textNode);
+    }
+
     paragraph.replaceChild(span, textNode);
   });
 
