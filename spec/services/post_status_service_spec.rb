@@ -27,6 +27,14 @@ RSpec.describe PostStatusService do
     expect(status.thread).to eq in_reply_to_status
   end
 
+  it 'normalizes spaces around custom emoji shortcodes in the stored text' do
+    account = Fabricate(:account)
+
+    status = subject.call(account, text: 'Hi :custom_emoji: there')
+
+    expect(status.text).to eq("Hi\u200B:custom_emoji:\u200Bthere")
+  end
+
   context 'when scheduling a status' do
     let!(:account)         { Fabricate(:account) }
     let!(:future)          { Time.now.utc + 2.hours }
