@@ -4,13 +4,18 @@ ja:
     about_mastodon_html: Mastodonは、オープンなウェブプロトコルを採用した、自由でオープンソースなソーシャルネットワークです。電子メールのような分散型の仕組みを採っています。
     contact_missing: 未設定
     contact_unavailable: N/A
+    default_thumbnail_description: 2頭の笑顔のマストドンが、紙飛行機を投げ合っています。周囲には、木々やほかのマストドンがいる、明るい青空と浮かぶ惑星があります。
     hosted_on: Mastodon hosted on %{domain}
     title: このサーバーについて
   accounts:
     errors:
       cannot_be_added_to_collections: このアカウントはコレクションに追加できません。
     followers:
+      one: フォロワー
       other: フォロワー
+    following:
+      one: フォロー中
+      other: フォロー中
     instance_actor_flash: このアカウントは、個々のユーザーではなく、サーバー自体を表すために使用される仮想のユーザーです。 連合のために使用されるため、停止しないで下さい。
     last_active: 最後の活動
     link_verified_on: このリンクの所有権は%{date}に確認されました
@@ -18,6 +23,7 @@ ja:
     pin_errors:
       following: おすすめしたい人はあなたが既にフォローしている必要があります
     posts:
+      one: 投稿
       other: 投稿
     posts_tab_heading: 投稿
     self_follow_error: 自分のアカウントをフォローすることはできません
@@ -110,6 +116,7 @@ ja:
       perform_full_suspension: 活動を完全に停止させる
       previous_strikes: 以前のストライク
       previous_strikes_description_html:
+        one: このアカウントには <strong>1 件</strong>のストライクがあります。
         other: "<strong>%{count}</strong> ストライクがあります。"
       promote: 昇格
       protocol: プロトコル
@@ -257,6 +264,7 @@ ja:
         create_relay_html: "%{name} さんがリレー %{target} を追加しました"
         create_unavailable_domain_html: "%{name}がドメイン %{target}への配送を停止しました"
         create_user_role_html: "%{name}さんがロール『%{target}』を作成しました"
+        create_username_block_html: "%{name}さんが%{target}を含むユーザー名のルールを追加しました"
         demote_user_html: "%{name}さんが%{target}さんを降格しました"
         destroy_announcement_html: "%{name}さんがお知らせ %{target}を削除しました"
         destroy_canonical_email_block_html: "%{name} さんがメールアドレスのハッシュ値 %{target} のブロックを外しました"
@@ -271,6 +279,7 @@ ja:
         destroy_status_html: "%{name}さんが%{target}さんの投稿を削除しました"
         destroy_unavailable_domain_html: "%{name}がドメイン %{target}への配送を再開しました"
         destroy_user_role_html: "%{name}さんがロール『%{target}』を削除しました"
+        destroy_username_block_html: "%{name}さんが%{target}を含むユーザー名のルールを削除しました"
         disable_2fa_user_html: "%{name}さんが%{target}さんの二要素認証を無効化しました"
         disable_custom_emoji_html: "%{name}さんがカスタム絵文字 %{target}を無効化しました"
         disable_relay_html: "%{name} さんがリレー %{target} を無効にしました"
@@ -306,6 +315,7 @@ ja:
         update_report_html: "%{name} さんが通報 %{target} を更新しました"
         update_status_html: "%{name}さんが%{target}さんの投稿を更新しました"
         update_user_role_html: "%{name}さんがロール『%{target}』を変更しました"
+        update_username_block_html: "%{name}さんが%{target}を含むユーザー名のルールを更新しました"
       deleted_account: 削除されたアカウント
       empty: ログが見つかりませんでした
       filter_by_action: アクションでフィルター
@@ -336,7 +346,21 @@ ja:
       updated_msg: お知らせを更新しました
     collections:
       accounts: アカウント
+      back_to_account: アカウントページに戻る
+      back_to_report: 通報ページに戻る
+      batch:
+        add_to_report: "通報 #%{id} に追加"
+        remove_from_report: 通報から削除
+        report: 通報
       collection_title: "%{name} によるコレクション"
+      contents: 内容
+      no_collection_selected: 何も選択されていないため、コレクションは変更されませんでした
+      number_of_accounts:
+        one: 1件のアカウント
+        other: "%{count}件のアカウント"
+      open: 開く
+      title: アカウントのコレクション - @%{name}
+      view_publicly: 公開ページを見る
     critical_update_pending: 重要な更新が保留中です
     custom_emojis:
       assign_category: カテゴリーを割り当て
@@ -379,12 +403,16 @@ ja:
       new_users: 新規ユーザー
       opened_reports: 新規通報
       pending_appeals_html:
+        one: <strong>%{count}</strong>件の保留中の異議申立
         other: "<strong>%{count}</strong>件の保留中の異議申立"
       pending_reports_html:
+        one: <strong>%{count}</strong>件の保留中の通報
         other: 保留中の通報 <strong>%{count}</strong>件
       pending_tags_html:
+        one: <strong>%{count}</strong>件の保留中のハッシュタグ
         other: 保留中のハッシュタグ <strong>%{count}</strong>件
       pending_users_html:
+        one: <strong>%{count}</strong>件の保留中のユーザー
         other: 保留中のユーザー <strong>%{count}</strong>件
       resolved_reports: 解決済みの通報
       software: ソフトウェア
@@ -451,6 +479,7 @@ ja:
       add_new: 新規追加
       allow_registrations_with_approval: 承認制での新規登録を可能にする
       attempts_over_week:
+        one: 先週のサインアップ試行は %{count} 回でした
         other: 先週は%{count}回サインアップが試みられました
       created_msg: メールドメインブロックを追加しました
       delete: 消去
@@ -464,9 +493,89 @@ ja:
         title: 新規メールドメインブロック
       no_email_domain_block_selected: 変更対象のメールドメインブロックを選択してください
       not_permitted: 権限がありません
+      reset: リセット
       resolved_dns_records_hint_html: 入力されたドメイン名のMXレコードから以下のドメインが解決されました。MXレコードが指すドメインはメールの送受信において重要な役割をもっています。MXレコードのドメインをブロックすると、見た目のドメインが異なるメールアドレスからの登録であっても、そのドメイン名から解決されるMXレコードのドメインが同じ場合はブロックの対象になります。<strong>大手のメールプロバイダをブロックしないように注意してください。</strong>
       resolved_through_html: "%{domain}を通して解決しました"
+      search: 検索
       title: メールドメインブロック
+    email_subscriptions:
+      accounts:
+        account: アカウント
+        empty:
+          hint: まだ購読者がいるアカウントはありません。
+          no_lists_yet: まだリストはありません
+        last_email: 最終メール
+        lead: 機能を有効にして購読者がいるアカウントが下に表示されます。
+        show:
+          confirm_disable_feature: "%{name} のメールニュースレターを無効にしますか？このアカウントには今後メール更新は送信されません。ユーザーはアカウント設定で再度機能を有効にできます。この機能へのアクセスを完全に取り除くには、ロールでそのアカウントの権限を編集してください。"
+          confirm_remove_subscriber: "%{email} は今後 %{name} からメールを受け取りません。この操作は元に戻せません。"
+          consent: 購読者はメールで投稿を受け取ることにのみ同意しています。この一覧を他の目的に使用しないでください。
+          date: 登録日
+          disable_feature: 機能を無効化
+          disabled: この機能は無効化され、この一覧へのメール送信は停止されました。
+          email: メールアドレス
+          empty:
+            hint: まだこのアカウントを購読している人はいません。
+            no_subscribers_yet: まだ購読者はいません
+          enable_feature: 機能を有効化
+          no_access_html: このアカウントはこの機能を有効化するのに必要な権限を失いました。<a href="%{roles_path}">ロール</a>で変更してください。
+          title: "%{name} のメールニュースレター"
+          view_account: アカウントを表示
+        status: 状態
+        subscribers: 購読者
+        title: メーリングリスト
+      additional_footer_texts:
+        show:
+          title: 追加フッターテキスト
+      compliance_settings:
+        additional_footer_text:
+          action: 管理
+          hint: ニュースレターのメールのフッターにのみ表示される任意のテキスト
+          title: 追加フッターテキスト
+        lead: メールニュースレターは、運用している地域によってはマーケティングメールとみなされる場合があります。
+        privacy_policy:
+          action: 管理
+          hint: このポリシーはすべてのメールのフッターにリンクされます
+          title: プライバシーポリシー
+        title: コンプライアンス設定
+      danger_zone:
+        disable_feature:
+          action: 無効化
+          hint: すべてのアカウントで機能を無効にします
+          title: 機能を無効化
+        erase_all_data:
+          action: データを消去
+          hint: すべてのメーリングリスト内のメールを完全に削除します
+          title: すべてのデータを消去
+        title: 危険な操作
+      disabled_msg: メールサブスクリプションを無効化しました。
+      index:
+        disabled:
+          cannot_be_enabled: あなたの技術提供者はこの機能をこのサーバーで有効化していません。
+          description: この機能により、指定したアカウントはプロフィールにウィジェットを追加でき、Mastodon アカウントを持たない訪問者もメールで投稿を受け取れるようになります。
+          get_started: 始めましょう
+        lead: このサーバーの専用アカウントから投稿をメールで受け取れるようにします。
+        title: メールニュースレター
+      purged_msg: すべてのメールサブスクリプションデータを消去中です。
+      roles:
+        accounts: アカウント
+        edit_role: ロールを編集
+        empty:
+          hint: この機能を使用する権限を持つ人はいません。
+          no_roles_added: まだロールは追加されていません
+        lead: 以下のロールを持つアカウントはプロフィールでこの機能を有効化できます。
+        manage_roles: ロールを管理
+        role_name: ロール名
+        title: ロール
+      setups:
+        show:
+          enable_feature: 機能を有効化
+          important_information: 重要なお知らせ
+          list:
+            1_permission_explanation: この機能が有効になると、指定された権限を持つアカウントはプロフィールにメール登録フォームを追加できます。
+            2_feature_explanation: 訪問者がアカウントのプロフィールページで登録し、購読を確認すると、そのアカウントが新しい公開投稿を行ったときにメール更新を受け取るようになります。
+            3_privacy_policy_warning: サーバー管理者は収集された個人情報（メールアドレス）にアクセスできます。そのため、この機能を使う前にサーバーのプライバシーポリシーと利用規約を更新する必要があります。
+            4_cost_warning: ホスティング構成によってはメール送信に費用がかかる場合があります。機能を有効にするとメール送信量が大幅に増える可能性があるため、事前にホスティング事業者と相談してください。
     export_domain_allows:
       new:
         title: ドメイン許可をインポート
@@ -526,9 +635,11 @@ ja:
         view_all: 全ての監査ログを閲覧
       availability:
         description_html:
+          one: そのドメインへの配信に <strong>1日</strong> 失敗し続けた場合、そのドメイン<em>からの</em>配信を受信しない限り、それ以上の配信は行われません。
           other: ドメインへの配信が <strong>%{count}</strong> 日失敗した場合、そのドメイン<em>からの</em>配信を受信しない限り、それ以上の配信を行いません。
         failure_threshold_reached: "%{date}に失敗のしきい値に達しました。"
         failures_recorded:
+          one: 1日間試行に失敗しました。
           other: "%{count}日間試行に失敗しました。"
         no_failures_recorded: 失敗は記録されていません。
         title: 可用性
@@ -572,6 +683,7 @@ ja:
       destroyed_msg: "%{domain}からのデータは、すぐに削除されるように、キューに追加されました。"
       empty: ドメインが見つかりませんでした。
       known_accounts:
+        one: 既知のアカウント 1件
         other: 既知のアカウント数 %{count}
       moderation:
         all: すべて
@@ -579,8 +691,10 @@ ja:
         title: モデレーション
       moderation_notes:
         create: モデレーションノートを追加
+        created_msg: インスタンスのモデレーションメモを作成しました！
         description_html: 他のモデレーターと将来の自分にメモを残してください
         destroyed_msg: インスタンス・モデレーションノートを正常に削除しました！
+        placeholder: このインスタンスに関する情報、実施した対応、今後のモデレーションに役立つことを書き留めてください。
         title: モデレーションメモ
       private_comment: コメント (非公開)
       public_comment: コメント (公開)
@@ -641,10 +755,12 @@ ja:
     reports:
       account:
         notes:
+          one: 1件のメモ
           other: "%{count}件のメモ"
       action_log: 監査ログ
       action_taken_by: 通報処理者
       actions:
+        delete_description_html: 報告された投稿やコレクションは削除され、同じアカウントによる今後の違反をエスカレートしやすくするためにストライクが記録されます。
         mark_as_sensitive_description_html: 報告された投稿のメディアは閲覧注意となり、ストライクが記録され、同じアカウントによる今後の違反行為のエスカレーションに役立てられます。
         other_description_html: アカウントの動作を制御するためのオプションや、報告されたアカウントへの通信をカスタマイズするためのオプションを確認してください。
         resolve_description_html: 報告されたアカウントに対していかなる措置も取られず、ストライクも記録されず、報告は終了します。
@@ -671,6 +787,7 @@ ja:
       confirm: 確認
       confirm_action: "@%{acct} さんに対するアクション"
       created_at: 通報日時
+      delete_and_resolve: コンテンツを削除
       forwarded: 転送済み
       forwarded_replies_explanation: これはリモートユーザーによる、リモートコンテンツについての報告です。問題のコンテンツはあなたのサーバー利用者への返信なので、こちらにも転送されて来ました。
       forwarded_to: "%{domain}に転送されました"
@@ -693,11 +810,13 @@ ja:
       report: '通報 #%{id}'
       reported_account: 報告対象アカウント
       reported_by: 報告者
+      reported_content: 報告された内容
       reported_with_application: 報告に使用されたアプリ
       resolved: 解決済み
       resolved_msg: 通報を解決済みにしました！
       skip_to_actions: アクションに移動
       status: ステータス
+      statuses: 投稿 (%{count})
       statuses_description_html: 問題の投稿は通報されたアカウントへの連絡時に引用されます
       summary:
         action_preambles:
@@ -727,10 +846,12 @@ ja:
     roles:
       add_new: ロールを追加
       assigned_users:
+        one: 1人のユーザー
         other: "%{count}人"
       categories:
         administration: 管理
         devops: 開発者
+        email: メール
         invites: 招待
         moderation: モデレーション
         special: スペシャル
@@ -740,12 +861,15 @@ ja:
       everyone: デフォルトの権限
       everyone_full_description_html: これは、割り当てられたロールを持っていないものであっても、 <strong>すべてのユーザー</strong> に影響を与える <strong>基本ロール</strong>です。 他のすべてのロールは、そこから権限を継承します。
       permissions_count:
+        one: 1件の権限
         other: "%{count}件の権限"
       privileges:
         administrator: 管理者
         administrator_description: この権限を持つユーザーはすべての権限をバイパスします
         delete_user_data: ユーザーデータの削除
         delete_user_data_description: ユーザーは、遅滞なく他のユーザーのデータを削除することができます
+        invite_bypass_approval: 招待時に審査を回避
+        invite_bypass_approval_description: この権限を持つユーザーが招待した人は、モデレーション承認を回避できます。
         invite_users: ユーザーを招待
         invite_users_description: ユーザーが新しい人を招待できるようにします
         manage_announcements: お知らせの管理
@@ -756,6 +880,8 @@ ja:
         manage_blocks_description: メールプロバイダとIPアドレスのブロックを許可
         manage_custom_emojis: カスタム絵文字を管理
         manage_custom_emojis_description: ユーザーがサーバー上のカスタム絵文字を管理できるようにします
+        manage_email_subscriptions: メール購読の管理
+        manage_email_subscriptions_description: この権限を持つユーザーは、自分のアカウントでメールニュースレター機能を有効化できます。
         manage_federation: 連合の管理
         manage_federation_description: ユーザーが他のドメインとの連合をブロックまたは許可したり、配信を制御したりできます。
         manage_invites: 招待を管理
@@ -782,6 +908,9 @@ ja:
         view_dashboard_description: ユーザーがダッシュボードやさまざまなメトリクスにアクセスできるようにします
         view_devops: 開発者
         view_devops_description: Sidekiq と pgHero ダッシュボードにアクセスできるようにします
+        view_feeds: ライブフィードとトピックフィードを表示
+        view_feeds_description: サーバー設定に関係なくライブフィードとトピックフィードにアクセスできます。
+      requires_2fa: 二要素認証が必要です
       title: ロール
     rules:
       add_new: ルールを追加
@@ -830,6 +959,7 @@ ja:
         publish_statistics: 統計情報を公開する
         title: 見つける
         trends: トレンド
+        wrapstodon: Wrapstodon
       domain_blocks:
         all: 誰にでも許可
         disabled: 誰にも許可しない
@@ -839,6 +969,17 @@ ja:
           authenticated: ログイン済みユーザーのみ
           disabled: 特定ロールのユーザーのみ
           public: 制限なし
+      landing_page:
+        hints:
+          about_html: このサーバーの説明、連絡先、ルールなどをまとめたページです。
+          local_feed_html: このサーバーのユーザーによる最新投稿を表示するライブフィードです。
+          overview_html: サーバーの説明と、このサーバーの最新ローカル投稿を並べて表示するページです。
+          trends_html: このサーバーで今話題の内容を紹介するページです。
+        values:
+          about: 概要ページ
+          local_feed: ローカルライブフィード
+          overview: 概要
+          trends: トレンド
       registrations:
         moderation_recommandation: 登録受付を開始する前に、迅速かつ適切にモデレーションを行うチームを編成しましょう！
         preamble: あなたのサーバー上でアカウントを作成できるユーザーを制御します。
@@ -858,6 +999,7 @@ ja:
     site_uploads:
       delete: ファイルを削除
       destroyed_msg: ファイルを削除しました！
+    skip_to_content: コンテンツへスキップ
     software_updates:
       critical_update: "※緊急 (速やかに適用してください)"
       description: Mastodonサーバーはいつでも最新の状態を保ち、新しい機能や修正を利用できるようにしておくことをおすすめします。またセキュリティの問題が発生した場合は、速やかにMastodonをアップデートすることが大切です。Mastodonは30分おきにアップデートを確認し、通知設定に応じて新しいアップデートをメールで通知します。
@@ -1002,6 +1144,7 @@ ja:
         explanation_html: メールは、%{date} より前に登録した<strong>%{display_count}人のユーザー</strong>に送信されます。以下のテキストがメールに含まれます：
         send_preview: "%{email} にプレビューを送信"
         send_to_all:
+          one: 1件のメールを送信
           other: "%{display_count}件のメールを送信"
         title: サービス利用規約の通知をプレビュー
       publish: 公開
@@ -1029,6 +1172,7 @@ ja:
         publishers:
           no_publisher_selected: 何も選択されていないため、変更されていません
         shared_by_over_week:
+          one: 過去1週間で1人が共有
           other: 週間%{count}人に共有されました
         title: トレンドリンク
         usage_comparison: 今日は%{today}回、昨日は%{yesterday}回共有されました
@@ -1054,6 +1198,7 @@ ja:
         no_status_selected: 何も選択されていないため、変更されていません
         not_discoverable: 投稿者は発見可能であることに同意していません
         shared_by:
+          one: 1回共有またはお気に入り登録
           other: "%{friendly_count}回の共有、お気に入り"
         title: トレンド投稿
       tags:
@@ -1077,9 +1222,11 @@ ja:
         usable: 使用を許可
         usage_comparison: 今日は%{today}回、昨日は%{yesterday}回使用されました。
         used_by_over_week:
+          one: 過去1週間で1人が使用
           other: 週間%{count}人に使用されました
       title: おすすめとトレンド
       trending: トレンド
+    update_available: 更新があります
     username_blocks:
       add_new: ルールを作成
       block_registrations: 登録拒否
@@ -1087,6 +1234,7 @@ ja:
         contains: 含む
         equals: 一致
       contains_html: "%{string}を含む"
+      created_msg: ユーザー名ルールを作成しました
       delete: 削除
       edit:
         title: ユーザー名ルールの編集
@@ -1094,7 +1242,10 @@ ja:
       new:
         create: ルールを作成
         title: ユーザー名ルールを作成
+      no_username_block_selected: 何も選択されていないため、ユーザー名ルールは変更されませんでした
+      not_permitted: 権限がありません
       title: ユーザー名ルール
+      updated_msg: ユーザー名ルールを更新しました
     warning_presets:
       add_new: 追加
       delete: 削除
@@ -1112,6 +1263,7 @@ ja:
       enable: 有効化
       enabled: アクティブ
       enabled_events:
+        one: 1件の有効なイベント
         other: "%{count}件の有効なイベント"
       events: イベント
       new: 新しいwebhook
@@ -1120,6 +1272,7 @@ ja:
       status: 投稿
       title: Webhooks
       webhook: Webhook
+
   admin_mailer:
     auto_close_registrations:
       body: "%{instance} のモデレーターによる活動がしばらくなかったため、%{instance} のアカウント作成は手動での承認を必要とするように自動的に変更されました。これには %{instance} が悪意ある者の踏み台として使われることを防ぐ役割があります。アカウント作成は必要に応じていつでも再び開放できます。"
@@ -1228,6 +1381,7 @@ ja:
     progress:
       confirm: メールアドレスの確認
       details: ユーザー情報
+      list: サインアップの進行状況
       review: 承認
       rules: ルール
     providers:
@@ -1243,6 +1397,7 @@ ja:
       invited_by: '以下のユーザーから %{domain} への招待を受けました:'
       preamble: これらは %{domain} モデレータによって設定され、実施されます。
       preamble_invited: 次に進む前に、 %{domain} のモデレーターが定めたルールを確認してください。
+      read_more: 続きを読む
       title: いくつかのルールがあります。
       title_invited: このサーバーに招待されています。
     security: セキュリティ
@@ -1433,7 +1588,9 @@ ja:
     blocks: ブロック
     bookmarks: ブックマーク
     csv: CSV
+    custom_filters: カスタムフィルター
     domain_blocks: 非表示にしたドメイン
+    json: JSON
     lists: リスト
     mutes: ミュート
     storage: メディア
@@ -1463,10 +1620,13 @@ ja:
       expires_in: "%{distance}で期限切れ"
       expires_on: 有効期限 %{date}
       keywords:
+        one: "%{count}件のキーワード"
         other: "%{count}件のキーワード"
       statuses:
+        one: "%{count}件の投稿"
         other: "%{count}件の投稿"
       statuses_long:
+        one: "%{count}件の投稿を非表示にしました"
         other: "%{count}件の投稿を非表示にしました"
       title: フィルター
     new:
@@ -1482,8 +1642,10 @@ ja:
   generic:
     all: すべて
     all_items_on_page_selected_html:
+      one: このページの <strong>%{count}</strong> 件すべてが選択されています。
       other: このページの <strong>%{count}</strong> 件すべてが選択されています。
     all_matching_items_selected_html:
+      one: 検索条件に一致する <strong>%{count}</strong> 件すべてが選択されています。
       other: 検索条件に一致する <strong>%{count}</strong> 件すべてが選択されています。
     cancel: キャンセル
     changes_saved_msg: 正常に変更されました！
@@ -1495,15 +1657,19 @@ ja:
     order_by: 並び順
     save_changes: 変更を保存
     select_all_matching_items:
+      one: 検索条件に一致する %{count} 件を選択
       other: 検索条件に一致する %{count} 件をすべて選択
     today: 今日
     validation_errors:
+      one: まだ少し問題があります。以下のエラーを確認してください
       other: エラーが発生しました！ 以下の%{count}件のエラーを確認してください
   imports:
     errors:
       empty: CSVファイルの内容がありません
       incompatible_type: 選択したインポート項目とファイルの内容が異なります
+      invalid_json_file: "無効なJSONファイルです。エラー: %{error}"
       invalid_csv_file: '無効なCSVファイルです。エラー: %{error}'
+      status_not_found_warning: インポート先に存在しない投稿が含まれている可能性があります
       over_rows_processing_limit: "%{count}行以上"
       too_large: ファイルが大きすぎます
     failures: 失敗
@@ -1516,29 +1682,47 @@ ja:
       overwrite_long: 現在のレコードを新しいもので置き換えます
     overwrite_preambles:
       blocking_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>で<strong>ブロックリストを置き換えようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>で<strong>ブロックリストを置き換えようとしています</strong>。
       bookmarks_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}の投稿</strong>で<strong>ブックマークを置き換えようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}の投稿</strong>で<strong>ブックマークを置き換えようとしています</strong>。
+      custom_filters_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}個のフィルター</strong>で<strong>フィルターを置き換えようとしています</strong>。
+        other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}個のフィルター</strong>で<strong>フィルターを置き換えようとしています</strong>。
       domain_blocking_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のドメイン</strong>で<strong>ドメインブロックリストを置き換えようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のドメイン</strong>で<strong>ドメインブロックリストを置き換えようとしています</strong>。
       following_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>フォローし</strong>、<strong>他のすべてのユーザーのフォローを解除します</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>フォローし</strong>、<strong>他のすべてのユーザーのフォローを解除します</strong>。
       lists_html:
+        one: あなたは<strong>%{filename}</strong>の内容で<strong>リストを置き換えようとしています</strong>。最大<strong>%{count}のアカウント</strong>が新しいリストに追加されます。
         other: あなたは<strong>%{filename}</strong>の内容で<strong>リストを置き換えようとしています</strong>。最大<strong>%{count}のアカウント</strong>が新しいリストに追加されます。
       muting_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>で<strong>ミュートアカウントのリストを置き換えようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>で<strong>ミュートアカウントのリストを置き換えようとしています</strong>。
     preambles:
       blocking_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>ブロックしようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>ブロックしようとしています</strong>。
       bookmarks_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}の投稿</strong>を<strong>ブックマークに追加しようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}の投稿</strong>を<strong>ブックマークに追加しようとしています</strong>。
+      custom_filters_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}個のフィルター</strong>を<strong>追加しようとしています</strong>。
+        other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}個のフィルター</strong>を<strong>追加しようとしています</strong>。
       domain_blocking_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のドメイン</strong>を<strong>ブロックしようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のドメイン</strong>を<strong>ブロックしようとしています</strong>。
       following_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>フォローしようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>フォローしようとしています</strong>。
       lists_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>リストに追加しようとしています</strong>。追加するリストがない場合は新しいリストが作成されます。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>リストに追加しようとしています</strong>。追加するリストがない場合は新しいリストが作成されます。
       muting_html:
+        one: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>ミュートしようとしています</strong>。
         other: あなたは<strong>%{filename}</strong>から最大<strong>%{count}のアカウント</strong>を<strong>ミュートしようとしています</strong>。
     preface: 他のサーバーでエクスポートされたファイルから、フォロー/ブロックした情報をこのサーバー上のアカウントにインポートできます。
     recent_imports: 最近のインポート
@@ -1564,6 +1748,7 @@ ja:
     types:
       blocking: ブロックしたアカウントリスト
       bookmarks: ブックマーク
+      custom_filters: カスタムフィルター
       domain_blocking: 非表示にしたドメインリスト
       following: フォロー中のアカウントリスト
       lists: リスト
@@ -1584,6 +1769,7 @@ ja:
     invalid: この招待は無効です
     invited_by: '次の人に招待されました:'
     max_uses:
+      one: 1回
       other: "%{count}"
     max_uses_prompt: 無制限
     prompt: リンクを生成・共有してこのサーバーへの新規登録を受け付けることができます
@@ -1592,8 +1778,12 @@ ja:
       uses: 使用
     title: 新規ユーザーの招待
   link_preview:
+    author_html: "%{name} による"
     potentially_sensitive_content:
+      action: 表示する
+      confirm_visit: 本当にこのリンクを開きますか？
       hide_button: 非表示
+      label: 閲覧注意かもしれない内容
   lists:
     errors:
       limit: リストの上限数に達しています
@@ -1643,6 +1833,7 @@ ja:
       disabled_account: 引っ越した後はデータのエクスポートと再有効化を除きほとんどの機能が利用できなくなります
       followers: すべてのフォロワーを現在のアカウントから新しいアカウントに引き継ぎます
       only_redirect_html: または、<a href="%{path}">フォロワーを残したまま引っ越す</a>こともできます。
+      other_data: 投稿やフォロー中アカウント一覧を含む、ほかのデータは自動では引き継がれません
       redirect: プロフィールに引っ越し済みの通知が表示され、検索結果から除外されます
   moderation:
     title: モデレーション
@@ -1652,6 +1843,27 @@ ja:
     copy_account_note_text: このユーザーは%{acct}から引っ越しました。これは以前のメモです。
   navigation:
     toggle_menu: メニューを表示 / 非表示
+  notification_fallbacks:
+    added_to_collection:
+      title_html: "%{name} があなたをコレクションに追加しました"
+    admin_report:
+      title_html: "%{name} が %{target} を通報しました"
+    admin_sign_up:
+      title_and_others_html:
+        one: "%{name} と他1人が登録しました"
+        other: "%{name} と他 %{count} 人が登録しました"
+      title_html: "%{name} が登録しました"
+    collection_update:
+      title_html: "%{name} があなたが参加しているコレクションを更新しました"
+    generic:
+      sign_in: Mastodonのウェブアプリにサインイン
+      summary_html: このアプリは Mastodon の最新バージョンに対応していません。%{link} で完全な機能をご利用ください。
+    moderation_warning:
+      summary_html: このアプリは Mastodon の最新バージョンに対応していません。%{link}。
+      title: モデレーション警告を受けました。
+    severed_relationships:
+      summary_html: "%{from} の管理者が %{target} を停止しました。そのため、今後そのアカウントの更新を受け取ったりやり取りしたりできません。失われた関係の一覧を取得するには %{link}。"
+      title: "%{name} とのつながりが失われました"
   notification_mailer:
     admin:
       report:
@@ -1676,12 +1888,22 @@ ja:
       body: "%{name}さんから返信がありました:"
       subject: "%{name}さんに返信されました"
       title: 新たな返信
+    moderation_warning:
+      subject: モデレーション警告を受けました
     poll:
       subject: "%{name} さんの投票が終了しました"
+    quote:
+      body: "%{name}さんがあなたの投稿を引用しました:"
+      subject: "%{name}さんがあなたの投稿を引用しました"
+      title: 新たな引用
+    quoted_update:
+      subject: "%{name}さんがあなたが引用した投稿を編集しました"
     reblog:
       body: "%{name}さんにブーストされた、あなたの投稿があります:"
       subject: "%{name}さんにブーストされました"
       title: 新たなブースト
+    severed_relationships:
+      subject: モデレーションの決定によりつながりが失われました
     status:
       subject: "%{name}さんが投稿しました"
     update:
@@ -1700,6 +1922,7 @@ ja:
           quadrillion: Q
           thousand: K
           trillion: T
+          unit: ""
   otp_authentication:
     code_hint: 続行するには認証アプリで表示されたコードを入力してください
     description_html: "<strong>二要素認証</strong>を有効にすると、ログイン時に認証アプリからコードを入力する必要があります。"
@@ -1734,6 +1957,8 @@ ja:
     posting_defaults: デフォルトの投稿設定
     public_timelines: 公開タイムライン
   privacy:
+    email_subscriptions: メールで投稿を送信する
+    email_subscriptions_hint_html: ログアウト中のユーザーに表示されるメール登録フォームをプロフィールに追加できます。訪問者がメールアドレスを入力して登録すると、Mastodon はあなたの公開投稿の更新をメールで送信します。
     hint_html: "<strong>プロフィールの見えかたや、ほかのユーザーからの見つかりやすさを設定します。</strong>Mastodonには自分のアカウントのことをより多くの人に知ってもらうためのさまざまな機能があり、有効・無効をそれぞれ切り換えられます。使いかたや好みに合わせて調節しましょう。"
     privacy: プライバシー
     privacy_hint_html: 自分に関する情報をどの程度開示するかについての設定項目です。ユーザーはほかのアカウントのフォロー一覧を見て興味のあるアカウントを探したり、投稿元のアプリ名を見て自分が使いたいアプリの参考にすることがあります。希望に応じて、これらを見られないようにできます。
@@ -1873,20 +2098,29 @@ ja:
   statuses:
     attached:
       audio:
+        one: "%{count}本のオーディオ"
         other: "%{count}本のオーディオ"
       description: '添付: %{attached}'
       image:
+        one: "%{count}枚の画像"
         other: "%{count}枚の画像"
       video:
+        one: "%{count}本の動画"
         other: "%{count}本の動画"
     boosted_from_html: "%{acct_link}からブースト"
     content_warning: '閲覧注意: %{warning}'
+    content_warnings:
+      hide: 投稿を非表示
+      show: さらに表示
     default_language: UIの表示言語
     disallowed_hashtags:
+      one: "許可されていないハッシュタグが含まれています: %{tags}"
       other: '許可されていないハッシュタグが含まれています: %{tags}'
     edited_at_html: "%{date} 編集済み"
     errors:
       in_reply_not_found: あなたが返信しようとしている投稿は存在しないようです。
+      quoted_status_not_found: あなたが引用しようとしている投稿は存在しないようです。
+      quoted_user_not_mentioned: Private Mention の投稿では、メンションされていないユーザーを引用できません。
     over_character_limit: 上限は%{max}文字です
     pin_errors:
       direct: 返信したユーザーのみに表示される投稿はピン留めできません
@@ -1897,6 +2131,11 @@ ja:
       followers: フォロワーのみ
       nobody: 自分のみ
       public: 誰でも
+    quote_error:
+      not_available: 投稿を利用できません
+      pending_approval: 投稿の承認待ちです
+      revoked: 投稿は作者によって削除されました
+    quote_post_author: "%{acct}さんの投稿を引用しました"
     title: '%{name}: "%{quote}"'
     visibilities:
       direct: 非公開の返信
@@ -1954,6 +2193,8 @@ ja:
     past_preamble_html: 前回の訪問時から利用規約が変更されました。更新された条件を確認することをお勧めします。
     review_link: 利用規約を確認する
     title: "%{domain} の利用規約が変更されています"
+  themes:
+    default: Mastodon
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"
@@ -1978,7 +2219,31 @@ ja:
     recovery_codes: リカバリーコード
     recovery_codes_regenerated: リカバリーコードが再生成されました
     recovery_instructions_html: 携帯電話を紛失した場合、以下の内どれかのリカバリーコードを使用してアカウントへアクセスすることができます。<strong>リカバリーコードは大切に保全してください。</strong>たとえば印刷してほかの重要な書類と一緒に保管することができます。
+    resume_app_authorization: アプリの認可を再開
+    role_requirement: "%{domain} では、Mastodon を使う前に二要素認証の設定が必要です。"
     webauthn: セキュリティキー
+  unsubscriptions:
+    create:
+      action: サーバーのホームページへ移動
+      email_subscription:
+        confirmation_html: 今後 %{name} からのメールは届きません。
+      title: 配信を停止しました
+      user:
+        confirmation_html: 今後 %{domain} の Mastodon から %{type} は届きません。
+    notification_emails:
+      favourite: お気に入り通知メール
+      follow: フォロー通知メール
+      follow_request: フォローリクエスト通知メール
+      mention: メンション通知メール
+      reblog: ブースト通知メール
+    show:
+      action: 配信停止
+      email_subscription:
+        confirmation_html: 今後このアカウントが新しい投稿を公開してもメールは届きません。
+        title: "%{name} からのメール配信を停止しますか？"
+      user:
+        confirmation_html: 今後 %{domain} の Mastodon から %{type} は届きません。
+        title: "%{type} の配信を停止しますか？"
   user_mailer:
     announcement_published:
       description: "%{domain}の管理者からの告知："
@@ -2080,6 +2345,7 @@ ja:
       follows_title: フォローを増やしてみませんか？
       follows_view_more: フォローするユーザーを探す
       hashtags_recent_count:
+        one: 過去 2 日間で %{people} 人が共有
         other: 過去 2 日間で %{people} 人が共有
       hashtags_subtitle: 過去2日間のトレンドを見る
       hashtags_title: トレンドのハッシュタグ
@@ -2120,8 +2386,12 @@ ja:
       error: セキュリティキーの削除中に問題が発生しました。もう一度お試しください。
       success: セキュリティキーを削除しました。
     invalid_credential: セキュリティキーが間違っています
+    nickname: セキュリティキーのニックネーム
     nickname_hint: セキュリティキーの名前を入力してください
     not_enabled: まだセキュリティキーを有効にしていません
     not_supported: このブラウザはセキュリティキーに対応していないようです
     otp_required: セキュリティキーを使用するには、まず二要素認証を有効にしてください。
     registered_on: "%{date}に登録"
+  wrapstodon:
+    description: "%{name} が今年 Mastodon をどのように使ったかを見てみましょう！"
+    title: "Wrapstodon %{year} の %{name} 版"
