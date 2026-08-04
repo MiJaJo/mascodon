@@ -2194,7 +2194,13 @@ ja:
     review_link: 利用規約を確認する
     title: "%{domain} の利用規約が変更されています"
   themes:
-    default: Mastodon
+    default: マストドン標準
+    orange: マスコどん (みかん)
+    blue: マスコどん (くじら)
+    pastel: マスコどん (こんぺいとう)
+    red: マスコどん (もみじ)
+    white: マスコどん (ゆきうさぎ)
+    pink: マスコどん (さくらもち(かんさい))
   time:
     formats:
       default: "%Y年%-m月%-d日 %H:%M"

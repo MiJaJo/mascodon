@@ -1,1 +1,7 @@
 default: styles/application.scss
+blue: styles/custom-themes/blue.scss
+orange: styles/custom-themes/orange.scss
+pastel: styles/custom-themes/pastel.scss
+pink: styles/custom-themes/pink.scss
+red: styles/custom-themes/red.scss
+white: styles/custom-themes/white.scss

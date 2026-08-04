@@ -1,0 +1,91 @@
+@use 'sass:color';
+
+@use '../mastodon/theme/base';
+@use '../mastodon/theme/dark';
+@use '../mastodon/theme/light';
+@use '../mastodon/theme/utils';
+
+$accent-color: #1d9bf0 !default;
+
+@function accent-tone($mix-color, $weight) {
+  @return color.mix($mix-color, $accent-color, $weight);
+}
+
+@function on-accent() {
+  @if color.channel($accent-color, 'lightness', $space: hsl) > 60% {
+    @return #000;
+  }
+
+  @return #fff;
+}
+
+@mixin palette {
+  --color-accent-50: #{accent-tone(#fff, 90%)};
+  --color-accent-100: #{accent-tone(#fff, 80%)};
+  --color-accent-200: #{accent-tone(#fff, 65%)};
+  --color-accent-300: #{accent-tone(#fff, 45%)};
+  --color-accent-400: #{accent-tone(#fff, 25%)};
+  --color-accent-500: #{$accent-color};
+  --color-accent-600: #{accent-tone(#000, 10%)};
+  --color-accent-700: #{accent-tone(#000, 20%)};
+  --color-accent-800: #{accent-tone(#000, 32%)};
+  --color-accent-900: #{accent-tone(#000, 48%)};
+  --color-accent-950: #{accent-tone(#000, 62%)};
+  --color-accent-contrast: #{on-accent()};
+}
+
+@mixin dark-brand-overrides {
+  --color-text-brand: var(--color-accent-300);
+  --color-text-brand-on-inverted: var(--color-accent-700);
+  --color-text-on-brand-base: var(--color-accent-contrast);
+  --color-bg-brand-base: var(--color-accent-700);
+  --color-bg-brand-base-hover: var(--color-accent-800);
+  --color-bg-brand-soft: var(--color-accent-900);
+  --color-bg-brand-softest: var(--color-accent-950);
+  --color-border-brand-soft: var(--color-accent-800);
+}
+
+@mixin light-brand-overrides {
+  --color-text-brand: var(--color-accent-700);
+  --color-text-brand-on-inverted: var(--color-accent-300);
+  --color-text-on-brand-base: var(--color-accent-contrast);
+  --color-bg-brand-base: var(--color-accent-600);
+  --color-bg-brand-base-hover: var(--color-accent-700);
+  --color-bg-brand-soft: var(--color-accent-100);
+  --color-bg-brand-softest: var(--color-accent-50);
+  --color-border-brand-soft: var(--color-accent-200);
+}
+
+html {
+  @include base.palette;
+  @include palette;
+}
+
+[data-color-scheme='dark'],
+html:not([data-color-scheme]) {
+  color-scheme: dark;
+
+  @include dark.tokens;
+  @include utils.invert-on-dark;
+  @include dark-brand-overrides;
+
+  &[data-contrast='high'],
+  [data-contrast='high'] & {
+    @include dark.contrast-overrides;
+    @include dark-brand-overrides;
+  }
+}
+
+[data-color-scheme='light'] {
+  color-scheme: light;
+
+  @include light.tokens;
+  @include utils.invert-on-light;
+  @include light-brand-overrides;
+
+  &[data-contrast='high'],
+  [data-contrast='high'] & {
+    @include light.contrast-overrides;
+    @include light-brand-overrides;
+  }
+}
