@@ -356,7 +356,7 @@ export const AltTextModal = forwardRef<ModalRef, Props & Partial<RestoreProps>>(
             // eslint-disable-next-line import/no-extraneous-dependencies
             import('tesseract.js-core/tesseract-core.wasm.js?url'),
           ]);
-          const worker = await createWorker('eng', 1, {
+          const worker = await createWorker('jpn+eng', 1, {
             workerPath: tesseractWorkerPath.default,
             corePath: tesseractCorePath.default,
             langPath: `${assetHost}/ocr/lang-data`,
