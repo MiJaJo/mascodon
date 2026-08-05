@@ -56,6 +56,14 @@ $accent-color: #1d9bf0 !default;
   --color-border-brand-soft: var(--color-accent-200);
 }
 
+@mixin light-surface-overrides {
+  // Keep text contrast stable while tinting page and card surfaces.
+  --color-bg-primary: #{accent-tone(#fff, 96%)};
+  --color-bg-secondary: #{accent-tone(#fff, 91%)};
+  --color-bg-tertiary: #{accent-tone(#fff, 84%)};
+  --color-border-primary: #{accent-tone(#fff, 72%)};
+}
+
 html {
   @include base.palette;
   @include palette;
@@ -81,6 +89,7 @@ html:not([data-color-scheme]) {
 
   @include light.tokens;
   @include utils.invert-on-light;
+  @include light-surface-overrides;
   @include light-brand-overrides;
 
   &[data-contrast='high'],
