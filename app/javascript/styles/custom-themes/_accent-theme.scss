@@ -58,7 +58,7 @@ $accent-color: #1d9bf0 !default;
 
 @mixin light-surface-overrides {
   // Keep text contrast stable while tinting page and card surfaces.
-  --color-bg-primary: #{accent-tone(#fff, 96%)};
+  --color-bg-primary: #{accent-tone(#fff, 78%)};
   --color-bg-secondary: #{accent-tone(#fff, 91%)};
   --color-bg-tertiary: #{accent-tone(#fff, 84%)};
   --color-border-primary: #{accent-tone(#fff, 72%)};
