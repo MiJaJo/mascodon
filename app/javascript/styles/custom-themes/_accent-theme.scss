@@ -45,6 +45,14 @@ $accent-color: #1d9bf0 !default;
   --color-border-brand-soft: var(--color-accent-800);
 }
 
+@mixin dark-surface-overrides {
+  // Mirror the light theme tinting strategy with darker, accent-tinted surfaces.
+  --color-bg-primary: #{accent-tone(#000, 82%)};
+  --color-bg-secondary: #{accent-tone(#000, 89%)};
+  --color-bg-tertiary: #{accent-tone(#000, 84%)};
+  --color-border-primary: #{accent-tone(#000, 76%)};
+}
+
 @mixin light-brand-overrides {
   --color-text-brand: var(--color-accent-700);
   --color-text-brand-on-inverted: var(--color-accent-300);
@@ -75,6 +83,7 @@ html:not([data-color-scheme]) {
 
   @include dark.tokens;
   @include utils.invert-on-dark;
+  @include dark-surface-overrides;
   @include dark-brand-overrides;
 
   &[data-contrast='high'],
