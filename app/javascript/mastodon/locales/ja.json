@@ -582,7 +582,7 @@
   "explore.trending_statuses": "投稿",
   "explore.trending_tags": "ハッシュタグ",
   "featured_carousel.current": "<sr>投稿</sr> {current, number} / {max, number}",
-  "featured_carousel.header": "{count, plural, other {固定された投稿}}",
+  "featured_carousel.header": "{count, plural, other {ピン留めされた投稿}}",
   "featured_carousel.slide": "投稿 {current, number} / {max, number}",
   "featured_tags.more_items": "+{count}",
   "featured_tags.suggestions": "最近あなたが投稿した内容に {items} が含まれています。これらをおすすめハッシュタグとして追加しますか？",
