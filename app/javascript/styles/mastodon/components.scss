@@ -1695,9 +1695,10 @@ body > [data-popover-placement] {
   gap: 2px;
   margin-inline-start: 3px;
   vertical-align: -0.15em;
+  align-items: center;
 
   &::before {
-    content: '・';
+    content: '･';
     color: var(--color-text-secondary);
   }
 }
@@ -10795,6 +10796,10 @@ noscript {
     gap: 12px;
     text-decoration: none;
     color: inherit;
+  }
+
+  &__name-details {
+    min-width: 0;
   }
 
   &__numbers,

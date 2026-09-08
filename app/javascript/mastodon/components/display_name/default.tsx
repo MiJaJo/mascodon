@@ -42,12 +42,12 @@ export function useAccountHandle(
 
 export const DisplayNameDefault: FC<
   Omit<DisplayNameProps, 'variant'> & ComponentPropsWithoutRef<'span'>
-> = ({ account, localDomain, className, ...props }) => {
+> = ({ account, localDomain, showRoles = true, className, ...props }) => {
   const username = useAccountHandle(account, localDomain);
   const roles = account?.roles;
-  const hasRoles = Array.isArray(roles)
-    ? roles.length > 0
-    : (roles?.size ?? 0) > 0;
+  const hasRoles =
+    showRoles &&
+    (Array.isArray(roles) ? roles.length > 0 : (roles?.size ?? 0) > 0);
 
   return (
     <DisplayNameWithoutDomain

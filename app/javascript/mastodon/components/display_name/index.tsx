@@ -12,6 +12,7 @@ import { DisplayNameSimple } from './simple';
 export interface DisplayNameProps {
   account?: Account | AccountShapeFull;
   localDomain?: string;
+  showRoles?: boolean;
   variant?: 'default' | 'simple' | 'noDomain';
 }
 

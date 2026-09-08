@@ -9,6 +9,7 @@ import { useFetchFamiliarFollowers } from '@/mastodon/components/familiar_follow
 import { fetchAccount } from 'mastodon/actions/accounts';
 import { AccountBio } from 'mastodon/components/account_bio';
 import { AccountFields } from 'mastodon/components/account_fields';
+import { AccountBadges } from 'mastodon/components/account_header/badges';
 import { Avatar } from 'mastodon/components/avatar';
 import { AvatarGroup } from 'mastodon/components/avatar_group';
 import {
@@ -80,7 +81,14 @@ export const HoverCardAccount = forwardRef<
               account={isSuspendedOrHidden ? undefined : account}
               size={46}
             />
-            <DisplayName account={account} localDomain={domain} />
+            <div className='hover-card__name-details'>
+              <DisplayName
+                account={account}
+                localDomain={domain}
+                showRoles={false}
+              />
+              <AccountBadges accountId={account.id} />
+            </div>
           </Link>
 
           {isSuspendedOrHidden ? (
