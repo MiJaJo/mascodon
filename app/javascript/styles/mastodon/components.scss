@@ -1680,6 +1680,24 @@ body > [data-popover-placement] {
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    &__role-badges {
+      display: inline-flex;
+      gap: 2px;
+      margin-inline-start: 3px;
+      vertical-align: -0.15em;
+
+      &::before {
+        content: '・';
+        color: var(--color-text-secondary);
+      }
+    }
+
+    .role-badge {
+      flex: 0 0 auto;
+      width: 1em;
+      height: 1em;
+    }
   }
 }
 

@@ -5,16 +5,15 @@ import { FormattedMessage } from 'react-intl';
 
 import { fetchRelationships } from '@/mastodon/actions/accounts';
 import { useAccount } from '@/mastodon/hooks/useAccount';
-import type { AccountRole } from '@/mastodon/models/account';
 import { useAppDispatch, useAppSelector } from '@/mastodon/store';
 
 import {
-  AdminBadge,
   AutomatedBadge,
   Badge,
   BlockedBadge,
   GroupBadge,
   MutedBadge,
+  RoleBadge,
 } from '../badge';
 
 import classes from './styles.module.scss';
@@ -45,25 +44,15 @@ export const AccountBadges: FC<{ accountId: string }> = ({ accountId }) => {
     ? account.acct.split('@')[1]
     : localDomain;
   account.roles.forEach((role) => {
-    if (isAdminBadge(role)) {
-      badges.push(
-        <AdminBadge
-          key={role.id}
-          label={role.name}
-          domain={`(${domain})`}
-          roleId={role.id}
-        />,
-      );
-    } else {
-      badges.push(
-        <Badge
-          key={role.id}
-          label={role.name}
-          domain={`(${domain})`}
-          roleId={role.id}
-        />,
-      );
-    }
+    badges.push(
+      <Badge
+        key={role.id}
+        icon={<RoleBadge role={role} />}
+        label={role.name}
+        domain={`(${domain})`}
+        roleId={role.id}
+      />,
+    );
   });
 
   if (account.bot) {
@@ -106,8 +95,3 @@ export const AccountBadges: FC<{ accountId: string }> = ({ accountId }) => {
 
   return <div className={classes.badges}>{badges}</div>;
 };
-
-function isAdminBadge(role: AccountRole) {
-  const name = role.name.toLowerCase();
-  return name === 'admin' || name === 'owner';
-}
