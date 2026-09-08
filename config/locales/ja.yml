@@ -1452,8 +1452,8 @@ ja:
       invalid_key: 有効なEd25519またはCurve25519キーではありません
   date:
     formats:
-      default: "%Y年%-m月%-d日"
-      with_month_name: "%Y年%-m月%-d日"
+      default: "%Y年%m月%d日"
+      with_month_name: "%Y年%m月%d日"
   datetime:
     distance_in_words:
       about_x_hours: "%{count}時間"
@@ -2202,10 +2202,10 @@ ja:
     pink: マスコどん (さくらもち(かんさい))
   time:
     formats:
-      default: "%Y年%-m月%-d日 %H:%M"
+      default: "%Y年%m月%d日 %H:%M"
       month: "%Y年 %b"
       time: "%H:%M"
-      with_time_zone: "%Y年%-m月%-d日 %H:%M %Z"
+      with_time_zone: "%Y年%m月%d日 %H:%M %Z"
   translation:
     errors:
       quota_exceeded: このサーバーは翻訳サービスの利用制限に達しました。
