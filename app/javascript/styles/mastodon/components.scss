@@ -1669,14 +1669,21 @@ body > [data-popover-placement] {
   margin-inline-end: auto;
 
   .display-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
     bdi {
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
+    &__handle {
+      display: flex;
+    }
+
     &__account {
       white-space: nowrap;
-      display: block;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -2526,11 +2533,20 @@ a.account__display-name {
   margin-bottom: 16px;
   overflow: hidden;
 
+  .display-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
   strong,
   span:not(.emojione) {
-    display: block;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+
+  .display-name__handle {
+    display: flex;
   }
 
   strong {
@@ -2693,25 +2709,15 @@ a.account__display-name {
   }
 }
 
-// Some contexts blockify every `span` inside `.display-name` to stack the
-// handle below the display name. Keep the handle and its role badges on a
-// single line regardless of that.
+// Groups the handle and its role badges so they always stay on one row,
+// while the display name and this row can still stack via flex-direction.
 .display-name__handle {
-  display: inline-flex !important;
+  display: inline-flex;
   align-items: center;
+  gap: 3px;
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
-
-  > .display-name__account,
-  > .display-name__role-badges {
-    display: inline-flex !important;
-  }
-
-  > .display-name__account {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
 .display-name__html {
