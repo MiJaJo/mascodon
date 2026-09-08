@@ -1680,25 +1680,25 @@ body > [data-popover-placement] {
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    &__role-badges {
-      display: inline-flex;
-      gap: 2px;
-      margin-inline-start: 3px;
-      vertical-align: -0.15em;
-
-      &::before {
-        content: '・';
-        color: var(--color-text-secondary);
-      }
-    }
-
-    .role-badge {
-      flex: 0 0 auto;
-      width: 1em;
-      height: 1em;
-    }
   }
+}
+
+.display-name__role-badges {
+  display: inline-flex;
+  gap: 2px;
+  margin-inline-start: 3px;
+  vertical-align: -0.15em;
+
+  &::before {
+    content: '・';
+    color: var(--color-text-secondary);
+  }
+}
+
+.role-badge {
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
 }
 
 .status__quote-cancel {
@@ -2690,6 +2690,27 @@ a.account__display-name {
   &__account {
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+}
+
+// Some contexts blockify every `span` inside `.display-name` to stack the
+// handle below the display name. Keep the handle and its role badges on a
+// single line regardless of that.
+.display-name__handle {
+  display: inline-flex !important;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+
+  > .display-name__account,
+  > .display-name__role-badges {
+    display: inline-flex !important;
+  }
+
+  > .display-name__account {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

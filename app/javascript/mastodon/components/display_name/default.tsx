@@ -56,16 +56,18 @@ export const DisplayNameDefault: FC<
       {...props}
     >
       {' '}
-      <span className='display-name__account'>
-        {username ?? <Skeleton width='7ch' />}
-      </span>
-      {hasRoles && roles && (
-        <span className='display-name__role-badges'>
-          {roles.map((role) => (
-            <RoleBadge key={role.id} role={role} />
-          ))}
+      <span className='display-name__handle'>
+        <span className='display-name__account'>
+          {username ?? <Skeleton width='7ch' />}
         </span>
-      )}
+        {hasRoles && roles && (
+          <span className='display-name__role-badges'>
+            {roles.map((role) => (
+              <RoleBadge key={role.id} role={role} />
+            ))}
+          </span>
+        )}
+      </span>
     </DisplayNameWithoutDomain>
   );
 };
