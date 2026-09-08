@@ -51,7 +51,7 @@ const messages = defineMessages({
 const notificationForScreenReader = (intl, message, timestamp) => {
   const output = [message];
 
-  output.push(intl.formatDate(timestamp, { hour: '2-digit', minute: '2-digit', month: 'short', day: 'numeric' }));
+  output.push(intl.formatDate(timestamp, { hour: '2-digit', minute: '2-digit', month: 'numeric', day: 'numeric' }));
 
   return output.join(', ');
 };

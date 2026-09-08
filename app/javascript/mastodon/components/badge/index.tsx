@@ -130,7 +130,7 @@ export const MutedBadge: FC<
     const isCurrentYear =
       expiresDate.getFullYear() === new Date().getFullYear();
     formattedDate = intl.formatDate(expiresDate, {
-      month: 'short',
+      month: 'numeric',
       day: 'numeric',
       ...(isCurrentYear ? {} : { year: 'numeric' }),
     });

@@ -99,8 +99,8 @@ const Timestamp: FC<Pick<AnnouncementProps, 'announcement'>> = ({
               ? undefined
               : 'numeric'
           }
-          month='short'
-          day='2-digit'
+          month='numeric'
+          day='numeric'
           hour={skipTime ? undefined : '2-digit'}
           minute={skipTime ? undefined : '2-digit'}
         />{' '}
@@ -112,8 +112,8 @@ const Timestamp: FC<Pick<AnnouncementProps, 'announcement'>> = ({
               ? undefined
               : 'numeric'
           }
-          month={skipEndDate ? undefined : 'short'}
-          day={skipEndDate ? undefined : '2-digit'}
+          month={skipEndDate ? undefined : 'numeric'}
+          day={skipEndDate ? undefined : 'numeric'}
           hour={skipTime ? undefined : '2-digit'}
           minute={skipTime ? undefined : '2-digit'}
         />
@@ -127,8 +127,8 @@ const Timestamp: FC<Pick<AnnouncementProps, 'announcement'>> = ({
       year={
         publishedAt.getFullYear() === now.getFullYear() ? undefined : 'numeric'
       }
-      month='short'
-      day='2-digit'
+      month='numeric'
+      day='numeric'
       hour={skipTime ? undefined : '2-digit'}
       minute={skipTime ? undefined : '2-digit'}
     />

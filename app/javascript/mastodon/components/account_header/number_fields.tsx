@@ -73,8 +73,8 @@ export const AccountNumberFields: FC<{ accountId: string }> = ({
           {createdThisYear ? (
             <FormattedDateWrapper
               value={account.created_at}
-              month='short'
-              day='2-digit'
+              month='numeric'
+              day='numeric'
             />
           ) : (
             <FormattedDateWrapper value={account.created_at} year='numeric' />

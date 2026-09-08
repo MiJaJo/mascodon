@@ -163,7 +163,7 @@ export function formatAbsoluteTime({
   now?: number;
 }) {
   return intl.formatDate(timestamp, {
-    month: 'short',
+    month: 'numeric',
     day: 'numeric',
     // Only show the year if it's different from the current year.
     year: isSameYear(timestamp, now) ? undefined : 'numeric',

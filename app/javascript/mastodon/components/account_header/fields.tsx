@@ -30,7 +30,7 @@ const verifyMessage = defineMessage({
   defaultMessage: 'Ownership of this link was checked on {date}',
 });
 const dateFormatOptions: Intl.DateTimeFormatOptions = {
-  month: 'short',
+  month: 'numeric',
   day: 'numeric',
   year: 'numeric',
   hour: '2-digit',

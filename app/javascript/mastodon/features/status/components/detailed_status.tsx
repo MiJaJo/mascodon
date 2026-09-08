@@ -509,8 +509,8 @@ export const DetailedStatus: React.FC<{
               <FormattedDateWrapper
                 value={new Date(status.get('created_at') as string)}
                 year='numeric'
-                month='short'
-                day='2-digit'
+                month='numeric'
+                day='numeric'
                 hour='2-digit'
                 minute='2-digit'
               />

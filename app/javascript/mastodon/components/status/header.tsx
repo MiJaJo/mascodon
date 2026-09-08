@@ -95,8 +95,8 @@ const StatusEditedAt: FC<{ editedAt: string }> = ({ editedAt }) => {
       title={intl.formatMessage(editMessage, {
         date: intl.formatDate(editedAt, {
           year: 'numeric',
-          month: 'short',
-          day: '2-digit',
+          month: 'numeric',
+          day: 'numeric',
           hour: '2-digit',
           minute: '2-digit',
         }),

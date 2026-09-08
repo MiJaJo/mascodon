@@ -114,8 +114,8 @@ export const EditedTimestamp: React.FC<{
               <FormattedDateWrapper
                 className='animated-number'
                 value={timestamp}
-                month='short'
-                day='2-digit'
+                month='numeric'
+                day='numeric'
                 hour='2-digit'
                 minute='2-digit'
               />

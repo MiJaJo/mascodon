@@ -60,8 +60,8 @@ const PrivacyPolicy: React.FC<{
                   <FormattedDateWrapper
                     value={response?.updated_at}
                     year='numeric'
-                    month='short'
-                    day='2-digit'
+                    month='numeric'
+                    day='numeric'
                   />
                 ),
               }}

@@ -12,9 +12,9 @@ const dateForCohort = cohort => {
   const timeZone = 'UTC';
   switch(cohort.frequency) {
   case 'day':
-    return <FormattedDate value={cohort.period} month='long' day='2-digit' timeZone={timeZone} />;
+    return <FormattedDate value={cohort.period} month='numeric' day='numeric' timeZone={timeZone} />;
   default:
-    return <FormattedDate value={cohort.period} month='long' year='numeric' timeZone={timeZone} />;
+    return <FormattedDate value={cohort.period} month='numeric' year='numeric' timeZone={timeZone} />;
   }
 };
 

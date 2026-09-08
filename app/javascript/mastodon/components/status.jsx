@@ -60,7 +60,7 @@ export const textForScreenReader = ({intl, status, rebloggedByText = false, isQu
     displayName.length === 0 ? status.getIn(['account', 'acct']).split('@')[0] : displayName,
     spoilerText && status.get('hidden') ? spoilerText : contentText,
     !!status.get('quote') ? intl.formatMessage(messages.contains_quote) : undefined,
-    intl.formatDate(status.get('created_at'), { hour: '2-digit', minute: '2-digit', month: 'short', day: 'numeric' }),
+    intl.formatDate(status.get('created_at'), { hour: '2-digit', minute: '2-digit', month: 'numeric', day: 'numeric' }),
     status.getIn(['account', 'acct']),
     rebloggedByText,
   ].filter(val => !!val);

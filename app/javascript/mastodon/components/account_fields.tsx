@@ -63,7 +63,7 @@ export const AccountFields: React.FC<Pick<Account, 'fields' | 'emojis'>> = ({
 };
 
 const dateFormatOptions: Intl.DateTimeFormatOptions = {
-  month: 'short',
+  month: 'numeric',
   day: 'numeric',
   year: 'numeric',
   hour: '2-digit',

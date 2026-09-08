@@ -111,7 +111,7 @@ export const AccountJoinModal: FC<{
           <h1>
             <FormattedDateWrapper
               value={account?.created_at}
-              month='short'
+              month='numeric'
               day='numeric'
               year='numeric'
             />

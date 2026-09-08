@@ -107,8 +107,8 @@ const RevokeControls: React.FC<{
           date: (
             <FormattedDateWrapper
               value={currentUserCollectionItem.created_at}
-              day='2-digit'
-              month='short'
+              day='numeric'
+              month='numeric'
               year='numeric'
             />
           ),

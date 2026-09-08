@@ -151,8 +151,8 @@ export const AccountListItem: React.FC<Props> = ({
             {createdThisYear ? (
               <FormattedDateWrapper
                 value={account.created_at}
-                month='short'
-                day='2-digit'
+                month='numeric'
+                day='numeric'
               />
             ) : (
               <FormattedDateWrapper value={account.created_at} year='numeric' />

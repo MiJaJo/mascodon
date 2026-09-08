@@ -248,7 +248,7 @@ export function useTextForScreenReader({
       intl.formatDate(status.created_at, {
         hour: '2-digit',
         minute: '2-digit',
-        month: 'short',
+        month: 'numeric',
         day: 'numeric',
       }),
       status.account.acct,

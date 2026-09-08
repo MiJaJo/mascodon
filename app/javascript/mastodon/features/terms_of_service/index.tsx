@@ -74,8 +74,8 @@ const TermsOfService: React.FC<{
                     <FormattedDate
                       value={response.effective_date}
                       year='numeric'
-                      month='short'
-                      day='2-digit'
+                      month='numeric'
+                      day='numeric'
                     />
                   ),
                 }}
@@ -89,8 +89,8 @@ const TermsOfService: React.FC<{
                     <FormattedDate
                       value={response?.effective_date}
                       year='numeric'
-                      month='short'
-                      day='2-digit'
+                      month='numeric'
+                      day='numeric'
                     />
                   ),
                 }}
@@ -109,8 +109,8 @@ const TermsOfService: React.FC<{
                         <FormattedDate
                           value={response.succeeded_by}
                           year='numeric'
-                          month='short'
-                          day='2-digit'
+                          month='numeric'
+                          day='numeric'
                         />
                       ),
                     }}
