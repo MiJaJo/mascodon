@@ -32,97 +32,94 @@ export function getStatusContent(status) {
   return status.getIn(['translation', 'contentHtml']) || status.get('contentHtml');
 }
 
-function getSingleEmojiText(text) {
-  const normalizedText = text.replace(/[\u200B-\u200D\u2060]/g, '').trim();
+export function isSingleEmojiContent(content) {
+  const paragraphMatch = content.match(/^<p>([\s\S]*)<\/p>$/);
 
-  if (!normalizedText) {
-    return null;
-  }
-
-  const matches = Array.from(normalizedText.matchAll(anyEmojiRegex()));
-
-  if (matches.length === 1) {
-    const [match] = matches;
-
-    if (match.index === 0 && match[0].length === normalizedText.length) {
-      return match[0];
-    }
-  }
-
-  const shortcodeMatch = normalizedText.match(/^:([a-z0-9_]+):$/i);
-
-  if (shortcodeMatch) {
-    return normalizedText;
-  }
-
-  return null;
-}
-
-function isMentionNode(node) {
-  if (!(node instanceof HTMLElement)) {
+  if (!paragraphMatch) {
     return false;
   }
 
-  return node.classList.contains('mention') && ['a', 'span'].includes(node.tagName.toLowerCase());
+  const text = paragraphMatch[1].replace(/[\u200B-\u200D\u2060]/g, '').trim();
+  const emojiMatches = Array.from(text.matchAll(anyEmojiRegex()));
+
+  return (
+    (emojiMatches.length === 1 &&
+      emojiMatches[0].index === 0 &&
+      emojiMatches[0][0].length === text.length) ||
+    /^:[a-z0-9_]+:$/i.test(text)
+  );
 }
 
-export function prepareSingleEmojiContent(content) {
+function getMentionEmojiParagraph(content) {
   if (!content || typeof document === 'undefined') {
-    return content;
+    return null;
   }
 
   const template = document.createElement('template');
   template.innerHTML = content;
 
-  const paragraphs = template.content.querySelectorAll('p');
+  if (template.content.children.length !== 1) {
+    return null;
+  }
 
-  paragraphs.forEach((paragraph) => {
-    const childNodes = Array.from(paragraph.childNodes);
+  const paragraph = template.content.firstElementChild;
 
-    if (childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) {
-      const emoji = getSingleEmojiText(childNodes[0].textContent ?? '');
+  if (!paragraph || paragraph.tagName !== 'P' || paragraph.childNodes.length !== 2) {
+    return null;
+  }
 
-      if (!emoji) {
-        return;
-      }
+  const [mentionContainer, emojiNode] = paragraph.childNodes;
 
-      const span = document.createElement('span');
-      span.className = 'mcd__singleEmoji';
-      span.textContent = emoji;
-      paragraph.replaceChild(span, childNodes[0]);
-      return;
-    }
+  if (!(mentionContainer instanceof HTMLElement) || emojiNode.nodeType !== Node.TEXT_NODE) {
+    return null;
+  }
 
-    const mentionNodes = childNodes.filter(isMentionNode);
-    const textNodes = childNodes.filter(node => node.nodeType === Node.TEXT_NODE);
-    const breakNodes = childNodes.filter(node => node.nodeName.toLowerCase() === 'br');
+  const mentions = mentionContainer.matches('a.mention')
+    ? [mentionContainer]
+    : Array.from(mentionContainer.querySelectorAll('a.mention'));
+  const emoji = getSingleEmojiText(emojiNode.textContent ?? '');
 
-    if (mentionNodes.length !== 1 || textNodes.length !== 1) {
-      return;
-    }
+  if (
+    mentions.length !== 1 ||
+    mentionContainer.textContent !== mentions[0].textContent ||
+    !emoji
+  ) {
+    return null;
+  }
 
-    const [mentionNode] = mentionNodes;
-    const [textNode] = textNodes;
+  return paragraph;
+}
 
-    const emoji = getSingleEmojiText(textNode.textContent ?? '');
+function getSingleEmojiText(text) {
+  const normalizedText = text.replace(/[\u200B-\u200D\u2060]/g, '').trim();
+  const emojiMatches = Array.from(normalizedText.matchAll(anyEmojiRegex()));
 
-    if (!emoji) {
-      return;
-    }
+  if (
+    emojiMatches.length === 1 &&
+    emojiMatches[0].index === 0 &&
+    emojiMatches[0][0].length === normalizedText.length
+  ) {
+    return emojiMatches[0][0];
+  }
 
-    const span = document.createElement('span');
-    span.className = 'mcd__singleEmoji';
-    span.textContent = emoji;
+  return /^:[a-z0-9_]+:$/i.test(normalizedText) ? normalizedText : null;
+}
 
-    if (breakNodes.length === 0) {
-      const lineBreak = document.createElement('br');
-      paragraph.insertBefore(lineBreak, textNode);
-    }
+export function isSingleEmojiOrMentionEmojiContent(content) {
+  return isSingleEmojiContent(content) || getMentionEmojiParagraph(content) !== null;
+}
 
-    paragraph.replaceChild(span, textNode);
-  });
+export function prepareSingleEmojiContent(content) {
+  const paragraph = getMentionEmojiParagraph(content);
 
-  return template.innerHTML;
+  if (!paragraph) {
+    return content;
+  }
+
+  paragraph.lastChild.textContent = getSingleEmojiText(paragraph.lastChild.textContent ?? '');
+  paragraph.insertBefore(document.createElement('br'), paragraph.lastChild);
+
+  return paragraph.outerHTML;
 }
 
 class TranslateButton extends PureComponent {
@@ -284,7 +281,9 @@ class StatusContent extends PureComponent {
     const targetLanguages = this.props.languages?.[status.get('language') || 'und'];
     const renderTranslate = this.props.onTranslate && this.props.identity.signedIn && ['public', 'unlisted'].includes(status.get('visibility')) && status.get('search_index').trim().length > 0 && targetLanguages?.includes(contentLocale);
 
-    const content = prepareSingleEmojiContent(statusContent ?? getStatusContent(status));
+    const rawContent = statusContent ?? getStatusContent(status);
+    const content = prepareSingleEmojiContent(rawContent);
+    const emojiClassName = isSingleEmojiOrMentionEmojiContent(rawContent) ? 'mcd__singleEmoji' : undefined;
     const language = status.getIn(['translation', 'language']) || status.get('language');
     const classNames = classnames('status__content', {
       'status__content--with-action': this.props.onClick && this.props.history,
@@ -320,6 +319,7 @@ class StatusContent extends PureComponent {
               lang={language}
               htmlString={content}
               extraEmojis={status.get('emojis')}
+              emojiClassName={emojiClassName}
               onElement={this.handleElement}
             />
 
@@ -338,6 +338,7 @@ class StatusContent extends PureComponent {
             lang={language}
             htmlString={content}
             extraEmojis={status.get('emojis')}
+            emojiClassName={emojiClassName}
             onElement={this.handleElement}
           />
 

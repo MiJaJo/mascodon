@@ -24,12 +24,14 @@ import { AnimateEmojiContext, CustomEmojiContext } from './context';
 
 interface EmojiProps {
   code: string;
+  className?: string;
   showFallback?: boolean;
   showLoading?: boolean;
 }
 
 export const Emoji: FC<EmojiProps> = ({
   code,
+  className,
   showFallback = true,
   showLoading = true,
 }) => {
@@ -82,7 +84,7 @@ export const Emoji: FC<EmojiProps> = ({
         src={animate ? state.data.url : state.data.static_url}
         alt={shortcode}
         title={shortcode}
-        className='emojione custom-emoji'
+        className={classNames('emojione custom-emoji', className)}
         loading='lazy'
       />
     );
@@ -98,7 +100,7 @@ export const Emoji: FC<EmojiProps> = ({
       src={src}
       alt={state.data.unicode}
       title={state.data.label}
-      className={classNames('emojione', inversionClass)}
+      className={classNames('emojione', inversionClass, className)}
       loading='lazy'
     />
   );
@@ -108,11 +110,17 @@ export const Emoji: FC<EmojiProps> = ({
  * Takes a text string and converts it to an array of React nodes.
  * @param text The text to be tokenized and converted.
  */
-export function textToEmojis(text: string) {
+export function textToEmojis(text: string, emojiClassName?: string) {
   return tokenizeText(text).map((token, index) => {
     if (typeof token === 'string') {
       return token;
     }
-    return <Emoji code={token.code} key={`emoji-${token.code}-${index}`} />;
+    return (
+      <Emoji
+        code={token.code}
+        className={emojiClassName}
+        key={`emoji-${token.code}-${index}`}
+      />
+    );
   });
 }
