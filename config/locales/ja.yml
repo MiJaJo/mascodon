@@ -198,6 +198,7 @@ ja:
         create_user_role: ロールを作成
         create_username_block: ユーザー名ルールを作成
         demote_user: ユーザーを降格
+        destroy_account: アカウントデータを削除
         destroy_announcement: お知らせを削除
         destroy_canonical_email_block: メールアドレスブロックの削除
         destroy_custom_emoji: カスタム絵文字を削除
@@ -266,6 +267,7 @@ ja:
         create_user_role_html: "%{name}さんがロール『%{target}』を作成しました"
         create_username_block_html: "%{name}さんが%{target}を含むユーザー名のルールを追加しました"
         demote_user_html: "%{name}さんが%{target}さんを降格しました"
+        destroy_account_html: "%{name}さんが%{target}さんのアカウントデータを削除しました"
         destroy_announcement_html: "%{name}さんがお知らせ %{target}を削除しました"
         destroy_canonical_email_block_html: "%{name} さんがメールアドレスのハッシュ値 %{target} のブロックを外しました"
         destroy_collection_html: "%{name} さんが %{target} によるコレクションを削除しました"
@@ -1471,8 +1473,11 @@ ja:
   deletes:
     challenge_not_passed: 入力された情報は正しくありません
     confirm_password: 本人確認のため、現在のパスワードを入力してください
+    confirm_username: 確認のためユーザー名を入力してください
+    confirm_username_hint_html: 削除するアカウントを確認するため、<code>%{username}</code> と入力してください
     proceed: アカウントを削除する
     success_msg: アカウントは正常に削除されました
+    title: アカウント %{acct} の削除
     warning:
       before: '続行する前に、次の点を再度確認してください:'
       caches: 他のサーバーにコンテンツのキャッシュがずっと残る場合があります
@@ -1572,6 +1577,7 @@ ja:
       content: もうしわけありませんが、なにかが間違っています。
       title: このページは正しくありません
     '503': 一時的なサーバー障害のため利用することができません。
+    go_home: ホームに戻る
     noscript_html: Mastodonのウェブアプリケーションを利用する場合はJavaScriptを有効にしてください。またはあなたのプラットフォーム向けの<a href="%{apps_path}">Mastodonネイティブアプリ</a>を探すことができます。
   existing_username_validator:
     not_found: そのようなユーザー名はローカルに見つかりませんでした
