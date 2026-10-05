@@ -5,6 +5,11 @@ module Paperclip
     GIF_MAX_FPS = 60
     GIF_MAX_FRAMES = 3000
     GIF_PALETTE_COLORS = 32
+    PNG_COMPRESSION = ENV.fetch('PNG_COMPRESSION_LEVEL', 6).to_i.clamp(0, 9)
+    RECOMPRESS_REMOTE_PNG = ENV['RECOMPRESS_REMOTE_PNG'] == 'true'
+    PNG_SIGNATURE_LENGTH = 8
+    RECOMPRESS_REMOTE_WEBP = ENV['RECOMPRESS_REMOTE_WEBP'] == 'true'
+    WEBP_EFFORT = ENV.fetch('WEBP_LOSSLESS_EFFORT', 4).to_i.clamp(0, 6)
 
     ALLOWED_FIELDS = %w(
       icc-profile-data
@@ -110,9 +115,13 @@ module Paperclip
     end
 
     def save_options
-      case @format
-      when 'jpg'
+      case @format.presence || @current_format.delete_prefix('.')
+      when 'jpg', 'jpeg'
         { Q: 90, interlace: true }
+      when 'webp'
+        webp_kind == :lossless ? { lossless: true, effort: WEBP_EFFORT } : { Q: 80, effort: 4 }
+      when 'png'
+        { compression: PNG_COMPRESSION }
       else
         {}
       end
@@ -123,7 +132,69 @@ module Paperclip
     end
 
     def needs_convert?
-      strip_animations? || needs_different_geometry? || needs_different_format? || needs_metadata_stripping?
+      strip_animations? || needs_different_geometry? || needs_different_format? || needs_metadata_stripping? || needs_png_recompression? || needs_webp_recompression?
+    end
+
+    def needs_webp_recompression?
+      RECOMPRESS_REMOTE_WEBP &&
+        @format.blank? &&
+        @current_format.casecmp?('.webp') &&
+        @attachment.instance.respond_to?(:local?) &&
+        !@attachment.instance.local? &&
+        webp_kind == :lossless
+    end
+
+    # Only lossless WebP is re-encoded, so no quality is lost. Lossy and animated files are left untouched.
+    def webp_kind
+      @webp_kind ||= detect_webp_kind
+    end
+
+    def detect_webp_kind
+      File.open(@file.path, 'rb') do |file|
+        return :other unless file.read(12)&.then { |head| head.bytesize == 12 && head.start_with?('RIFF') && head.end_with?('WEBP') }
+
+        while (header = file.read(8))&.bytesize == 8
+          type, length = header.unpack('a4V')
+
+          case type
+          when 'ANIM', 'ANMF' then return :animated
+          when 'VP8L' then return :lossless
+          when 'VP8 ' then return :lossy
+          end
+
+          file.seek(length + (length & 1), IO::SEEK_CUR)
+        end
+      end
+
+      :other
+    rescue SystemCallError, IOError
+      :other
+    end
+
+    def needs_png_recompression?
+      RECOMPRESS_REMOTE_PNG &&
+        @format.blank? &&
+        @current_format.casecmp?('.png') &&
+        @attachment.instance.respond_to?(:local?) &&
+        !@attachment.instance.local? &&
+        !animated_png?
+    end
+
+    # libvips cannot write APNG, so animated files must be left untouched
+    def animated_png?
+      File.open(@file.path, 'rb') do |file|
+        file.seek(PNG_SIGNATURE_LENGTH)
+
+        while (header = file.read(8))&.bytesize == 8
+          length, type = header.unpack('Na4')
+          return true if type == 'acTL'
+          return false if type == 'IDAT'
+
+          file.seek(length + 4, IO::SEEK_CUR)
+        end
+      end
+
+      false
     end
 
     def strip_animations?
