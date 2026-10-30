@@ -64,9 +64,11 @@ ja:
       custom: カスタム
       delete: データを削除する
       deleted: 削除済み
+      deletion_irreversible: このアカウントのデータは取り消せない形で削除されました。
       demote: 降格
       destroyed_msg: "%{username}さんのデータは完全に削除されるよう登録されました"
       disable: 無効化
+      disable_sign_in_token: セキュリティコードチャレンジを一時的に無効化
       disable_sign_in_token_auth: メールトークン認証を無効化
       disable_two_factor_authentication: 二要素認証を無効にする
       disabled: 無効
