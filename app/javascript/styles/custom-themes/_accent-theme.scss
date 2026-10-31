@@ -1,9 +1,9 @@
 @use 'sass:color';
 
-@use '../mastodon/theme/base';
-@use '../mastodon/theme/dark';
-@use '../mastodon/theme/light';
-@use '../mastodon/theme/utils';
+@use '../mastodon/tokens/theme/base';
+@use '../mastodon/tokens/theme/dark';
+@use '../mastodon/tokens/theme/light';
+@use '../mastodon/tokens/theme/utils';
 
 $accent-color: #1d9bf0 !default;
 
