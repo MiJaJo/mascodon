@@ -295,7 +295,7 @@ $emojis-requiring-inversion: 'chains';
     }
 
     .poll__chart {
-      background: $ui-base-lighter-color;
+      background: $ui-base-color;
     }
 
     .search__input {
@@ -475,6 +475,7 @@ $emojis-requiring-inversion: 'chains';
     }
 
     .admin-wrapper .sidebar ul .simple-navigation-active-leaf a {
+      background: $ui-base-lighter-color;
       color: $black;
     }
 
