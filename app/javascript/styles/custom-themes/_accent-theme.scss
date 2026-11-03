@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:math';
 
 @use '../mastodon/tokens/theme/base';
 @use '../mastodon/tokens/theme/dark';
@@ -19,6 +20,68 @@ $accent-color: #1d9bf0 !default;
   @return #fff;
 }
 
+@function linear-channel($value) {
+  $v: math.div($value, 255);
+
+  @if $v <= 0.03928 {
+    @return math.div($v, 12.92);
+  }
+
+  @return math.pow(math.div($v + 0.055, 1.055), 2.4);
+}
+
+@function luminance($color) {
+  $red: linear-channel(color.channel($color, 'red', $space: rgb));
+  $green: linear-channel(color.channel($color, 'green', $space: rgb));
+  $blue: linear-channel(color.channel($color, 'blue', $space: rgb));
+
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+@function contrast-ratio($a, $b) {
+  $l1: luminance($a);
+  $l2: luminance($b);
+
+  @return math.div(math.max($l1, $l2) + 0.05, math.min($l1, $l2) + 0.05);
+}
+
+// Prefer white text; fall back to black only when white cannot reach 4.5:1
+// on every given background (e.g. both resting and hover states of a button).
+@function readable-on($backgrounds...) {
+  $white-worst: 21;
+  $black-worst: 21;
+
+  @each $bg in $backgrounds {
+    $white-worst: math.min($white-worst, contrast-ratio(#fff, $bg));
+    $black-worst: math.min($black-worst, contrast-ratio(#000, $bg));
+  }
+
+  @if $white-worst >= 4.5 or $white-worst >= $black-worst {
+    @return #fff;
+  }
+
+  @return #000;
+}
+
+// Darken the dark-scheme button background step by step until black or white
+// text reaches 4.5:1 on both the resting and hover states.
+@function dark-button-weight() {
+  @each $weight in (20%, 24%, 28%, 32%) {
+    $base: accent-tone(#000, $weight);
+    $hover: accent-tone(#000, $weight + 12%);
+    $best: math.max(
+      math.min(contrast-ratio(#fff, $base), contrast-ratio(#fff, $hover)),
+      math.min(contrast-ratio(#000, $base), contrast-ratio(#000, $hover))
+    );
+
+    @if $best >= 4.5 {
+      @return $weight;
+    }
+  }
+
+  @return 32%;
+}
+
 @mixin palette {
   --color-accent-50: #{accent-tone(#fff, 90%)};
   --color-accent-100: #{accent-tone(#fff, 80%)};
@@ -35,11 +98,15 @@ $accent-color: #1d9bf0 !default;
 }
 
 @mixin dark-brand-overrides {
+  $weight: dark-button-weight();
+  $base: accent-tone(#000, $weight);
+  $hover: accent-tone(#000, $weight + 12%);
+
   --color-text-brand: var(--color-accent-300);
   --color-text-brand-on-inverted: var(--color-accent-700);
-  --color-text-on-brand-base: var(--color-accent-contrast);
-  --color-bg-brand-base: var(--color-accent-700);
-  --color-bg-brand-base-hover: var(--color-accent-800);
+  --color-text-on-brand-base: #{readable-on($base, $hover)};
+  --color-bg-brand-base: #{$base};
+  --color-bg-brand-base-hover: #{$hover};
   --color-bg-brand-soft: var(--color-accent-900);
   --color-bg-brand-softest: var(--color-accent-950);
   --color-border-brand-soft: var(--color-accent-800);
@@ -56,7 +123,10 @@ $accent-color: #1d9bf0 !default;
 @mixin light-brand-overrides {
   --color-text-brand: var(--color-accent-700);
   --color-text-brand-on-inverted: var(--color-accent-300);
-  --color-text-on-brand-base: var(--color-accent-contrast);
+  --color-text-on-brand-base: #{readable-on(
+      accent-tone(#000, 10%),
+      accent-tone(#000, 20%)
+    )};
   --color-bg-brand-base: var(--color-accent-600);
   --color-bg-brand-base-hover: var(--color-accent-700);
   --color-bg-brand-soft: var(--color-accent-100);
