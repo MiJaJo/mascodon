@@ -6,3 +6,5 @@ default:
     - pink
     - orange
     - cyan
+beige:
+  path: styles/custom-themes/beige.scss

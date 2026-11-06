@@ -1,7 +1,7 @@
 @use 'sass:color';
 @use 'sass:math';
 
-@use '../mastodon/tokens/theme/base';
+@use '../mastodon/tokens/theme/palette' as base;
 @use '../mastodon/tokens/theme/dark';
 @use '../mastodon/tokens/theme/light';
 @use '../mastodon/tokens/theme/utils';
@@ -151,6 +151,7 @@ html {
 html:not([data-color-scheme]) {
   color-scheme: dark;
 
+  @include dark.base-indigo;
   @include dark.tokens;
   @include utils.invert-on-dark;
   @include dark-surface-overrides;
@@ -158,7 +159,6 @@ html:not([data-color-scheme]) {
 
   &[data-contrast='high'],
   [data-contrast='high'] & {
-    @include dark.contrast-overrides;
     @include dark-brand-overrides;
   }
 }
@@ -166,6 +166,7 @@ html:not([data-color-scheme]) {
 [data-color-scheme='light'] {
   color-scheme: light;
 
+  @include light.base-indigo;
   @include light.tokens;
   @include utils.invert-on-light;
   @include light-surface-overrides;
@@ -173,7 +174,6 @@ html:not([data-color-scheme]) {
 
   &[data-contrast='high'],
   [data-contrast='high'] & {
-    @include light.contrast-overrides;
     @include light-brand-overrides;
   }
 }
