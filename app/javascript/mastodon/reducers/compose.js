@@ -150,18 +150,21 @@ function clearAll(state) {
 
 function appendMedia(state, media, file) {
   const prevSize = state.get('media_attachments').size;
+  const pending = state.get('pending_media_attachments') - 1;
 
   return state.withMutations(map => {
     if (media.get('type') === 'image') {
       media = media.set('file', file);
     }
     map.update('media_attachments', list => list.push(media.set('unattached', true)));
-    map.set('is_uploading', false);
-    map.set('is_processing', false);
-    map.set('progress', 0);
+    map.set('is_uploading', pending > 0);
+    if (pending === 0) {
+      map.set('is_processing', false);
+      map.set('progress', 0);
+    }
     map.set('resetFileKey', Math.floor((Math.random() * 0x10000)));
     map.set('idempotencyKey', uuid());
-    map.update('pending_media_attachments', n => n - 1);
+    map.set('pending_media_attachments', pending);
 
     if (prevSize === 0 && (state.get('default_sensitive') || state.get('spoiler'))) {
       map.set('sensitive', true);
@@ -517,11 +520,15 @@ export const composeReducer = (state = initialState, action) => {
   case COMPOSE_UPLOAD_SUCCESS:
     return appendMedia(state, fromJS(action.media), action.file);
   case COMPOSE_UPLOAD_FAIL:
-    return state
-      .set('is_uploading', false)
-      .set('is_processing', false)
-      .set('progress', 0)
-      .update('pending_media_attachments', n => n - 1);
+    return state.withMutations(map => {
+      const pending = state.get('pending_media_attachments') - 1;
+      map.set('pending_media_attachments', pending);
+      map.set('is_uploading', pending > 0);
+      if (pending === 0) {
+        map.set('is_processing', false);
+        map.set('progress', 0);
+      }
+    });
   case COMPOSE_UPLOAD_UNDO:
     return removeMedia(state, action.media_id);
   case COMPOSE_UPLOAD_PROGRESS:

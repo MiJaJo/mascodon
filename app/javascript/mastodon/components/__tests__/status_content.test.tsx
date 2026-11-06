@@ -2,7 +2,7 @@ import {
   isSingleEmojiContent,
   isSingleEmojiOrMentionEmojiContent,
   prepareSingleEmojiContent,
-} from '../status_content';
+} from '../status/single_emoji';
 
 describe('isSingleEmojiContent', () => {
   it('recognizes a paragraph containing one Unicode emoji', () => {
@@ -11,6 +11,19 @@ describe('isSingleEmojiContent', () => {
 
   it('recognizes a paragraph containing one custom emoji shortcode', () => {
     expect(isSingleEmojiContent('<p>:custom_emoji:</p>')).toBe(true);
+  });
+
+  it.each(['👩‍💻', '👨‍👩‍👧‍👦', '❤️', '🇯🇵'])(
+    'recognizes a multi-codepoint emoji: %s',
+    (emoji) => {
+      expect(isSingleEmojiContent(`<p>${emoji}</p>`)).toBe(true);
+    },
+  );
+
+  it('recognizes a custom emoji surrounded by zero-width spaces', () => {
+    expect(isSingleEmojiContent('<p>\u200b:custom_emoji:\u200b</p>')).toBe(
+      true,
+    );
   });
 
   it.each(['<p>text 😀</p>', '<p>😀 😀</p>', '<p>😀</p><p>text</p>'])(
@@ -44,10 +57,20 @@ describe('prepareSingleEmojiContent', () => {
     );
   });
 
+  it('preserves joiners in an emoji following a mention', () => {
+    const joined =
+      '<p><a href="https://example.com/@foo" class="mention">@foo</a> 👩‍💻</p>';
+
+    expect(prepareSingleEmojiContent(joined)).toBe(
+      '<p><a href="https://example.com/@foo" class="mention">@foo</a><br>👩‍💻</p>',
+    );
+  });
+
   it.each([
     '<p><a href="https://example.com/@foo" class="mention">@foo</a> text 😀</p>',
     '<p><a href="https://example.com/@foo" class="mention">@foo</a> 😀 😀</p>',
     '<p><a href="https://example.com/@foo" class="mention">@foo</a><a href="https://example.com/@bar" class="mention">@bar</a> 😀</p>',
+    '<p><a href="https://example.com/@foo" class="mention">@foo</a> 😀</p>extra',
   ])('does not recognize other mention content: %s', (otherContent) => {
     expect(isSingleEmojiOrMentionEmojiContent(otherContent)).toBe(false);
     expect(prepareSingleEmojiContent(otherContent)).toBe(otherContent);

@@ -1,4 +1,8 @@
+import { fromJS } from 'immutable';
+
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
+import { imageAttachmentFactoryAPI } from '@/testing/factories';
 
 import { ComposeForm } from './form';
 
@@ -49,6 +53,24 @@ export const PostPending: Story = {
         pending_media_attachments: 2,
       },
     },
+  },
+};
+
+export const PostWithManyImages: Story = {
+  parameters: {
+    stateFn: () => ({
+      compose: {
+        media_attachments: fromJS(
+          Array.from({ length: 16 }, (_, index) =>
+            imageAttachmentFactoryAPI({
+              id: String(index),
+              preview_url: '/avatars/original/missing.png',
+              description: `Image ${index + 1}`,
+            }),
+          ),
+        ),
+      },
+    }),
   },
 };
 

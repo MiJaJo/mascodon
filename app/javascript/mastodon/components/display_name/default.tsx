@@ -3,11 +3,11 @@ import type { ComponentPropsWithoutRef, FC } from 'react';
 
 import { defineMessages, useIntl } from 'react-intl';
 
-import { RoleBadge } from '../badge';
 import { Skeleton } from '../skeleton';
 
 import type { DisplayNameProps } from './index';
 import { DisplayNameWithoutDomain } from './no-domain';
+import { RoleBadges } from './role_badges';
 
 const messages = defineMessages({
   invalidHandle: {
@@ -44,10 +44,6 @@ export const DisplayNameDefault: FC<
   Omit<DisplayNameProps, 'variant'> & ComponentPropsWithoutRef<'span'>
 > = ({ account, localDomain, showRoles = true, className, ...props }) => {
   const username = useAccountHandle(account, localDomain);
-  const roles = account?.roles;
-  const hasRoles =
-    showRoles &&
-    (Array.isArray(roles) ? roles.length > 0 : (roles?.size ?? 0) > 0);
 
   return (
     <DisplayNameWithoutDomain
@@ -60,13 +56,7 @@ export const DisplayNameDefault: FC<
         <span className='display-name__account'>
           {username ?? <Skeleton width='7ch' />}
         </span>
-        {hasRoles && roles && (
-          <span className='display-name__role-badges'>
-            {roles.map((role) => (
-              <RoleBadge key={role.id} role={role} />
-            ))}
-          </span>
-        )}
+        {showRoles && <RoleBadges account={account} />}
       </span>
     </DisplayNameWithoutDomain>
   );

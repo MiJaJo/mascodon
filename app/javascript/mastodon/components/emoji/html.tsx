@@ -17,6 +17,7 @@ export interface EmojiHTMLProps<
   htmlString: string;
   extraEmojis?: CustomEmojiMapArg;
   className?: string;
+  emojiClassName?: string;
   onElement?: OnElementHandler<Arg>;
   onAttribute?: OnAttributeHandler<Arg>;
   extraArgs?: Arg;
@@ -28,6 +29,7 @@ export const EmojiHTML = <
 >({
   extraEmojis,
   htmlString,
+  emojiClassName,
   onElement,
   onAttribute,
   extraArgs,
@@ -37,12 +39,12 @@ export const EmojiHTML = <
   const contents = useMemo(
     () =>
       htmlStringToComponents(htmlString, {
-        onText: textToEmojis,
+        onText: (text) => textToEmojis(text, emojiClassName),
         onElement,
         onAttribute,
         extraArgs,
       }),
-    [extraArgs, htmlString, onAttribute, onElement],
+    [emojiClassName, extraArgs, htmlString, onAttribute, onElement],
   );
 
   return (

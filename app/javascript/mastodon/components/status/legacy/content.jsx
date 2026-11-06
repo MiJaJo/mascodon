@@ -19,6 +19,7 @@ import { injectIntl } from '@/mastodon/components/intl';
 import { compareUrls } from '@/mastodon/utils/compare_urls';
 
 import { HandledLink } from '../handled_link';
+import { isSingleEmojiOrMentionEmojiContent, prepareSingleEmojiContent } from '../single_emoji';
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
 
@@ -29,96 +30,6 @@ const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
  */
 export function getStatusContent(status) {
   return status.getIn(['translation', 'contentHtml']) || status.get('contentHtml');
-}
-
-export function isSingleEmojiContent(content) {
-  const paragraphMatch = content.match(/^<p>([\s\S]*)<\/p>$/);
-
-  if (!paragraphMatch) {
-    return false;
-  }
-
-  const text = paragraphMatch[1].replace(/[\u200B-\u200D\u2060]/g, '').trim();
-  const emojiMatches = Array.from(text.matchAll(anyEmojiRegex()));
-
-  return (
-    (emojiMatches.length === 1 &&
-      emojiMatches[0].index === 0 &&
-      emojiMatches[0][0].length === text.length) ||
-    /^:[a-z0-9_]+:$/i.test(text)
-  );
-}
-
-function getMentionEmojiParagraph(content) {
-  if (!content || typeof document === 'undefined') {
-    return null;
-  }
-
-  const template = document.createElement('template');
-  template.innerHTML = content;
-
-  if (template.content.children.length !== 1) {
-    return null;
-  }
-
-  const paragraph = template.content.firstElementChild;
-
-  if (!paragraph || paragraph.tagName !== 'P' || paragraph.childNodes.length !== 2) {
-    return null;
-  }
-
-  const [mentionContainer, emojiNode] = paragraph.childNodes;
-
-  if (!(mentionContainer instanceof HTMLElement) || emojiNode.nodeType !== Node.TEXT_NODE) {
-    return null;
-  }
-
-  const mentions = mentionContainer.matches('a.mention')
-    ? [mentionContainer]
-    : Array.from(mentionContainer.querySelectorAll('a.mention'));
-  const emoji = getSingleEmojiText(emojiNode.textContent ?? '');
-
-  if (
-    mentions.length !== 1 ||
-    mentionContainer.textContent !== mentions[0].textContent ||
-    !emoji
-  ) {
-    return null;
-  }
-
-  return paragraph;
-}
-
-function getSingleEmojiText(text) {
-  const normalizedText = text.replace(/[\u200B-\u200D\u2060]/g, '').trim();
-  const emojiMatches = Array.from(normalizedText.matchAll(anyEmojiRegex()));
-
-  if (
-    emojiMatches.length === 1 &&
-    emojiMatches[0].index === 0 &&
-    emojiMatches[0][0].length === normalizedText.length
-  ) {
-    return emojiMatches[0][0];
-  }
-
-  return /^:[a-z0-9_]+:$/i.test(normalizedText) ? normalizedText : null;
-}
-
-export function isSingleEmojiOrMentionEmojiContent(content) {
-  return isSingleEmojiContent(content) || getMentionEmojiParagraph(content) !== null;
-}
-
-export function prepareSingleEmojiContent(content) {
-  const paragraph = getMentionEmojiParagraph(content);
-
-  if (!paragraph) {
-    return content;
-  }
-
-  paragraph.lastChild.textContent = getSingleEmojiText(paragraph.lastChild.textContent ?? '');
-  paragraph.insertBefore(document.createElement('br'), paragraph.lastChild);
-
-  return paragraph.outerHTML;
 }
 
 class TranslateButton extends PureComponent {

@@ -393,6 +393,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const SingleEmoji: Story = {
+  args: {
+    text: '😀',
+  },
+};
+
 export const Reply: Story = {
   args: {
     isReply: true,

@@ -64,7 +64,12 @@ export const Emoji: FC<EmojiProps> = ({
 
   if (!isStateLoaded(state)) {
     if (showLoading) {
-      return <span className='emojione emoji-loading' title={code} />;
+      return (
+        <span
+          className={classNames('emojione emoji-loading', className)}
+          title={code}
+        />
+      );
     }
     return fallback;
   }
@@ -75,7 +80,11 @@ export const Emoji: FC<EmojiProps> = ({
 
   if (!shouldRenderImage(state, appState.mode)) {
     if (state.type === EMOJI_TYPE_UNICODE) {
-      return state.data.unicode;
+      return className ? (
+        <span className={className}>{state.data.unicode}</span>
+      ) : (
+        state.data.unicode
+      );
     }
     return code;
   }

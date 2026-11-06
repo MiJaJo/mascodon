@@ -25,6 +25,16 @@
   }
 }
 
+.mediaGridExtended {
+  grid-template-rows: none;
+  grid-auto-rows: auto;
+  aspect-ratio: auto;
+
+  .mediaUpload {
+    aspect-ratio: 3 / 2;
+  }
+}
+
 .mediaUpload {
   border-radius: var(--radius-4);
   position: relative;

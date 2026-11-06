@@ -19,6 +19,18 @@
     margin: -3px 0 0;
   }
 
+  :global(.mcd__singleEmoji) {
+    font-size: 4em;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  :global(.emojione.mcd__singleEmoji) {
+    width: 1em;
+    height: 1em;
+    margin: 0;
+  }
+
   [data-variant='page'] & {
     @include mixins.type-body-lg;
 

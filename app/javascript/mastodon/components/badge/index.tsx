@@ -8,6 +8,7 @@ import AdminIcon from '@/images/icons/icon_admin.svg?react';
 import ClockIcon from '@/images/icons/icon_clock.svg?react';
 import FollowerIcon from '@/images/icons/icon_follower.svg?react';
 import IconVerified from '@/images/icons/icon_verified.svg?react';
+import type { AccountRoleShape } from '@/mastodon/models/account';
 import { isRedesignEnabled } from '@/mastodon/utils/environment';
 import type { OnAttributeHandler } from '@/mastodon/utils/html';
 import BlockIcon from '@/material-icons/400-24px/block.svg?react';

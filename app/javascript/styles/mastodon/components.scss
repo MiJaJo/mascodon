@@ -542,6 +542,18 @@ body > [data-popover-placement] {
     margin: -3px 0 0;
   }
 
+  .mcd__singleEmoji {
+    font-size: 4em;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .emojione.mcd__singleEmoji {
+    width: 1em;
+    height: 1em;
+    margin: 0;
+  }
+
   p {
     margin-bottom: 22px;
     white-space: pre-wrap;

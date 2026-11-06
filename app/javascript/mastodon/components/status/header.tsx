@@ -15,6 +15,7 @@ import { Avatar } from '../avatar';
 import { Badge } from '../badge';
 import { DisplayName } from '../display_name';
 import { useAccountHandle } from '../display_name/default';
+import { RoleBadges } from '../display_name/role_badges';
 import { Icon } from '../icon';
 import { RelativeTimestamp } from '../relative_timestamp';
 import { Skeleton } from '../skeleton';
@@ -130,6 +131,7 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
             id={handleId}
           >
             {handle ?? <Skeleton width='7ch' />}
+            <RoleBadges account={account} />
           </Link>
         </p>
       </div>

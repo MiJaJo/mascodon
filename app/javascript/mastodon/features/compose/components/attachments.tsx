@@ -1,5 +1,7 @@
 import type React from 'react';
 
+import classNames from 'classnames';
+
 import { StatusQuotePending } from '@/mastodon/components/status/quote';
 import { useAppSelector } from '@/mastodon/store';
 
@@ -48,7 +50,13 @@ const ComposeMediaAttachments: React.FC = () => {
   }
 
   return (
-    <div className={classes.mediaGrid} data-number={totalAttachments}>
+    <div
+      className={classNames(
+        classes.mediaGrid,
+        totalAttachments > 4 && classes.mediaGridExtended,
+      )}
+      data-number={totalAttachments}
+    >
       {attachments.map(({ id }) => (
         <ComposeUpload key={id} id={id} />
       ))}

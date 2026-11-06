@@ -17,6 +17,10 @@ import { EmojiHTML } from '../emoji/html';
 
 import classes from './content.module.scss';
 import { useHandlersForStatus } from './hooks';
+import {
+  isSingleEmojiOrMentionEmojiContent,
+  prepareSingleEmojiContent,
+} from './single_emoji';
 
 const MAX_LINES = 35;
 
@@ -63,6 +67,9 @@ export const StatusContent: React.FC<
   const text =
     statusContent ?? status.translation?.contentHtml ?? status.contentHtml;
   const language = status.translation?.language ?? status.language;
+  const emojiClassName = isSingleEmojiOrMentionEmojiContent(text)
+    ? 'mcd__singleEmoji'
+    : undefined;
 
   const isCollapsed = !!onReadMore && collapsible && collapsed;
 
@@ -87,8 +94,9 @@ export const StatusContent: React.FC<
             className={classes.text}
             ref={onRef}
             lang={language}
-            htmlString={text}
+            htmlString={prepareSingleEmojiContent(text)}
             extraEmojis={status.emojis}
+            emojiClassName={emojiClassName}
             {...htmlHandlers}
           />
         )}

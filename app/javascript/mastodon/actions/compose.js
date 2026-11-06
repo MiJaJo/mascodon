@@ -358,10 +358,10 @@ export function uploadCompose(files) {
       return;
     }
 
-    dispatch(uploadComposeRequest());
-
     for (const [i, file] of Array.from(files).entries()) {
       if (media.size + i > (maxMediaAttachments - 1)) break;
+
+      dispatch(uploadComposeRequest());
 
       const data = new FormData();
       data.append('file', file);

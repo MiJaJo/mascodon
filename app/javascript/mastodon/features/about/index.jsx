@@ -19,6 +19,7 @@ import { NavigationFocusTarget } from 'mastodon/components/navigation_focus_targ
 import { ServerHeroImage } from 'mastodon/components/server_hero_image';
 import { Skeleton } from 'mastodon/components/skeleton';
 import { LinkFooter} from 'mastodon/features/ui/components/link_footer';
+import { getContactHref } from 'mastodon/utils/contact_link';
 
 import { Section } from './components/section';
 import { RulesSection } from './components/rules';
