@@ -75,6 +75,10 @@ Within IDEs that support the [Development Containers] specification, start the
 compose` commands to build and setup the container should run automatically. For
 **Visual Studio Code** this requires installing the [Dev Container extension].
 
+The container installs the exact Ruby version specified by `.ruby-version`.
+When updating Ruby, also update the version, download URL, and SHA-256 checksum
+in `.devcontainer/Dockerfile`, then rebuild the container.
+
 ### GitHub Codespaces
 
 [GitHub Codespaces] provides a web-based version of VS Code and a cloud hosted

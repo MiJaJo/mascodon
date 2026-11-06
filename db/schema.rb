@@ -92,10 +92,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
 
   create_table "account_reach_filters", force: :cascade do |t|
     t.bigint "account_id", null: false
-    t.binary "bloom_filter"
-    t.datetime "created_at", null: false
     t.string "salt", null: false
     t.boolean "saturated", default: false, null: false
+    t.binary "bloom_filter"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_account_reach_filters_on_account_id", unique: true
   end
@@ -243,7 +243,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
     t.string "action", default: "", null: false
     t.datetime "created_at", precision: nil, null: false
     t.string "human_identifier"
-    t.bigint "moderation_subscription_id"
     t.string "permalink"
     t.jsonb "recorded_changes"
     t.string "recorded_changes_format"
@@ -251,6 +250,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
     t.bigint "target_id"
     t.string "target_type"
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "moderation_subscription_id"
     t.index ["account_id"], name: "index_admin_action_logs_on_account_id"
     t.index ["moderation_subscription_id"], name: "index_admin_action_logs_on_moderation_subscription_id", where: "(moderation_subscription_id IS NOT NULL)"
     t.index ["target_type", "target_id"], name: "index_admin_action_logs_on_target_type_and_target_id"
@@ -515,8 +515,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
   create_table "domain_allows", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "domain", default: "", null: false
-    t.bigint "moderation_subscription_id"
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "moderation_subscription_id"
     t.index ["domain"], name: "index_domain_allows_on_domain", unique: true
     t.index ["moderation_subscription_id"], name: "index_domain_allows_on_moderation_subscription_id"
   end
@@ -524,7 +524,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
   create_table "domain_blocks", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "domain", default: "", null: false
-    t.bigint "moderation_subscription_id"
     t.boolean "obfuscate", default: false, null: false
     t.text "private_comment"
     t.text "public_comment"
@@ -532,6 +531,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
     t.boolean "reject_reports", default: false, null: false
     t.integer "severity", default: 0
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "moderation_subscription_id"
     t.index ["domain"], name: "index_domain_blocks_on_domain", unique: true
     t.index ["moderation_subscription_id"], name: "index_domain_blocks_on_moderation_subscription_id"
   end
@@ -569,12 +569,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
   end
 
   create_table "fasp_capabilities", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.string "version", null: false
     t.boolean "enabled", default: false, null: false
     t.bigint "fasp_provider_id", null: false
-    t.string "name", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "version", null: false
     t.index ["fasp_provider_id", "name", "version"], name: "idx_on_fasp_provider_id_name_version_68e2668987", unique: true
     t.index ["fasp_provider_id"], name: "index_fasp_capabilities_on_fasp_provider_id"
   end
@@ -853,29 +853,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
   end
 
   create_table "moderation_subscription_advisories", force: :cascade do |t|
-    t.integer "action", null: false
-    t.datetime "created_at", null: false
     t.bigint "moderation_subscription_id", null: false
-    t.string "target_key", null: false
+    t.integer "action", null: false
     t.integer "target_type", null: false
+    t.string "target_key", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["moderation_subscription_id"], name: "index_moderation_advisories_on_moderation_subscription_id"
-    t.index ["target_type", "target_key", "moderation_subscription_id"], name: "idx_on_target_type_target_key_moderation_subscripti_a3f09c29b9", unique: true
+    t.index ["moderation_subscription_id"], name: "idx_on_moderation_subscription_id_63d8b3a24e"
+    t.index ["target_type", "target_key", "moderation_subscription_id"], name: "idx_on_target_type_target_key_moderation_subscripti_c87d9b7c8a", unique: true
   end
 
   create_table "moderation_subscriptions", force: :cascade do |t|
-    t.boolean "apply_automatically", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "last_synced_at"
-    t.integer "list_action"
     t.string "name"
-    t.boolean "override_unattributed", default: false, null: false
-    t.boolean "preserve_relationships", default: true, null: false
-    t.integer "priority"
-    t.boolean "retract_automatically", default: true, null: false
     t.integer "type", null: false
-    t.datetime "updated_at", null: false
     t.string "url", null: false
+    t.integer "list_action"
+    t.integer "priority"
+    t.boolean "override_unattributed", default: false, null: false
+    t.boolean "apply_automatically", default: false, null: false
+    t.boolean "retract_automatically", default: true, null: false
+    t.boolean "preserve_relationships", default: true, null: false
+    t.datetime "last_synced_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "moderation_suggestions", force: :cascade do |t|
@@ -1744,9 +1744,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
   add_index "instances", ["domain"], name: "index_instances_on_domain", unique: true
 
   create_view "user_ips", sql_definition: <<-SQL
-      SELECT user_id,
-      ip,
-      max(used_at) AS used_at
+      SELECT t0.user_id,
+      t0.ip,
+      max(t0.used_at) AS used_at
      FROM ( SELECT users.id AS user_id,
               users.sign_up_ip AS ip,
               users.created_at AS used_at
@@ -1763,6 +1763,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_161747) do
               login_activities.created_at
              FROM login_activities
             WHERE (login_activities.success = true)) t0
-    GROUP BY user_id, ip;
+    GROUP BY t0.user_id, t0.ip;
   SQL
 end
