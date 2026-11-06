@@ -1,29 +1,7 @@
-@use '../mastodon/variables';
-@use '../mastodon/mixins';
-@use '../fonts/roboto';
-@use '../fonts/roboto-mono';
-@use 'legacy/blue' as legacy;
-
-@use '../mastodon/reset';
+@use '../application';
 @use 'accent-theme' with (
   $accent-color: #1d9bf0
 );
-@use '../mastodon/basics';
-@use '../mastodon/branding';
-@use '../mastodon/containers';
-@use '../mastodon/lists';
-@use '../mastodon/widgets';
-@use '../mastodon/forms';
-@use '../mastodon/accounts';
-@use '../mastodon/components';
-@use '../mastodon/polls';
-@use '../mastodon/modal';
-@use '../mastodon/emoji_picker';
-@use '../mastodon/about';
-@use '../mastodon/tables';
-@use '../mastodon/admin';
-@use '../mastodon/dashboard';
-@use '../mastodon/rtl';
-@use '../mastodon/rich_text';
+@use 'legacy/blue' as legacy;
 
 @include legacy.styles;

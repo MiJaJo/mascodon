@@ -1,11 +1,6 @@
 @use 'sass:color';
 @use 'sass:math';
 
-@use '../mastodon/tokens/theme/palette' as base;
-@use '../mastodon/tokens/theme/dark';
-@use '../mastodon/tokens/theme/light';
-@use '../mastodon/tokens/theme/utils';
-
 $accent-color: #1d9bf0 !default;
 
 @function accent-tone($mix-color, $weight) {
@@ -143,17 +138,11 @@ $accent-color: #1d9bf0 !default;
 }
 
 html {
-  @include base.palette;
   @include palette;
 }
 
 [data-color-scheme='dark'],
 html:not([data-color-scheme]) {
-  color-scheme: dark;
-
-  @include dark.base-indigo;
-  @include dark.tokens;
-  @include utils.invert-on-dark;
   @include dark-surface-overrides;
   @include dark-brand-overrides;
 
@@ -164,11 +153,6 @@ html:not([data-color-scheme]) {
 }
 
 [data-color-scheme='light'] {
-  color-scheme: light;
-
-  @include light.base-indigo;
-  @include light.tokens;
-  @include utils.invert-on-light;
   @include light-surface-overrides;
   @include light-brand-overrides;
 

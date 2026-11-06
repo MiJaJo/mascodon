@@ -3,6 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe ThemeHelper do
+  describe 'custom themes' do
+    let(:custom_themes) { %w(beige blue orange pastel pink red white) }
+
+    it 'registers custom themes without theme colors' do
+      expect(Themes.instance.names).to include(*custom_themes)
+
+      custom_themes.each do |theme|
+        expect(Themes.instance.available_theme_colors(theme)).to be_empty
+      end
+    end
+  end
+
   describe 'theme_style_tags' do
     let(:result) { helper.theme_style_tags(theme) }
 
