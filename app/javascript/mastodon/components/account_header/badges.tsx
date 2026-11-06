@@ -6,6 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { fetchRelationships } from '@/mastodon/actions/accounts';
 import { useAccount } from '@/mastodon/hooks/useAccount';
 import { useAppDispatch, useAppSelector } from '@/mastodon/store';
+import PersonIcon from '@/material-icons/400-24px/person.svg?react';
 
 import {
   AutomatedBadge,
@@ -44,15 +45,26 @@ export const AccountBadges: FC<{ accountId: string }> = ({ accountId }) => {
     ? account.acct.split('@')[1]
     : localDomain;
   account.roles.forEach((role) => {
-    badges.push(
-      <Badge
-        key={role.id}
-        icon={<RoleBadge role={role} />}
-        label={role.name}
-        domain={`(${domain})`}
-        roleId={role.id}
-      />,
-    );
+    if (isAdminBadge(role)) {
+      badges.push(
+        <AdminBadge
+          key={role.id}
+          label={role.name}
+          domain={`(${domain})`}
+          roleId={role.id}
+        />,
+      );
+    } else {
+      badges.push(
+        <Badge
+          icon={<PersonIcon />}
+          key={role.id}
+          label={role.name}
+          domain={`(${domain})`}
+          roleId={role.id}
+        />,
+      );
+    }
   });
 
   if (account.bot) {

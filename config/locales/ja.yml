@@ -8,13 +8,20 @@ ja:
     hosted_on: Mastodon hosted on %{domain}
     title: このサーバーについて
   accounts:
+    api_errors:
+      2fa_required: 二段階認証が設定されていないとアカウントを使用できません
+      account_deleted: あなたのアカウントは削除されました
+      account_suspended: あなたのアカウントは停止されています
+      login_disabled: あなたのアカウントは現在無効化されています
+      memorial: あなたのアカウントは追悼アカウント化されました
+      pending_approval: あなたのアカウントは現在承認待ちです
+      pending_confirmation: あなたのアカウントには確認済みのメールアドレスがありません
     errors:
       cannot_be_added_to_collections: このアカウントはコレクションに追加できません。
     followers:
       one: フォロワー
       other: フォロワー
     following:
-      one: フォロー中
       other: フォロー中
     instance_actor_flash: このアカウントは、個々のユーザーではなく、サーバー自体を表すために使用される仮想のユーザーです。 連合のために使用されるため、停止しないで下さい。
     last_active: 最後の活動
@@ -81,6 +88,9 @@ ja:
       enable_sign_in_token_auth: メールトークン認証を有効化
       enabled: 有効
       enabled_msg: "%{username}の無効化を解除しました"
+      follow_recommendations:
+        suppress: おすすめフォローに表示しない
+        suppressed: 非表示
       followers: フォロワー数
       follows: フォロー数
       header: ヘッダー
@@ -505,81 +515,6 @@ ja:
     email_subscriptions:
       accounts:
         account: アカウント
-        empty:
-          hint: まだ購読者がいるアカウントはありません。
-          no_lists_yet: まだリストはありません
-        last_email: 最終メール
-        lead: 機能を有効にして購読者がいるアカウントが下に表示されます。
-        show:
-          confirm_disable_feature: "%{name} のメールニュースレターを無効にしますか？このアカウントには今後メール更新は送信されません。ユーザーはアカウント設定で再度機能を有効にできます。この機能へのアクセスを完全に取り除くには、ロールでそのアカウントの権限を編集してください。"
-          confirm_remove_subscriber: "%{email} は今後 %{name} からメールを受け取りません。この操作は元に戻せません。"
-          consent: 購読者はメールで投稿を受け取ることにのみ同意しています。この一覧を他の目的に使用しないでください。
-          date: 登録日
-          disable_feature: 機能を無効化
-          disabled: この機能は無効化され、この一覧へのメール送信は停止されました。
-          email: メールアドレス
-          empty:
-            hint: まだこのアカウントを購読している人はいません。
-            no_subscribers_yet: まだ購読者はいません
-          enable_feature: 機能を有効化
-          no_access_html: このアカウントはこの機能を有効化するのに必要な権限を失いました。<a href="%{roles_path}">ロール</a>で変更してください。
-          title: "%{name} のメールニュースレター"
-          view_account: アカウントを表示
-        status: 状態
-        subscribers: 購読者
-        title: メーリングリスト
-      additional_footer_texts:
-        show:
-          title: 追加フッターテキスト
-      compliance_settings:
-        additional_footer_text:
-          action: 管理
-          hint: ニュースレターのメールのフッターにのみ表示される任意のテキスト
-          title: 追加フッターテキスト
-        lead: メールニュースレターは、運用している地域によってはマーケティングメールとみなされる場合があります。
-        privacy_policy:
-          action: 管理
-          hint: このポリシーはすべてのメールのフッターにリンクされます
-          title: プライバシーポリシー
-        title: コンプライアンス設定
-      danger_zone:
-        disable_feature:
-          action: 無効化
-          hint: すべてのアカウントで機能を無効にします
-          title: 機能を無効化
-        erase_all_data:
-          action: データを消去
-          hint: すべてのメーリングリスト内のメールを完全に削除します
-          title: すべてのデータを消去
-        title: 危険な操作
-      disabled_msg: メールサブスクリプションを無効化しました。
-      index:
-        disabled:
-          cannot_be_enabled: あなたの技術提供者はこの機能をこのサーバーで有効化していません。
-          description: この機能により、指定したアカウントはプロフィールにウィジェットを追加でき、Mastodon アカウントを持たない訪問者もメールで投稿を受け取れるようになります。
-          get_started: 始めましょう
-        lead: このサーバーの専用アカウントから投稿をメールで受け取れるようにします。
-        title: メールニュースレター
-      purged_msg: すべてのメールサブスクリプションデータを消去中です。
-      roles:
-        accounts: アカウント
-        edit_role: ロールを編集
-        empty:
-          hint: この機能を使用する権限を持つ人はいません。
-          no_roles_added: まだロールは追加されていません
-        lead: 以下のロールを持つアカウントはプロフィールでこの機能を有効化できます。
-        manage_roles: ロールを管理
-        role_name: ロール名
-        title: ロール
-      setups:
-        show:
-          enable_feature: 機能を有効化
-          important_information: 重要なお知らせ
-          list:
-            1_permission_explanation: この機能が有効になると、指定された権限を持つアカウントはプロフィールにメール登録フォームを追加できます。
-            2_feature_explanation: 訪問者がアカウントのプロフィールページで登録し、購読を確認すると、そのアカウントが新しい公開投稿を行ったときにメール更新を受け取るようになります。
-            3_privacy_policy_warning: サーバー管理者は収集された個人情報（メールアドレス）にアクセスできます。そのため、この機能を使う前にサーバーのプライバシーポリシーと利用規約を更新する必要があります。
-            4_cost_warning: ホスティング構成によってはメール送信に費用がかかる場合があります。機能を有効にするとメール送信量が大幅に増える可能性があるため、事前にホスティング事業者と相談してください。
     export_domain_allows:
       new:
         title: ドメイン許可をインポート
@@ -619,8 +554,6 @@ ja:
           description: FASPから登録を受け取りました。自分で登録していないなら拒否してください。自分で登録した場合は、登録を確定する前に名前と鍵のフィンガープリントを慎重に比較してください。
           reject: 拒否
           title: FASP登録を確認
-        save: 保存
-        select_capabilities: 機能選択
         sign_in: サインイン
         status: ステータス
         title: フェディバース補助サービスプロバイダ
@@ -957,10 +890,8 @@ ja:
       discovery:
         follow_recommendations: おすすめフォロー
         preamble: 必ずしも知っている人がMastodonに居ない新規ユーザーに定着してもらうには、興味深いコンテンツを表示することが役に立ちます。あなたのサーバーの種々のディスカバリー機能の動作を設定してください。
-        privacy: プライバシー
         profile_directory: ディレクトリ
         public_timelines: 公開タイムライン
-        publish_statistics: 統計情報を公開する
         title: 見つける
         trends: トレンド
         wrapstodon: Wrapstodon
@@ -996,7 +927,6 @@ ja:
         warning_hint: モデレーションチームがスパムや悪意のある登録を迅速に処理できる自信がない限り、サインアップを承認制にすることをお勧めします。
       security:
         authorized_fetch: 連合サーバーによる署名なしでの情報取得を拒否する
-        authorized_fetch_hint: ほかの連合サーバーから受け付けるリクエストに署名を必須にすることで、ユーザーによるブロックおよびドメインブロック両方の効果をより強力にします。ただし連合の処理コストが増えてパフォーマンス面で不利になるほか、このサーバーから送られた反応が届く範囲が狭まったり、連合における互換性の問題を招く可能性もあります。また、この機能は公開投稿やプロフィールへのアクセスをブロックした相手から完全に遮断できるものではありません。
         authorized_fetch_overridden_hint: この設定は環境変数で指定されているため、ここでは変更できません。
         federation_authentication: 連合に署名を必須にする
       title: サーバー設定
@@ -1179,7 +1109,6 @@ ja:
           one: 過去1週間で1人が共有
           other: 週間%{count}人に共有されました
         title: トレンドリンク
-        usage_comparison: 今日は%{today}回、昨日は%{yesterday}回共有されました
       not_allowed_to_trend: 未許可のトレンド
       only_allowed: 許可済み
       pending_review: 保留中
@@ -1224,7 +1153,6 @@ ja:
         trendable: トレンドに表示する
         trending_rank: '人気: %{rank}位'
         usable: 使用を許可
-        usage_comparison: 今日は%{today}回、昨日は%{yesterday}回使用されました。
         used_by_over_week:
           one: 過去1週間で1人が使用
           other: 週間%{count}人に使用されました
@@ -1253,9 +1181,6 @@ ja:
     warning_presets:
       add_new: 追加
       delete: 削除
-      edit_preset: プリセット警告文を編集
-      empty: まだプリセット警告文が作成されていません。
-      title: プリセット警告文
     webhooks:
       add_new: エンドポイントを追加
       delete: 削除
@@ -1327,7 +1252,6 @@ ja:
     animations_and_accessibility: アニメーションとアクセシビリティー
     boosting_preferences: ブースト設定
     boosting_preferences_info_html: "<strong>Tip:</strong> 設定に関係なく、<kbd>Shift</kbd> を押しながら %{icon} Boostアイコンを<kbd>クリック</kbd>すると、すぐにブーストされます。"
-    discovery: 見つける
     localization:
       body: Mastodonは有志によって翻訳されています。
       guide_link: https://ja.crowdin.com/project/mastodon
@@ -1475,8 +1399,6 @@ ja:
   deletes:
     challenge_not_passed: 入力された情報は正しくありません
     confirm_password: 本人確認のため、現在のパスワードを入力してください
-    confirm_username: 確認のためユーザー名を入力してください
-    confirm_username_hint_html: 削除するアカウントを確認するため、<code>%{username}</code> と入力してください
     proceed: アカウントを削除する
     success_msg: アカウントは正常に削除されました
     title: アカウント %{acct} の削除
@@ -1676,8 +1598,6 @@ ja:
       incompatible_type: 選択したインポート項目とファイルの内容が異なります
       invalid_json_file: "無効なJSONファイルです。エラー: %{error}"
       invalid_csv_file: '無効なCSVファイルです。エラー: %{error}'
-      status_not_found_warning: インポート先に存在しない投稿が含まれている可能性があります
-      over_rows_processing_limit: "%{count}行以上"
       too_large: ファイルが大きすぎます
     failures: 失敗
     imported: インポート済み
@@ -1827,7 +1747,6 @@ ja:
     incoming_migrations_html: 別のアカウントからこのアカウントに引っ越すには、まず<a href="%{path}">アカウントエイリアスを作成</a>する必要があります。
     moved_msg: アカウントは%{acct}に引っ越し設定されており、フォロワーは引っ越し先に引き継がれています。
     not_redirecting: アカウントは現在引っ越し設定されていません。
-    on_cooldown: あなたは最近アカウントを引っ越しました。この機能は%{count}日後に再度利用できるようになります。
     past_migrations: 過去の引っ越し
     proceed_with_move: フォロワーを引き継ぐ
     redirected_msg: あなたのアカウントは現在%{acct}にリダイレクトされています。
@@ -2014,8 +1933,6 @@ ja:
       account: "@%{acct}からの公開投稿"
       tag: "#%{hashtag}が付けられた公開投稿"
   scheduled_statuses:
-    over_daily_limit: その日予約できる投稿数 %{limit}を超えています
-    over_total_limit: 予約できる投稿数 %{limit}を超えています
     too_soon: 日付は未来でなければなりません
   self_destruct:
     lead_html: 残念ながら、<strong>%{domain}</strong> は恒久的に閉鎖されます。ここにお持ちだったアカウントを今後使うことはできませんが、これまでのデータのバックアップを要求することはまだ可能です。
