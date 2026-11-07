@@ -73,6 +73,7 @@ ja:
       delete: データを削除する
       deleted: 削除済み
       deletion_irreversible: このアカウントのデータは取り消せない形で削除されました。
+      deletion_reversible_hint_html: "このアカウントは削除待ちで、データは%{date}に完全に削除されます。"
       demote: 降格
       destroyed_msg: "%{username}さんのデータは完全に削除されるよう登録されました"
       disable: 無効化
@@ -80,18 +81,27 @@ ja:
       disable_sign_in_token_auth: メールトークン認証を無効化
       disable_two_factor_authentication: 二要素認証を無効にする
       disabled: 無効
+      discoverable:
+        disabled: "投稿者は発見されることを許可していません"
+        enabled: "投稿者は発見されることを許可しています"
+        title: "発見可能"
       display_name: 表示名
       domain: ドメイン
       edit: 編集
       email: メールアドレス
       email_status: メールアドレスの状態
       enable: 有効化
+      enable_sign_in_token: "セキュリティコードによる認証を有効化"
       enable_sign_in_token_auth: メールトークン認証を有効化
+      enable_unconfirmed: "確認メールを許可"
       enabled: 有効
       enabled_msg: "%{username}の無効化を解除しました"
       follow_recommendations:
+        allowed: "許可"
         suppress: おすすめフォローに表示しない
         suppressed: 非表示
+        title: "おすすめユーザー"
+        unsuppress: "おすすめユーザーへの表示を復元"
       followers: フォロワー数
       follows: フォロー数
       header: ヘッダー
@@ -137,6 +147,7 @@ ja:
       push_subscription_expires: PuSH購読期限
       redownload: プロフィールを更新
       redownloaded_msg: "%{username}のプロフィールを正常に更新しました"
+      registration_app: "登録アプリ"
       reject: 却下
       rejected_msg: "%{username}さんの登録申請を却下しました"
       remote_suspension_irreversible: このアカウントのデータは不可逆的に削除されました。
@@ -176,6 +187,12 @@ ja:
       suspension_irreversible: このアカウントのデータは削除され元に戻せなくなります。後日アカウントの凍結を解除することはできますがデータは元に戻せません。
       suspension_reversible_hint_html: アカウントは停止されており、データは%{date}に完全に削除されます。それまではアカウントを元に戻すことができます。今すぐ完全に削除したい場合は以下から行うことができます。
       title: アカウント
+      trends:
+        allow: "許可"
+        allowed: "許可"
+        disallow: "許可しない"
+        disallowed: "許可しない"
+        title: "トレンドの投稿"
       unblock_email: メールアドレスのブロックを解除
       unblocked_email_msg: "%{username}さんのメールアドレスのブロックを解除しました"
       unconfirmed_email: 確認待ちのメールアドレス
@@ -275,6 +292,7 @@ ja:
         create_domain_block_html: "%{name}さんがドメイン %{target}をブロックしました"
         create_email_domain_block_html: "%{name} さんがメールドメイン %{target} をブロックしました"
         create_ip_block_html: "%{name}さんがIP %{target}のルールを作成しました"
+        create_moderation_subscription_html: "%{name}がモデレーション購読%{target}を作成しました"
         create_relay_html: "%{name} さんがリレー %{target} を追加しました"
         create_unavailable_domain_html: "%{name}がドメイン %{target}への配送を停止しました"
         create_user_role_html: "%{name}さんがロール『%{target}』を作成しました"
@@ -290,6 +308,7 @@ ja:
         destroy_email_domain_block_html: "%{name} さんがメールドメイン %{target} のブロックを外しました"
         destroy_instance_html: "%{name}さんがドメイン %{target}をブロックしました"
         destroy_ip_block_html: "%{name}さんが IP %{target}のルールを削除しました"
+        destroy_moderation_subscription_html: "%{name}がモデレーション購読%{target}を削除しました"
         destroy_relay_html: "%{name} さんがリレー %{target} を削除しました"
         destroy_status_html: "%{name}さんが%{target}さんの投稿を削除しました"
         destroy_unavailable_domain_html: "%{name}がドメイン %{target}への配送を再開しました"
@@ -304,7 +323,11 @@ ja:
         enable_relay_html: "%{name} さんがリレー %{target} を有効にしました"
         enable_sign_in_token_auth_user_html: "%{name} が %{target} のメールトークン認証を有効化しました"
         enable_user_html: "%{name}さんが%{target}さんのログインを有効化しました"
+        listable_tag_html: "おすすめ可能"
         memorialize_account_html: "%{name}さんが%{target}さんを追悼アカウントページに登録しました"
+        not_listable_tag_html: "おすすめしない"
+        not_trendable_tag_html: "トレンドに表示しない"
+        not_usable_tag_html: "使用不可"
         promote_user_html: "%{name}さんが%{target}さんを昇格しました"
         publish_terms_of_service_html: "%{name} がサービス利用規約の更新を公開しました"
         reject_appeal_html: "%{name}さんが%{target}からの異議申立を却下しました"
@@ -317,6 +340,7 @@ ja:
         sensitive_account_html: "%{name}さんが%{target}さんのメディアを閲覧注意にマークしました"
         silence_account_html: "%{name}さんが%{target}さんをサイレンスにしました"
         suspend_account_html: "%{name}さんが%{target}さんを停止しました"
+        trendable_tag_html: "トレンドに表示可能"
         unassigned_report_html: "%{name}さんが通報 %{target}の担当を外しました"
         unblock_email_account_html: "%{name}さんがドメイン %{target}のブロックを解除しました"
         unsensitive_account_html: "%{name}さんが%{target}さんのメディアの閲覧注意を解除しました"
@@ -329,12 +353,22 @@ ja:
         update_ip_block_html: "%{name} さんがIP %{target} のルールを更新しました"
         update_report_html: "%{name} さんが通報 %{target} を更新しました"
         update_status_html: "%{name}さんが%{target}さんの投稿を更新しました"
+        update_tag_html: "%{name}が%{target}の設定を変更しました: "
         update_user_role_html: "%{name}さんがロール『%{target}』を変更しました"
         update_username_block_html: "%{name}さんが%{target}を含むユーザー名のルールを更新しました"
+        usable_tag_html: "使用可能;"
+      automated_actions:
+        create_domain_allow_html: "ドメイン%{target}との連合を自動的に許可しました"
+        create_domain_block_html: "ドメイン%{target}を自動的にブロックしました"
+        destroy_domain_allow_html: "ドメイン%{target}との連合の許可を自動的に取り消しました"
+        destroy_domain_block_html: "ドメイン%{target}のブロックを自動的に解除しました"
+        update_domain_block_html: "ドメイン%{target}のブロックを自動的に更新しました"
       deleted_account: 削除されたアカウント
+      deleted_suggestion: "削除されたモデレーション購読"
       empty: ログが見つかりませんでした
       filter_by_action: アクションでフィルター
       filter_by_user: ユーザーでフィルター
+      suggested_by_html: "%{subscription}からの提案"
       title: 操作履歴
       unavailable_instance: "(ドメイン名が利用できません)"
     announcements:
@@ -450,6 +484,11 @@ ja:
       undo: 連合許可を外す
     domain_blocks:
       add_new: ドメインブロックを追加
+      confirm_downgrade:
+        cancel: "キャンセル"
+        confirm: "制限を緩和"
+        preamble_html: "<strong>%{domain}</strong>とそのサブドメインに対する既存のブロックを緩和しようとしています。"
+        title: "%{domain}のドメインブロックの緩和を確認"
       confirm_suspension:
         cancel: キャンセル
         confirm: 停止
@@ -608,6 +647,11 @@ ja:
         title: ドメインブロックをインポート
       no_file: ファイルが選択されていません
     fasp:
+      capabilities:
+        activation_msg: "機能を有効にしました。"
+        deactivation_msg: "機能を無効にしました。"
+        disable: "無効化"
+        enable: "有効化"
       debug:
         callbacks:
           created_at: 作成元
@@ -619,6 +663,7 @@ ja:
         active: アクティブ
         base_url: 基本URL
         callback: コールバック
+        capabilities: "機能"
         delete: 削除
         edit: プロバイダーの編集
         finish_registration: 登録を完了
@@ -644,6 +689,8 @@ ja:
       title: おすすめフォロー
       unsuppress: おすすめフォローを復元
     instances:
+      advisories:
+        title: "モデレーション購読からの勧告"
       audit_log:
         title: 最近の監査ログ
         view_all: 全ての監査ログを閲覧
@@ -667,6 +714,7 @@ ja:
         comment: 内部メモ
         description_html: このドメインとそのサブドメインのすべてのアカウントに適用されるコンテンツポリシーを定義できます。
         limited_federation_mode_description_html: このドメインとの連合を許可するかどうかを選択できます。
+        moderation_subscription: "モデレーション購読"
         policies:
           reject_media: メディアを拒否する
           reject_reports: 通報を拒否
@@ -745,7 +793,95 @@ ja:
       new:
         title: 新規IPルール
       no_ip_block_selected: 何も選択されていないためIPルールを変更しませんでした
+      reset: "リセット"
+      search: "検索"
       title: IPルール
+    moderation_subscriptions:
+      add_new: "購読を追加"
+      advisory_action: "措置: %{action}"
+      advisory_actions:
+        accept: "許可"
+        limit: "制限"
+        reject: "停止"
+      apply_automatically: "勧告を自動的に適用"
+      apply_conditions:
+        always: "常に"
+        never: "しない"
+        safely: "関係を壊さない場合のみ"
+      apply_conditions_hint:
+        always: "推奨される措置を常に自動的に適用します。完全に信頼できるリストにのみ使用してください。"
+        never: "推奨される措置を自動的に適用せず、常に提案を作成します。"
+        safely: "ローカルユーザーの既存のフォロー関係を壊さない限り、推奨される措置を適用します。関係が壊れる場合は代わりに提案を作成します。"
+      delete: "削除"
+      destroyed_msg: "モデレーション購読を削除しました"
+      empty: "モデレーションリストはまだ購読されていません。"
+      last_synced_at: "最終同期日時"
+      list_action: "購読の種類"
+      list_actions:
+        accept: "許可リスト"
+        default: "混合（許可と拒否）"
+        reject: "ブロックリスト"
+      list_actions_hint:
+        accept: "措置が指定されていない項目は許可として扱われます。ブロックは無視されます。"
+        default: "措置が指定されていない項目はブロックとして扱われます。ブロックと許可はそれぞれ指定どおりに扱われます。"
+        reject: "措置が指定されていない項目はブロックとして扱われます。許可は無視されます。"
+      list_actions_short:
+        accept: "許可リスト"
+        default: "混合"
+        reject: "ブロックリスト"
+      name: "名前"
+      new:
+        create: "購読"
+        title: "新しいモデレーション購読"
+      override_unattributed: "手動のブロックを上書き"
+      override_unattributed_hint: "勧告の自動適用時に、この購読が既存の手動ブロックを自動的に強化または引き継ぐことを許可します。"
+      policies:
+        apply_advisories: "勧告を自動的に適用"
+        apply_advisories_safely: "関係を壊さない勧告を自動的に適用"
+        apply_retractions: "勧告の撤回を自動的に適用"
+      priority: "優先順位"
+      priority_hint: "モデレーション購読は優先順位の順に評価され、番号が小さい購読は番号が大きい購読より優先されます。"
+      retract_automatically: "勧告の撤回を自動的に適用"
+      retract_automatically_hint: "購読から対応する項目が削除されたときに、適用済みのポリシー変更を撤回または緩和することを許可します。自動撤回が有効で、優先順位の低いリストに同等の勧告がある場合は、それを採用します。無効の場合は代わりに提案を作成します。"
+      show:
+        delete_confirm: "このモデレーション購読を削除しますか？"
+        edit: "購読を編集"
+        empty: "この購読にはまだ勧告がありません。"
+        title: "モデレーション購読: %{name}"
+      tabs:
+        logs: "ログ"
+        subscriptions: "購読"
+        suggestions: "提案"
+      title: "モデレーション購読"
+      type: "種類"
+      types:
+        csv_list: "CSVリスト"
+      url: "URL"
+    moderation_subscriptions_logs:
+      title: "モデレーション購読のログ"
+    moderation_suggestions:
+      actions:
+        accept: "許可"
+        limit: "制限"
+        reject: "停止"
+        retract: "現在のポリシーを撤回"
+      applied_msg: "%{target_key}への提案を適用しました"
+      apply_accept: "許可"
+      apply_limit: "制限"
+      apply_reject: "停止"
+      apply_retract: "撤回"
+      current_states:
+        accept: "現在許可中"
+        limit: "現在制限中"
+        reject: "現在停止中"
+      description: "モデレーション購読からの提案を優先順位順に表示しています。"
+      destroyed_msg: "%{target_key}への提案を破棄しました"
+      dismiss: "提案を破棄"
+      empty: "現在モデレーションの提案はありません。"
+      retracted_msg: "%{target_key}のポリシーを撤回しました"
+      suggested_from_html: "%{link}からの提案"
+      title: "モデレーションの提案"
+      unable_to_apply_msg: "%{target_key}への提案を適用できませんでした"
     relationships:
       title: "%{acct} さんのフォロー・フォロワー"
     relays:
@@ -942,6 +1078,119 @@ ja:
       translation: 翻訳
       translations: 翻訳
       translations_explanation: オプションとしてルールに翻訳を追加できます。翻訳されたバージョンがない場合、デフォルトの値が表示されます。表示される翻訳がデフォルトの値と対応していることを常に確認しておいてください。
+    server_checks:
+      categories:
+        completed:
+          title: "完了"
+        critical:
+          title: "重大"
+        error:
+          title: "エラー"
+        ignored:
+          title: "無視"
+        suggestion:
+          title: "提案"
+        unprocessed:
+          title: "未処理"
+        warning:
+          title: "警告"
+      checks:
+        database_schema:
+          error:
+            title: "データベーススキーマの確認中にエラーが発生しました"
+          ok:
+            title: "未実行のデータベースマイグレーションはありません"
+          pending:
+            lead_html: "アプリケーションが正常に動作するよう、マイグレーションを実行してください"
+            title: "未実行のデータベースマイグレーションがあります"
+          running:
+            title: "サーバーがデータベーススキーマを確認しています"
+          unprocessed:
+            title: "サーバーはまだデータベーススキーマを確認していません"
+        elastic_search:
+          error:
+            title: "Elasticsearchの設定確認中にエラーが発生しました"
+          ok:
+            title: "Elasticsearchは問題なく設定されています"
+          pending:
+            lead:
+              analysis_index_mismatch_html: "Elasticsearchインデックスのアナライザー設定が古くなっています。<code>tootctl search deploy --only-mapping --only=%{mismatched_specifications_indexes_str}</code>を実行してください"
+              cluster_health_red_html: "Elasticsearchクラスターが正常ではなく（赤）、検索機能を利用できません"
+              cluster_health_yellow_html: "Elasticsearchクラスターが正常ではありません（黄）。原因を調査してください"
+              index_mismatch_html: "Elasticsearchのインデックスマッピングが古くなっています。<code>tootctl search deploy --only=%{mismatched_indexes_str}</code>を実行してください"
+              preset_html: "Elasticsearchクラスターに複数のノードがありますが、Mastodonはそれらを使用するように設定されていません"
+              preset_single_node_html: "Elasticsearchクラスターのノードは1つだけです。<code>ES_PRESET</code>を<code>single_node_cluster</code>に設定してください"
+              reset_chewy_html: "設定変更によりElasticsearchのシステムインデックスが古くなっています。<code>tootctl search deploy --reset-chewy</code>を実行して更新してください"
+              running_check_html: "Elasticsearchに接続できません。実行中であることを確認するか、全文検索を無効にしてください"
+              version_check_html: "Elasticsearch %{running_version}が実行されていますが、%{required_version}が必要です"
+            title: "Elasticsearchに問題があります"
+          running:
+            title: "サーバーがElasticsearchの設定を確認しています"
+          unprocessed:
+            title: "サーバーはまだElasticsearchの設定を確認していません"
+        media_privacy:
+          error:
+            title: "サーバーのメディアのプライバシー確認中にエラーが発生しました"
+          ok:
+            title: "サーバーのメディアのプライバシーは保護されています"
+          pending:
+            lead:
+              upload_check_privacy_error_html: "ウェブサーバーの設定に誤りがあります"
+              upload_check_privacy_error_object_storage_html: "オブジェクトストレージの設定に誤りがあります"
+            title: "ユーザーのプライバシーが危険にさらされています"
+          running:
+            title: "サーバーがプライバシーの状態を確認しています"
+          unprocessed:
+            title: "サーバーはまだプライバシーの状態を確認していません"
+        rules:
+          error:
+            title: "サーバーのルール確認中にエラーが発生しました"
+          ok:
+            title: "サーバーのルールが設定されています"
+          pending:
+            lead_html: "サーバーに公開されたルールがありません。明確なルールはモデレーションを助け、利用者の指針になります"
+            title: "サーバーのルールを設定"
+          running:
+            title: "サーバーがルールを確認しています"
+          unprocessed:
+            title: "サーバーはまだルールの有無を確認していません"
+        sidekiq_process:
+          error:
+            title: "Sidekiqの設定確認中にエラーが発生しました"
+          ok:
+            title: "Sidekiqは問題なく設定されています"
+          pending:
+            lead_html: "%{missing_queues_str}キューのSidekiqプロセスが実行されていません"
+            title: "Sidekiqの設定を確認してください"
+          running:
+            title: "サーバーがSidekiqの設定を確認しています"
+          unprocessed:
+            title: "サーバーはまだSidekiqの設定を確認していません"
+        software_version:
+          error:
+            title: "ソフトウェアの更新確認中にエラーが発生しました"
+          ok:
+            title: "Mastodonは最新です"
+          pending:
+            lead:
+              patch_html: "不具合を修正するMastodonの更新が利用可能です"
+              regular_html: "新しいバージョンのMastodonが利用可能です"
+              urgent_html: "重要なMastodonの更新が利用可能です。できるだけ早く更新してください"
+            title: "Mastodonを更新"
+          running:
+            title: "サーバーがソフトウェアの更新を確認しています"
+          unprocessed:
+            title: "サーバーはまだソフトウェアの更新を確認していません"
+      ignore:
+        label: "無視"
+      lead: "サーバーの安全性、快適さ、効率を保つための推奨事項です。"
+      recommendations:
+        title: "推奨事項"
+      restore:
+        label: "復元"
+      setup:
+        label: "設定"
+      title: "サーバーの状態"
     settings:
       about:
         manage_rules: サーバーのルールを管理
@@ -981,6 +1230,18 @@ ja:
         all: 誰にでも許可
         disabled: 誰にも許可しない
         users: ログイン済みローカルユーザーのみ許可
+      external:
+        directory: "サーバーディレクトリ"
+        opt_in_server_directory:
+          description: "https://joinmastodon.org/servers に掲載されているものなど、サーバーディレクトリにこのサーバーを掲載することを許可します。"
+          title: "サーバーディレクトリへの掲載を許可"
+        opt_in_server_recommendation:
+          description: "公式Mastodonクライアントなどのアプリで、登録時にこのサーバーをおすすめとして表示することを許可します。"
+          title: "サーバーのおすすめへの掲載を許可"
+        preamble: "サーバーの情報を他のサービスとどの程度共有するか、またサーバーをどの程度発見可能にするかを管理します。"
+        privacy: "プライバシー"
+        publish_statistics: "統計を公開"
+        title: "外部からの発見"
       feed_access:
         modes:
           authenticated: ログイン済みユーザーのみ
@@ -1009,6 +1270,14 @@ ja:
         warning_hint: モデレーションチームがスパムや悪意のある登録を迅速に処理できる自信がない限り、サインアップを承認制にすることをお勧めします。
       security:
         authorized_fetch: 連合サーバーによる署名なしでの情報取得を拒否する
+        authorized_fetch_hints:
+          actors: "プロフィールに認証を必須にすると、各ローカルアカウントをどのサーバーが発見したかを追跡でき、アカウントの削除をサーバーに通知する際の不要なリクエストを大幅に減らせます。一方、この追跡とリバースプロキシがレスポンスをキャッシュできないことにより、プロフィールの配信性能がわずかに低下します。また、一部の連合サービスとの互換性に問題が生じる場合があります。"
+          all: "プロフィールに認証を必須にする場合の利点と欠点に加え、連合サーバーからのすべてのリクエストに認証を必須にすると、ユーザーおよびサーバー単位のブロックをより厳格に適用できますが、ほとんどのリクエストをキャッシュできなくなります。また、返信の転送が無効になるため、返信が届く範囲も狭くなります。"
+          none: "必須の場合にのみ認証を要求すると、リバースプロキシがより多くのリクエストをキャッシュできます。このオプションは将来削除される可能性があります。他のオプションで問題が発生する場合にのみ使用してください。"
+        authorized_fetch_modes:
+          actors: "プロフィールと非公開コンテンツ"
+          all: "すべてのリクエスト"
+          none: "非公開コンテンツのみ"
         authorized_fetch_overridden_hint: この設定は環境変数で指定されているため、ここでは変更できません。
         federation_authentication: 連合に署名を必須にする
         authorized_fetch_hint: ほかの連合サーバーから受け付けるリクエストに署名を必須にすることで、ユーザーによるブロックおよびドメインブロック両方の効果をより強力にします。ただし連合の処理コストが増えてパフォーマンス面で不利になるほか、このサーバーから送られた反応が届く範囲が狭まったり、連合における互換性の問題を招く可能性もあります。また、この機能は公開投稿やプロフィールへのアクセスをブロックした相手から完全に遮断できるものではありません。
@@ -1021,13 +1290,17 @@ ja:
       critical_update: "※緊急 (速やかに適用してください)"
       description: Mastodonサーバーはいつでも最新の状態を保ち、新しい機能や修正を利用できるようにしておくことをおすすめします。またセキュリティの問題が発生した場合は、速やかにMastodonをアップデートすることが大切です。Mastodonは30分おきにアップデートを確認し、通知設定に応じて新しいアップデートをメールで通知します。
       documentation_link: もっと見る
+      nearing_eol: "現在使用中のブランチのサポートは%{date}に終了します。更新を検討してください。"
       release_notes: リリースノート
+      supported_until: "サポート終了日: %{date}"
       title: 利用可能なアップデート
       type: アップデートの種別
       types:
         major: メジャーリリース
         minor: マイナーリリース
         patch: パッチ (バグ修正のみ)
+      unsupported_branch: "現在使用中のブランチはサポートされていません。できるだけ早く更新してください。"
+      unsupported_since: "%{date}以降サポート対象外"
       version: バージョン
     statuses:
       account: 作成者
@@ -1196,6 +1469,9 @@ ja:
           one: 過去1週間で1人が共有
           other: 週間%{count}人に共有されました
         title: トレンドリンク
+        usage_comparison:
+          one: "今日は%{count}回共有されました。昨日は%{yesterday}回でした"
+          other: "今日は%{count}回共有されました。昨日は%{yesterday}回でした"
       not_allowed_to_trend: 未許可のトレンド
       only_allowed: 許可済み
       pending_review: 保留中
@@ -1240,6 +1516,9 @@ ja:
         trendable: トレンドに表示する
         trending_rank: '人気: %{rank}位'
         usable: 使用を許可
+        usage_comparison:
+          one: "今日は%{count}回使用されました。昨日は%{yesterday}回でした"
+          other: "今日は%{count}回使用されました。昨日は%{yesterday}回でした"
         used_by_over_week:
           one: 過去1週間で1人が使用
           other: 週間%{count}人に使用されました
@@ -1268,8 +1547,16 @@ ja:
     warning_presets:
       add_new: 追加
       delete: 削除
+      dropdown:
+        all_actions: "すべての措置"
+        disable: "凍結"
+        none: "警告"
+        sensitive: "閲覧注意"
+        silence: "制限"
+        suspend: "停止"
       edit_preset: プリセット警告文を編集
       empty: まだプリセット警告文が作成されていません。
+      navigation_title: "定型返信"
       title: プリセット警告文
     webhooks:
       add_new: エンドポイントを追加
@@ -1296,6 +1583,15 @@ ja:
       body: "%{instance} のモデレーターによる活動がしばらくなかったため、%{instance} のアカウント作成は手動での承認を必要とするように自動的に変更されました。これには
         %{instance} が悪意ある者の踏み台として使われることを防ぐ役割があります。アカウント作成は必要に応じていつでも再び開放できます。"
       subject: "%{instance} のアカウント作成は自動的に承認制に変更されました"
+    end_of_support_out_of_support_warning:
+      body: "サーバーで現在使用しているMastodonのバージョンはサポートを終了しました。できるだけ早く更新することをおすすめします。"
+      subject: "%{instance}で使用中のMastodon %{branch}のサポートが終了しました"
+    end_of_support_three_months_warning:
+      body: "サーバーで現在使用しているMastodonのバージョンのサポートは3か月後に終了します。事前に新しいブランチへの更新を検討してください。"
+      subject: "%{instance}で使用中のMastodon %{branch}のサポートは3か月後に終了します"
+    end_of_support_two_weeks_warning:
+      body: "サーバーで現在使用しているMastodonのバージョンのサポートは2週間後に終了します。事前に新しいブランチへ更新することをおすすめします。"
+      subject: "%{instance}で使用中のMastodon %{branch}のサポートは2週間後に終了します"
     new_appeal:
       actions:
         delete_statuses: 投稿を削除する
@@ -1311,9 +1607,15 @@ ja:
     new_critical_software_updates:
       body: 重要な修正を含むMastodonのアップデートがリリースされています。早急にアップデートを行ってください。
       subject: 緊急のMastodonアップデートがあります［%{instance}］
+    new_moderation_suggestions:
+      body: "サーバーが購読しているモデレーションリストから新しい提案が公開されました。"
+      subject: "%{instance}に新しいモデレーションの提案があります"
     new_pending_account:
       body: 新しいアカウントの詳細は以下の通りです。この申請を承認または却下することができます。
       subject: "%{instance}で新しいアカウント (%{username}) が承認待ちです"
+    new_pending_accounts:
+      body: "%{instance}に新しいアカウントが作成されました。サーバーはモデレーターの承認後に確認メールを送信するよう設定されているため、これらのアカウントはまだメールアドレスを確認していません。新しいアカウントの詳細は以下のとおりです。申請を承認または拒否できます。"
+      subject: "%{instance}に審査待ちの新しいアカウントがあります"
     new_report:
       body: "%{reporter}さんが%{target}さんを通報しました"
       body_remote: "%{domain}の誰かが%{target}さんを通報しました"
@@ -1422,11 +1724,16 @@ ja:
     security: セキュリティ
     set_new_password: 新しいパスワード
     setup:
+      correct_email: "アドレスを修正"
       email_below_hint_html: 確認メールが迷惑メールフォルダに振り分けられていないか確認してください。メールアドレスを間違えた場合は、ここでメールアドレスの変更と確認メールの再送ができます。
       email_settings_hint_html: "%{email} に送信したリンクをクリックして Mastodon の使用を開始します。ここでお待ちしています。"
+      email_settings_hint_wait_html: "申請を審査しています。まもなく%{email}にメールが届きます。届いたらリンクをクリックしてMastodonの利用を開始してください。このままお待ちください。"
       link_not_received: 確認メールを受信できない場合は
       new_confirmation_instructions_sent: 確認用のリンクを記載した新しいメールを送信しました
       title: 確認メールを送信しました
+      title_wait: "受信トレイを確認してください"
+      wrong_email: "メールアドレスが間違っていますか？"
+      wrong_email_below_hint_html: "ご安心ください。以下からメールアドレスを修正できます。"
     sign_in:
       preamble_html: "<strong>%{domain}</strong> の資格情報でサインインします。 あなたのアカウントが別のサーバーでホストされている場合は、ここでログインすることはできません。"
       title: "%{domain}にログイン"
@@ -1465,6 +1772,12 @@ ja:
     auto: 自動
     dark: ダーク
     light: ライト
+  color_theme:
+    cyan: "シアン"
+    indigo: "インディゴ"
+    lime: "ライム"
+    orange: "オレンジ"
+    pink: "ピンク"
   contrast:
     auto: 自動
     high: 高
@@ -1513,6 +1826,7 @@ ja:
       action_taken: 取られた措置
       appeal: 異議申立
       appeal_approved: このストライクは申し立てが承認され、有効ではありません。
+      appeal_handled_by: "異議申し立ての担当者"
       appeal_rejected: 申し立ては拒否されました
       appeal_submitted_at: 異議申立の送信日時
       appealed_msg: 申し立てが送信されました。承認されると通知されます。
@@ -1698,6 +2012,10 @@ ja:
       incompatible_type: 選択したインポート項目とファイルの内容が異なります
       invalid_json_file: '無効なJSONファイルです。エラー: %{error}'
       invalid_csv_file: '無効なCSVファイルです。エラー: %{error}'
+      no_data: "このファイルには指定されたインポートの種類に一致するデータがありません"
+      over_rows_processing_limit:
+        one: "%{count}行を超えています"
+        other: "%{count}行を超えています"
       too_large: ファイルが大きすぎます
       status_not_found_warning: インポート先に存在しない投稿が含まれている可能性があります
     failures: 失敗
@@ -1848,6 +2166,9 @@ ja:
     incoming_migrations_html: 別のアカウントからこのアカウントに引っ越すには、まず<a href="%{path}">アカウントエイリアスを作成</a>する必要があります。
     moved_msg: アカウントは%{acct}に引っ越し設定されており、フォロワーは引っ越し先に引き継がれています。
     not_redirecting: アカウントは現在引っ越し設定されていません。
+    on_cooldown:
+      one: "最近アカウントを移行しました。この機能は%{count}日後に再び利用できるようになります。"
+      other: "最近アカウントを移行しました。この機能は%{count}日後に再び利用できるようになります。"
     past_migrations: 過去の引っ越し
     proceed_with_move: フォロワーを引き継ぐ
     redirected_msg: あなたのアカウントは現在%{acct}にリダイレクトされています。
@@ -1940,6 +2261,7 @@ ja:
     administration_emails: 管理にかかわるメール通知
     email_events: メールによる通知
     email_events_hint: '受信する通知を選択:'
+    moderation_emails: "モデレーションのメール通知"
   number:
     human:
       decimal_units:
@@ -1964,6 +2286,7 @@ ja:
     next: 次
     older: 以前の投稿
     prev: 前
+    truncate_html: "&hellip;"
   polls:
     errors:
       already_voted: このアンケートには投票済みです
@@ -2036,6 +2359,12 @@ ja:
       account: "@%{acct}からの公開投稿"
       tag: "#%{hashtag}が付けられた公開投稿"
   scheduled_statuses:
+    over_daily_limit:
+      one: "本日の予約投稿の上限%{count}件を超えました"
+      other: "本日の予約投稿の上限%{count}件を超えました"
+    over_total_limit:
+      one: "予約投稿の上限%{count}件を超えました"
+      other: "予約投稿の上限%{count}件を超えました"
     too_soon: 日付は未来でなければなりません
   self_destruct:
     lead_html: 残念ながら、<strong>%{domain}</strong> は恒久的に閉鎖されます。ここにお持ちだったアカウントを今後使うことはできませんが、これまでのデータのバックアップを要求することはまだ可能です。
@@ -2304,6 +2633,14 @@ ja:
       further_actions_html: このログインに心当たりがない場合は、ただちに%{action}してください。
       subject: 二要素認証に失敗しました
       title: 二要素認証に失敗した記録があります
+    sign_in_token:
+      change_password: "パスワードを変更する"
+      details: "ログイン試行の詳細は以下のとおりです:"
+      explanation: "長期間利用されていなかったアカウントへのログイン試行を検出しました。ご自身による操作の場合は、以下のセキュリティコードをログイン確認画面に入力してください:"
+      further_actions: "ご自身による操作でない場合は、パスワードを変更し、アカウントの二段階認証を有効にしてください。以下から設定できます:"
+      further_actions_html: "ご自身による操作でない場合は、アカウントを保護するため、直ちに%{action}ことと、二段階認証を有効にすることをおすすめします。"
+      subject: "ログイン試行を確認してください"
+      title: "ログイン試行"
     suspicious_sign_in:
       change_password: パスワードを変更
       details: 'ログインの詳細は以下のとおりです:'
@@ -2395,8 +2732,12 @@ ja:
       title: ようこそ、%{name}さん！
   users:
     follow_limit_reached: あなたは現在 %{limit}人以上フォローできません
+    generic_access_help_html: "アカウントにアクセスできませんか？ %{email}に連絡してサポートを受けることができます"
     go_to_sso_account_settings: 外部サービスアカウントの設定はこちらで行ってください
+    inactive_sign_in_confirmation: "前回のログインから時間が経過しているため、ご本人確認用のセキュリティコードをメールアドレスに送信します。"
+    inactive_sign_in_title: "セキュリティコードを確認してください"
     invalid_otp_token: 二要素認証コードが間違っています
+    invalid_sign_in_token: "セキュリティコードが無効です"
     otp_lost_help_html: どちらも使用できない場合、%{email}に連絡を取ると解決できるかもしれません
     rate_limited: 認証に失敗した回数が多すぎます。時間をおいてからログインしてください。
     seamless_external_login: あなたは外部サービスを介してログインしているため、パスワードとメールアドレスの設定は利用できません。

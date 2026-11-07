@@ -4,6 +4,7 @@ ja:
     hints:
       account:
         attribution_domains: 1行につき1つずつ入力してください。この設定は関わりのないwebサイトに対して虚偽の帰属表示が行われることを防止する役割があります。
+        discoverable: 他のユーザーが作成したコレクションに表示されることがあります。また、Mastodonのさまざまな発見機能を通じて、あなたや公開投稿が他のユーザーにおすすめされることがあります。
         display_name: フルネーム、ハンドルネームなど
         fields: ホームページ、代名詞、年齢など何でも構いません。
         indexable: "「公開」で送信された投稿がMastodonの検索結果にヒットするようになります。ここのチェック状態にかかわらず、ほかのユーザーにブーストやお気に入り登録された投稿はそのユーザーから検索されることがあります。"
@@ -15,11 +16,13 @@ ja:
       account_migration:
         acct: 引っ越し先のユーザー名@ドメインを指定してください
       account_warning_preset:
+        action_category: この返信を使用するモデレーション措置を選択してください。複数の措置に適用する場合は「すべての措置」を選択してください。
         text: URL、ハッシュタグ、メンションなど、投稿に用いる構文が使用できます
         title: オプションです。受信者には表示されません。
       admin_account_action:
         include_statuses: ユーザーは取られた制限や警告の原因となった投稿を確認できるようになります
         send_email_notification: ユーザーは自分のアカウントに何が起こったのか説明を受け取ります
+        text: 任意。投稿と同じ書式を使用できます。定型返信の下に表示されます
         type_html: "<strong>%{acct}</strong>さんに対し、何を行うか選択してください"
         types:
           disable: ユーザーが自分のアカウントを使用できないようにします。コンテンツを削除したり非表示にすることはありません。
@@ -27,6 +30,7 @@ ja:
           sensitive: このユーザーが添付したメディアを強制的に閲覧注意にする
           silence: ユーザーによる公開投稿を禁止し、フォローしていない人に投稿や通知が表示されないようにします。また、このアカウントに対するすべての通報をクローズします。
           suspend: このアカウントによるすべての活動を禁止し、コンテンツを削除します。この操作は30日以内であれば取り消しが可能です。また、このアカウントに対するすべての通報をクローズします。
+        warning_preset_html: 任意。<a href="%{path}">こちらから管理できます</a>
       announcement:
         all_day: 有効化すると、対象期間の箇所に日付だけが表示されます
         ends_at: オプションです。指定すると、お知らせの掲載はその日時で自動的に終了します
@@ -58,6 +62,7 @@ ja:
         setting_default_quote_policy_private: Mastodon で作成されたフォロワーのみの投稿は他人から引用できません。
         setting_default_quote_policy_unlisted: 誰かがあなたを引用すると、その投稿もトレンドから非表示になります。
         setting_default_sensitive: 閲覧注意状態のメディアはデフォルトでは内容が伏せられ、クリックして初めて閲覧できるようになります
+        setting_default_spoiler_field: 投稿フォームで内容の警告欄を常に開いた状態にします。テキストは投稿ごとに変更できます。
         setting_display_media_default: 閲覧注意に設定されたメディアを表示する前に警告します
         setting_display_media_hide_all: すべてのメディアを表示する前に警告します
         setting_display_media_show_all: 閲覧注意に設定されたメディアを含め、すべてのメディアを警告なしで表示します
@@ -88,11 +93,14 @@ ja:
         closed_registrations_message: アカウント作成を停止している時に表示されます
         content_cache_retention_period: 他のサーバーからのすべての投稿（ブーストや返信を含む）は、指定された日数が経過すると、ローカルユーザーとのやりとりに関係なく削除されます。これには、ローカルユーザーがブックマークやお気に入りとして登録した投稿も含まれます。異なるサーバーのユーザー間の非公開な返信も失われ、復元することは不可能です。この設定の使用は特別な目的のインスタンスのためのものであり、一般的な目的のサーバーで使用した場合、多くのユーザーの期待を裏切ることになります。
         custom_css: ウェブ版のMastodonでカスタムスタイルを適用できます。
+        email_footer_text: ニュースレターメールのフッターにのみ表示される任意のテキストです。
         favicon: デフォルトのMastodonのブックマークアイコンを独自のアイコンで上書きします。WEBP、PNG、GIF、JPGが利用可能です。
+        landing_page: 新しい訪問者がサーバーに初めてアクセスしたときに表示されるページを選択します。「トレンド」を選ぶ場合は発見の設定でトレンドを有効にする必要があります。「ローカルフィード」を選ぶ場合は発見の設定で「ローカル投稿を含むライブフィードへのアクセス」を「全員」に設定する必要があります。
         mascot: 上級者向けWebインターフェースのイラストを上書きします。
         media_cache_retention_period: リモートユーザーが投稿したメディアファイルは、あなたのサーバーにキャッシュされます。正の値を設定すると、メディアは指定した日数後に削除されます。削除後にメディアデータが要求された場合、ソースコンテンツがまだ利用可能であれば、再ダウンロードされます。リンクプレビューカードがサードパーティのサイトを更新する頻度に制限があるため、この値を少なくとも14日に設定することをお勧めします。
         min_age: ユーザーはサインアップ中に生年月日を確認するよう求められます
         peers_api_enabled: このサーバーが Fediverse で遭遇したドメイン名のリストです。このサーバーが知っているだけで、特定のサーバーと連合しているかのデータは含まれません。これは一般的に Fediverse に関する統計情報を収集するサービスによって使用されます。
+        postpone_confirmation_emails: この設定を有効にすると、承認待ちのアカウントへの確認メールは承認後にのみ送信されます。ユーザーはメールを受信後すみやかにメールアドレスを確認する必要があるものの、送信時期を自分で制御できないため、登録時の使い勝手が低下する可能性があります。また、承認前に無効なメールアドレスのアカウントをMastodonが除外できなくなるため、モデレーターの作業が増える可能性があります。
         profile_directory: ディレクトリには、掲載する設定をしたすべてのユーザーが一覧表示されます。
         require_invite_text: アカウント登録が承認制の場合、登録の際の申請事由の入力を必須にします
         site_contact_email: 法律またはサポートに関する問い合わせ先
@@ -104,6 +112,7 @@ ja:
         status_page_url: 障害発生時などにユーザーがサーバーの状態を確認できるページのURL
         theme: ログインしていない人と新規ユーザーに表示されるテーマ。
         thumbnail: サーバー情報と共に表示される、アスペクト比が約 2:1 の画像。
+        thumbnail_description: 視覚に障害のある人が内容を理解できるようにする画像の説明です。
         trendable_by_default: トレンドの審査を省略します。トレンドは掲載後でも個別に除外できます。
         trends: トレンドは、サーバー上で人気を集めている投稿、ハッシュタグ、ニュース記事などが表示されます。
         wrapstodon: ローカルユーザーが、1年間のMastodonの利用について楽しい概要を生成する機能です。この機能は、その年に、1つ以上の公開またはひかえめな公開での投稿をして、1つ以上のハッシュタグを使ったユーザーが、毎年12月10日から31日まで利用できます。
@@ -129,6 +138,7 @@ ja:
         otp: '携帯電話のアプリで生成された二要素認証コードを入力するか、リカバリーコードを使用してください:'
         webauthn: USBキーの場合は、必ず挿入し、必要に応じてタップしてください。
       settings:
+        email_subscriptions: 無効にすると既存の購読者は保持されますが、メールの送信は停止します。
         indexable: プロフィールがGoogleやBingなどの検索結果にヒットするようになります。
         show_application: 自分で自分の投稿の送信元アプリを確認することは、ここのチェック状態にかかわらず可能です。
       tag:
@@ -149,13 +159,22 @@ ja:
         min_age: お住まいの国や地域の法律によって定められている最低年齢を下回ってはなりません。
       user:
         chosen_languages: いずれかを選択すると、選択した言語の投稿のみが公開タイムラインに表示されます。この設定はホームタイムラインとリストには影響しません。
+        date_of_birth:
+          one: "%{domain}を利用するには%{count}歳以上であることを確認する必要があります。この情報は保存しません。"
+          other: "%{domain}を利用するには%{count}歳以上であることを確認する必要があります。この情報は保存しません。"
         role: そのロールは、ユーザーが持つ権限を制御します。
       user_role:
+        collection_limit: この役割を持つユーザーが作成できるコレクションの数を制限します。この数を減らしても、すでに上限に達しているユーザーのコレクションは削除されませんが、新しいコレクションは作成できなくなります。
         color: UI 全体でロールの表示に使用される色（16進数RGB形式）
         highlighted: これによりロールが公開されます。
         name: ロールのバッジを表示する際の表示名
         permissions_as_keys: このロールを持つユーザーは次の機能にアクセスできます
         position: 場合により、より高いロールのユーザーが紛争の解決を決定します。特定のアクションは優先度が低いロールでのみ実行できます。
+        require_2fa: この役割を持つユーザーは、Mastodonを利用するために二段階認証を設定する必要があります
+      username_block:
+        allow_with_approval: 一致する登録を完全に拒否する代わりに、承認を必須にします
+        comparison: 部分一致でブロックする場合は、意図しない単語も一致する可能性（Scunthorpe問題）に注意してください
+        username: 大文字・小文字や、aの代わりの4、eの代わりの3などのよくある類似文字を区別せずに照合します
       webhook:
         events: 送信するイベントを選択
         template: 変数補完を使用して、独自のJSONペイロードを構成できます。デフォルトのJSONを使用する場合は空白のままにします。
@@ -163,6 +182,7 @@ ja:
     labels:
       account:
         attribution_domains: あなたの著者表示を許可するwebサイト
+        discoverable: 発見機能に自分を表示する
         fields:
           name: ラベル
           value: 内容
@@ -174,17 +194,22 @@ ja:
       account_migration:
         acct: 引っ越し先のユーザーID
       account_warning_preset:
+        action_category: モデレーション措置を割り当て
+        text: 返信文
         title: タイトル
       admin_account_action:
         include_statuses: 通報された投稿をメールに含める
         send_email_notification: メールでユーザーに通知
+        text: カスタム返信
         type: アクション
         types:
+          all_actions: すべての措置
           disable: ログインを無効化
           none: 警告を送信
           sensitive: 閲覧注意
           silence: サイレンス
           suspend: 停止
+        warning_preset_id: 定型返信
       announcement:
         all_day: 終日
         ends_at: 予定終了日時
@@ -224,11 +249,13 @@ ja:
         setting_always_send_emails: 常にメール通知を送信する
         setting_auto_play_gif: アニメーションGIFを自動再生する
         setting_boost_modal: ブーストの公開範囲の設定
+        setting_color_scheme: モード
         setting_contrast: コントラスト
         setting_default_language: 投稿する言語
         setting_default_privacy: 投稿の公開範囲
         setting_default_quote_policy: 引用できるユーザー
         setting_default_sensitive: メディアを常に閲覧注意としてマークする
+        setting_default_spoiler_field: デフォルトで内容の警告を使用
         setting_delete_modal: 投稿を削除する前に警告する
         setting_disable_hover_cards: マウスオーバーでプロフィールをポップアップしない
         setting_disable_swiping: スワイプでの切り替えを無効にする
@@ -236,20 +263,25 @@ ja:
         setting_display_media_default: 標準
         setting_display_media_hide_all: 非表示
         setting_display_media_show_all: 表示
+        setting_display_own_boosts: メインフィードに自分のブーストを表示
+        setting_display_own_posts: メインフィードに自分の投稿を表示
         setting_emoji_style: 絵文字スタイル
         setting_expand_spoilers: 閲覧注意としてマークされた投稿を常に展開する
         setting_hide_network: 繋がりを隠す
         setting_missing_alt_text_modal: 代替テキストなしでメディアを投稿する前に警告する
         setting_quick_boosting: クイックブーストの有効化
         setting_reduce_motion: アニメーションの動きを減らす
+        setting_split_default_privacy_discoverable: 投稿を公開フィードや検索結果で発見可能にする
         setting_system_font_ui: システムのデフォルトフォントを使う
         setting_system_scrollbars_ui: システムのデフォルトのスクロールバーを使う
         setting_theme: サイトテーマ
+        setting_theme_color: テーマカラー
         setting_unfollow_modal: フォローを解除する前に確認ダイアログを表示する
         setting_use_blurhash: 非表示のメディアを色付きのぼかしで表示する
         setting_use_pending_items: 手動更新モード
         severity: 重大性
         sign_in_token_attempt: セキュリティコード
+        sign_in_token_resend: セキュリティコードを再送信
         title: タイトル
         type: インポートする項目
         username: ユーザー名
@@ -272,13 +304,20 @@ ja:
         closed_registrations_message: アカウント作成を停止している時のカスタムメッセージ
         content_cache_retention_period: リモートコンテンツの保存期間
         custom_css: カスタムCSS
+        email_footer_text: 追加のフッターテキスト
         favicon: ブックマークアイコン
+        landing_page: 新しい訪問者向けのランディングページ
+        local_live_feed_access: ローカル投稿を含むライブフィードへのアクセス
+        local_topic_feed_access: ローカル投稿を含むハッシュタグ・リンクフィードへのアクセス
         mascot: カスタムマスコット（レガシー）
         media_cache_retention_period: メディアキャッシュの保持期間
         min_age: 最低年齢の要件
         peers_api_enabled: 発見したサーバーのリストをAPIで公開する
+        postpone_confirmation_emails: 確認メールを承認後まで延期
         profile_directory: プロフィール一覧を有効にする
         registrations_mode: 新規登録が可能な人
+        remote_live_feed_access: リモート投稿を含むライブフィードへのアクセス
+        remote_topic_feed_access: リモート投稿を含むハッシュタグ・リンクフィードへのアクセス
         require_invite_text: 申請事由の入力を必須にする
         show_domain_blocks: ドメインブロックを表示
         show_domain_blocks_rationale: ドメインがブロックされた理由を表示
@@ -291,9 +330,13 @@ ja:
         status_page_url: サーバーの状態ページのURL
         theme: デフォルトテーマ
         thumbnail: サーバーのサムネイル
+        thumbnail_description: サムネイルの代替テキスト
         trendable_by_default: 審査前のトレンドの掲載を許可する
         trends: トレンドを有効にする
         wrapstodon: Wrapstodonを有効にする
+      form_email_subscriptions_confirmation:
+        agreement_email_volume: この機能を有効にするとサーバーから送信されるメールの量が大幅に増える可能性があり、発生する費用はすべて自分の責任となることを理解しています。
+        agreement_privacy_and_terms: プライバシーポリシーと利用規約を更新しました。
       interactions:
         must_be_follower: フォロワー以外からの通知をブロック
         must_be_following: フォローしていないユーザーからの通知をブロック
@@ -313,10 +356,12 @@ ja:
       notification_emails:
         appeal: モデレーターの判断に異議申し立てが行われた時
         digest: タイムラインからピックアップしてメールで通知する
+        end_of_support: 現在のMastodonバージョンのサポート終了が近づいている
         favourite: お気に入り登録された時
         follow: フォローされた時
         follow_request: フォローリクエストを受けた時
         mention: 返信が来た時
+        moderation_suggestions: 自動モデレーションの提案がある
         pending_account: 新しいアカウントの承認が必要な時
         quote: 投稿が引用された時
         reblog: 投稿がブーストされた時
@@ -332,6 +377,7 @@ ja:
         hint: ルールの補足説明
         text: ルール
       settings:
+        email_subscriptions: メール購読を有効化
         indexable: 検索エンジンからアクセスできるようにする
         show_application: 投稿に使ったアプリを開示する
       tag:
@@ -360,14 +406,17 @@ ja:
         role: ロール
         time_zone: タイムゾーン
       user_role:
+        collection_limit: ユーザーごとのコレクション数の上限
         color: バッジの色
         highlighted: プロフィールにロールのバッジを表示する
         name: 名前
         permissions_as_keys: 権限
         position: 優先度
+        require_2fa: 二段階認証を必須にする
       username_block:
         allow_with_approval: 承認制での新規登録を可能にする
         comparison: 比較方法
+        username: 照合する単語
       webhook:
         events: 有効なイベント
         template: ペイロードテンプレート

@@ -63,6 +63,10 @@ ja:
         prompt_html: "%{client_name}があなたのアカウントにアクセスするための許可を求めています。<strong>このリクエストを承認するのは、信頼できる相手であると認識している場合のみです。</strong>"
         review_permissions: アクセス許可を確認
         title: 認証が必要です
+      require_reauth:
+        log_out_and_continue: ログアウトして続行
+        prompt_html: 現在<strong>%{handle}</strong>としてログインしています。続行するにはログアウトする必要があります。
+        title: 再認証が必要です
       show:
         title: 認証コードをコピーしてアプリに貼り付けて下さい。
     authorized_applications:
@@ -83,6 +87,10 @@ ja:
         access_denied: リソースの所有者または認証サーバーが要求を拒否しました。
         credential_flow_not_configured: リソース所有者のパスワード Doorkeeper.configure.resource_owner_from_credentials が設定されていないためクレデンシャルフローに失敗しました。
         invalid_client: 不明なクライアントであるか、クライアント情報が含まれていない、またはサポートされていない認証方法のため、クライアントの認証に失敗しました。
+        invalid_code_challenge_method:
+          one: code_challenge_methodは%{challenge_methods}である必要があります。
+          other: code_challenge_methodは%{challenge_methods}のいずれかである必要があります。
+          zero: 認可サーバーは利用可能なcode_challenge_methodがないため、PKCEに対応していません。
         invalid_grant: 指定された認証許可は無効であるか、期限切れ、取り消されている、リダイレクトURIの不一致、または別のクライアントに発行されています。
         invalid_redirect_uri: 無効なリダイレクトURIが含まれています。
         invalid_request:
