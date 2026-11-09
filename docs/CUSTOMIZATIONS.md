@@ -83,7 +83,7 @@
 - 期待: ロールを持つアカウントに、ロール名と色を反映したチェックマーク型バッジを表示する。表示名、投稿の新 UI ヘッダー、プロフィール、ホバーカードで整合させる。ホバーカードでは表示名横の重複表示を避け、アカウントのバッジを表示する。複数ロール、ロールなし、bot・ブロックなど既存バッジを維持する。これはロール表示であり、本人確認の認証処理を追加するものではない。
 - 実装: `app/javascript/mastodon/components/badge/index.tsx`、`account_header/badges.tsx`、`display_name/role_badges.tsx`、`display_name/default.tsx`、`status/header.tsx`、`hover_card_account.tsx`、`app/javascript/styles/mastodon/components.scss`。
 - 既存テスト: `app/javascript/mastodon/components/account_header/badges.test.tsx`、`components/display_name/role_badges.test.tsx`。
-- 確認: ローカル/リモート、複数ロール、ロールなし、両 UI、ホバーカード、アクセシビリティ上の名前、他のバッジとの併存を確認する。
+- 確認: ローカル/リモート、複数ロール、ロールなし、両 UI、ホバーカード、アクセシビリティ上の名前、他のバッジとの併存を確認する。タイムラインのハンドル横では区切りの中点とバッジが文字に対して低くずれていないことも確認する。
 - 履歴: `7514c47660`, `969b90dcfc`, `079a8e0083`, `91fb6adafc`, `86f2725157`。
 
 ### CUST-09: 画像代替テキストの日本語 OCR

@@ -944,7 +944,7 @@ body > [data-popover-placement] {
   display: inline-flex;
   gap: 2px;
   margin-inline-start: 3px;
-  vertical-align: -0.15em;
+  vertical-align: middle;
   align-items: center;
 
   &::before {
