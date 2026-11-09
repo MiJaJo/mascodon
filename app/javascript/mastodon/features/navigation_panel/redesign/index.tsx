@@ -16,6 +16,7 @@ import {
   InfoIcon,
   GavelIcon,
   ShieldStarIcon,
+  BookOpenIcon,
 } from '@phosphor-icons/react';
 
 import FediIcon from '@/images/icons/icon_fediverse.svg?react';
@@ -31,6 +32,7 @@ import { useIdentity } from '@/mastodon/identity_context';
 import {
   disabledAccountId,
   localLiveFeedAccess,
+  manualUrl,
   remoteLiveFeedAccess,
   trendsEnabled,
 } from '@/mastodon/initial_state';
@@ -192,6 +194,7 @@ export const RedesignNavigationPanel: React.FC<{
             </NavigationLink>
             <ExploreLink />
             <PublicFeedsLink />
+            <ManualLink />
 
             {isAdmin && (
               <NavigationLink
@@ -346,6 +349,7 @@ export const RedesignNavigationPanel: React.FC<{
             </NavigationLink>
             <ExploreLink />
             <PublicFeedsLink />
+            <ManualLink />
           </ul>
           <footer className={classes.footer} data-stuck={!isScrolledToBottom}>
             {disabledAccountId ? <DisabledAccountBanner /> : <LoggedOutInfo />}
@@ -355,6 +359,24 @@ export const RedesignNavigationPanel: React.FC<{
       )}
       {bottomSensor}
     </nav>
+  );
+};
+
+const ManualLink: React.FC = () => {
+  if (!manualUrl) {
+    return null;
+  }
+
+  return (
+    <NavigationLink
+      as='a'
+      href={manualUrl}
+      target='_blank'
+      rel='noopener noreferrer'
+      iconComponent={BookOpenIcon}
+    >
+      <FormattedMessage id='tabs_bar.manual' defaultMessage='Manual' />
+    </NavigationLink>
   );
 };
 

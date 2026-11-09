@@ -25,6 +25,7 @@ interface InitialStateMeta {
   expand_spoilers?: boolean;
   limited_federation_mode: boolean;
   locale: string;
+  manual_url?: string | null;
   mascot: string | null;
   me?: string;
   moved_to_account_id?: string;
@@ -125,6 +126,7 @@ export const emojiStyle = getMeta('emoji_style') ?? 'auto';
 export const expandSpoilers = getMeta('expand_spoilers');
 export const forceSingleColumn = !getMeta('advanced_layout');
 export const limitedFederationMode = getMeta('limited_federation_mode');
+export const manualUrl = getMeta('manual_url');
 export const mascot = getMeta('mascot');
 export const me = getMeta('me');
 export const movedToAccountId = getMeta('moved_to_account_id');
