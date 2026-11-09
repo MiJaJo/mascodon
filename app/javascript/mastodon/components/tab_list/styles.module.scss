@@ -5,7 +5,8 @@
 
 .withSpaceAndBorder {
   padding-inline: 16px;
-  border-bottom: 1px solid var(--color-border-primary);
+  border-bottom: 1px solid
+    var(--color-border-emphasized, var(--color-border-input));
 }
 
 .tab {
@@ -39,7 +40,8 @@
 
   &:global(.active) {
     color: var(--color-text-brand);
-    border-bottom: 4px solid var(--color-border-brand);
+    border-bottom: 4px solid
+      var(--color-border-emphasized, var(--color-text-brand));
     padding-bottom: 14px;
   }
 }

@@ -310,9 +310,10 @@ $button-fallback-breakpoint: $button-breakpoint + 55px;
   }
 }
 
-.fieldItem {
+.fieldItem.fieldItem {
   --col-span: 1;
 
+  border-color: var(--color-border-emphasized, var(--color-border-input));
   grid-column: span var(--col-span);
   position: relative;
 
@@ -356,7 +357,7 @@ $button-fallback-breakpoint: $button-breakpoint + 55px;
   background-color: var(--color-bg-success-softest);
 
   &.fieldItem {
-    border-color: var(--color-border-success-soft);
+    border-color: var(--color-text-success);
     padding-right: 30px; // 8px padding + 16px for the icon + 8px gap - 2px tolerance
   }
 }
@@ -437,7 +438,8 @@ $button-fallback-breakpoint: $button-breakpoint + 55px;
 .noTabs {
   width: 100%;
   border-width: 0 0 1px;
-  border-bottom: 1px solid var(--color-border-primary);
+  border-bottom: 1px solid
+    var(--color-border-emphasized, var(--color-border-input));
 }
 
 // Banners

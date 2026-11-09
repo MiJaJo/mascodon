@@ -1,7 +1,7 @@
 @use '../application';
 @use 'accent-theme' with (
   $accent-color: #a67c4e,
-  $light-link-card-border: #96704d
+  $light-emphasized-border: #96704d
 );
 @use 'legacy/beige' as legacy;
 

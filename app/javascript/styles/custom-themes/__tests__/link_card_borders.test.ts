@@ -24,8 +24,14 @@ describe('custom theme link card borders', () => {
           legacy.$ui-base-color,
           accent.accent-tone(#fff, 78%)
         ) {
-          @if accent.contrast-ratio($background, accent.$light-link-card-border) < 3 {
+          @if accent.contrast-ratio($background, accent.$light-emphasized-border) < 3 {
             @error 'Light link card border has insufficient contrast against #{$background}';
+          }
+        }
+
+        @each $background in (#fff, ${legacyBackground}, accent.accent-tone(#fff, 78%), #f0fdf4) {
+          @if accent.contrast-ratio($background, #008236) < 3 {
+            @error 'Light verified field border has insufficient contrast against #{$background}';
           }
         }
 
@@ -33,14 +39,20 @@ describe('custom theme link card borders', () => {
           accent.accent-tone(#000, 82%),
           accent.accent-tone(#000, 89%)
         ) {
-          @if accent.contrast-ratio($background, accent.$dark-link-card-border) < 3 {
+          @if accent.contrast-ratio($background, accent.$dark-emphasized-border) < 3 {
             @error 'Dark link card border has insufficient contrast against #{$background}';
           }
         }
 
+        @each $background in (accent.accent-tone(#000, 82%), accent.accent-tone(#000, 89%), #032e15) {
+          @if accent.contrast-ratio($background, #05df72) < 3 {
+            @error 'Dark verified field border has insufficient contrast against #{$background}';
+          }
+        }
+
         .link-card-border-test-values {
-          light: #{accent.$light-link-card-border};
-          dark: #{accent.$dark-link-card-border};
+          light: #{accent.$light-emphasized-border};
+          dark: #{accent.$dark-emphasized-border};
         }
         `,
         { loadPaths: [process.cwd(), 'node_modules'] },
@@ -51,8 +63,8 @@ describe('custom theme link card borders', () => {
           css,
         );
       expect(values).not.toBeNull();
-      expect(css).toContain(`--color-link-card-border: ${values?.[1]};`);
-      expect(css).toContain(`--color-link-card-border: ${values?.[2]};`);
+      expect(css).toContain(`--color-border-emphasized: ${values?.[1]};`);
+      expect(css).toContain(`--color-border-emphasized: ${values?.[2]};`);
     },
     30_000,
   );
@@ -81,12 +93,19 @@ describe('default theme link card borders', () => {
         [darkForeground, paletteColor(`${name}-950`)],
       ]),
     ];
+    const activeTabContrasts = backgrounds.flatMap((name) => [
+      [paletteColor(`${name}-700`), paletteColor('white')],
+      [
+        paletteColor(`${name}-${name === 'indigo' ? '200' : '500'}`),
+        paletteColor(`${name}-900`),
+      ],
+    ]);
 
     expect(css).toContain(
       '--color-border-input: rgb(from var(--base-color-fg) r g b/70%);',
     );
     expect(css).toMatch(
-      /\.status-card\s*\{[^}]*border: 1px solid var\(--color-link-card-border, var\(--color-border-input\)\);/,
+      /\.status-card\s*\{[^}]*border: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
     );
 
     compileString(
@@ -102,8 +121,45 @@ describe('default theme link card borders', () => {
           `,
         )
         .join('\n')}
+      ${activeTabContrasts
+        .map(
+          ([foreground, background]) => `
+            @if accent.contrast-ratio(${foreground}, ${background}) < 3 {
+              @error 'Default active tab has insufficient contrast against ${background}';
+            }
+          `,
+        )
+        .join('\n')}
       `,
       { loadPaths: [process.cwd()] },
     );
   }, 30_000);
+});
+
+describe('profile field and tab borders', () => {
+  it('uses the visible border while preserving the verified field state', () => {
+    const { css } = compileString(
+      `
+      @use 'app/javascript/mastodon/components/account_header/styles.module';
+      @use 'app/javascript/mastodon/components/tab_list/styles.module' as tabs;
+      `,
+      { loadPaths: [process.cwd()] },
+    );
+
+    expect(css).toMatch(
+      /\.fieldItem\.fieldItem\s*\{[^}]*border-color: var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+    );
+    expect(css).toMatch(
+      /\.fieldVerified\.fieldItem\s*\{[^}]*border-color: var\(--color-text-success\);/,
+    );
+    expect(css).toMatch(
+      /\.noTabs\s*\{[^}]*border-bottom: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+    );
+    expect(css).toMatch(
+      /\.withSpaceAndBorder\s*\{[^}]*border-bottom: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+    );
+    expect(css).toMatch(
+      /\.tab:global\(\.active\)\s*\{[^}]*border-bottom: 4px solid var\(--color-border-emphasized, var\(--color-text-brand\)\);/,
+    );
+  });
 });

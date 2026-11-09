@@ -20,7 +20,8 @@
 - 期待: 選択できるテーマと日本語表示名は、`blue` = くじら、`orange` = みかん、`pastel` = こんぺいとう、`pink` = さくらもち(かんさい)、`red` = もみじ、`white` = ゆきうさぎ、`beige` = らっかせい(ゆで)。`beige` は現行ブランチで新規追加。各テーマは旧デザイン由来のスタイルと現行 UI 用の色を持ち、ライト・ダーク双方を考慮する。
 - 実装: `config/themes.yml`、`config/locales/ja.yml` の `themes`、`app/javascript/styles/custom-themes/` の各エントリー、`_accent-theme.scss`、`legacy/` 内の各テーマ。旧版の参照例: `git show origin/main:config/themes.yml`、`git show origin/main:app/javascript/styles/blue/variables.scss`。リモート参照がない場合は履歴 `027d8bfde6` なども参照する。
 - 独自テーマのライト・ダーク表示では、投稿のリンクプレビュー枠を背景から区別しやすい色にする。標準・新 UI のリンクカードと動画プレビューを対象とする。標準テーマでもリンクプレビュー枠に入力欄用の境界色を使用する。
-- 既存テスト: `spec/helpers/theme_helper_spec.rb` は7テーマの登録と、各テーマに独立した theme color 選択肢がないことを確認する。`app/javascript/styles/custom-themes/__tests__/link_card_borders.test.ts` はリンクプレビュー枠と主な背景色のコントラストを確認する。各画面の見た目は保証しない。
+- プロフィールの補足情報枠とタブの区切り線にも見やすい境界色を使い、独自テーマの選択中タブにはテーマ色を使う。認証済みリンクの枠は緑色を維持しつつ見やすくする。
+- 既存テスト: `spec/helpers/theme_helper_spec.rb` は7テーマの登録と、各テーマに独立した theme color 選択肢がないことを確認する。`app/javascript/styles/custom-themes/__tests__/link_card_borders.test.ts` は境界色と主な背景色のコントラストとプロフィール関連のスタイルを確認する。各画面の見た目は保証しない。
 - 確認: 設定で7つを選択して保存・再読込し、ライト/ダーク、標準/新 UI、モバイル/デスクトップ、タイムライン・投稿・プロフィール・設定画面の文字、背景、ボタン、状態表示を確認する。旧デザインとの見た目の一致は別途実画面で確認する。旧 ID を保存したユーザーの移行・互換性は未検証であり、必要なら挙動を調査して相談する。
 - 履歴: `07363169f1`, `027d8bfde6`, `2a0895360a`, `826ea57deb`, `88520a3325`。
 
@@ -117,6 +118,14 @@
 - 実装: `config/locales/ja.yml` の `date.formats`・`time.formats`、`config/locales/devise.ja.yml`、`config/locales/doorkeeper.ja.yml`、`config/locales/simple_form.ja.yml`、`app/javascript/mastodon/locales/ja.json`、`app/javascript/mastodon/utils/time.ts`、`app/javascript/mastodon/components/relative_timestamp/index.tsx` など。日付変更の全対象は `git show --stat 8f96dbf1fc` を参照する。
 - 確認: 翻訳キーの追加・削除・上流更新を照合し、欠落や英語へのフォールバックを確認する。投稿時刻、プロフィール、通知、告知、規約などで日本語・その他のロケールの表示を確認する。個々の翻訳と日付書式の網羅的テストは未確認。
 - 履歴: `59fe8cf789`, `84d390450d`, `8aaf89ce3c`, `1ab7630722`, `8f96dbf1fc`, `c71b49abef`, `9c6c345772`, `650dc351c1`。
+
+### CUST-13: マニュアルへのリンク
+
+- 状態: 有効。`MANUAL_URL` が未設定の場合はリンクを表示しない。
+- 期待: タイムラインの新デザインのサイドバーで「公開フィード」の直下に「マニュアル」を表示する。`MANUAL_URL` の値をリンク先に使い、新しいタブで開く。マニュアル用の本アイコンを使い、日本語・英語のラベルを用意する。ログイン状態や管理者権限に依存せず、設定があれば表示する。
+- 実装: `config/boot.rb` で本番環境の `.env.production` を Dotenv で読み込む（既に環境変数に値がある場合は上書きしない）。`app/serializers/initial_state_serializer.rb` の初期状態 `meta.manual_url` から `app/javascript/mastodon/initial_state.ts` を経由して URL を渡し、`app/javascript/mastodon/features/navigation_panel/redesign/index.tsx` でリンクを描画する。ラベルは `app/javascript/mastodon/locales/ja.json` と `app/javascript/mastodon/locales/en.json`。
+- 確認: `yarn typecheck`、対象ファイルの ESLint・oxfmt、`bin/rubocop`、Ruby 構文チェックを実施済み。コミット時の pre-commit フックも通過。実環境の `.env.production` はこの作業環境になく、実 URL を使った表示や遷移は未確認。`MANUAL_URL` の設定あり/なし、ログイン/ログアウト時の表示、遷移先、新しいタブの動作を確認する。
+- 履歴: `b3c8cbeb31`。
 
 ## 運用・開発上の関連変更
 
