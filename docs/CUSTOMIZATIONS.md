@@ -19,7 +19,8 @@
 - 状態: 有効。旧 `origin/main` の `light-blue`, `light-orange`, `light-pastel`, `light-pink`, `light-red`, `light-white` を現行テーマ構造へ移植。現在の ID は順に `blue`, `orange`, `pastel`, `pink`, `red`, `white`。旧ブランチは現行ブランチの直接の祖先ではない。
 - 期待: 選択できるテーマと日本語表示名は、`blue` = くじら、`orange` = みかん、`pastel` = こんぺいとう、`pink` = さくらもち(かんさい)、`red` = もみじ、`white` = ゆきうさぎ、`beige` = らっかせい(ゆで)。`beige` は現行ブランチで新規追加。各テーマは旧デザイン由来のスタイルと現行 UI 用の色を持ち、ライト・ダーク双方を考慮する。
 - 実装: `config/themes.yml`、`config/locales/ja.yml` の `themes`、`app/javascript/styles/custom-themes/` の各エントリー、`_accent-theme.scss`、`legacy/` 内の各テーマ。旧版の参照例: `git show origin/main:config/themes.yml`、`git show origin/main:app/javascript/styles/blue/variables.scss`。リモート参照がない場合は履歴 `027d8bfde6` なども参照する。
-- 既存テスト: `spec/helpers/theme_helper_spec.rb` は7テーマの登録と、各テーマに独立した theme color 選択肢がないことを確認する。配色や各画面の見た目は保証しない。
+- 独自テーマのライト・ダーク表示では、投稿のリンクプレビュー枠を背景から区別しやすい色にする。標準・新 UI のリンクカードと動画プレビューを対象とする。標準テーマでもリンクプレビュー枠に入力欄用の境界色を使用する。
+- 既存テスト: `spec/helpers/theme_helper_spec.rb` は7テーマの登録と、各テーマに独立した theme color 選択肢がないことを確認する。`app/javascript/styles/custom-themes/__tests__/link_card_borders.test.ts` はリンクプレビュー枠と主な背景色のコントラストを確認する。各画面の見た目は保証しない。
 - 確認: 設定で7つを選択して保存・再読込し、ライト/ダーク、標準/新 UI、モバイル/デスクトップ、タイムライン・投稿・プロフィール・設定画面の文字、背景、ボタン、状態表示を確認する。旧デザインとの見た目の一致は別途実画面で確認する。旧 ID を保存したユーザーの移行・互換性は未検証であり、必要なら挙動を調査して相談する。
 - 履歴: `07363169f1`, `027d8bfde6`, `2a0895360a`, `826ea57deb`, `88520a3325`。
 

@@ -7,6 +7,9 @@ $accent-color: #1d9bf0 !default;
   @return color.mix($mix-color, $accent-color, $weight);
 }
 
+$light-link-card-border: accent-tone(#000, 34%) !default;
+$dark-link-card-border: $accent-color !default;
+
 @function on-accent() {
   @if color.channel($accent-color, 'lightness', $space: hsl) > 60% {
     @return #000;
@@ -146,6 +149,8 @@ html:not([data-color-scheme]) {
   @include dark-surface-overrides;
   @include dark-brand-overrides;
 
+  --color-link-card-border: #{$dark-link-card-border};
+
   &[data-contrast='high'],
   [data-contrast='high'] & {
     @include dark-brand-overrides;
@@ -155,6 +160,8 @@ html:not([data-color-scheme]) {
 [data-color-scheme='light'] {
   @include light-surface-overrides;
   @include light-brand-overrides;
+
+  --color-link-card-border: #{$light-link-card-border};
 
   &[data-contrast='high'],
   [data-contrast='high'] & {

@@ -106,6 +106,10 @@
   }
 }
 
+.linkCard.linkCard {
+  border-color: var(--color-link-card-border, var(--color-border-input));
+}
+
 .cardMediaSpoiler {
   // Taken from the media card thumbnail dimensions.
   aspect-ratio: 16 / 9;

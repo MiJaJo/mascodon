@@ -42,6 +42,7 @@ export const LinkCard: React.FC<{
 
   return (
     <Card
+      className={classes.linkCard}
       image={card.image && <LinkCardImage card={card} />}
       lang={card.language ?? undefined}
     >
@@ -133,7 +134,7 @@ const LinkEmbedCard: React.FC<{
 
   if (hidden) {
     return (
-      <div className={classes.cardMedia}>
+      <div className={`${classes.cardMedia} ${classes.linkCard}`}>
         <div className={classes.cardMediaSpoiler}>
           <Blurhash hash={card.blurhash} dummy={!useBlurhash} />
 
@@ -158,7 +159,7 @@ const LinkEmbedCard: React.FC<{
   }
 
   return (
-    <div className={classes.cardMedia}>
+    <div className={`${classes.cardMedia} ${classes.linkCard}`}>
       <MediaCard key={`${status.id}-${status.edited_at}`} card={card} />
     </div>
   );
