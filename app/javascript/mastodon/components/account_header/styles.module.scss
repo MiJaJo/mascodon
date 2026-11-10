@@ -275,6 +275,33 @@ $button-fallback-breakpoint: $button-breakpoint + 55px;
   }
 }
 
+.remoteNotice {
+  display: block;
+  margin: 16px 0;
+  padding: 8px;
+  border: 1px solid var(--color-border-emphasized, var(--color-border-input));
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+a.remoteNotice {
+  color: var(--color-text-primary);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-bg-highlight);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: var(--outline-focus-default);
+    outline-offset: 2px;
+  }
+}
+
 .familiarFollowers {
   margin-top: 16px;
 }

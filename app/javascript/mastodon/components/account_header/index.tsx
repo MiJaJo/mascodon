@@ -27,6 +27,7 @@ import { AccountHeaderFields } from './fields';
 import { AccountName } from './name';
 import { AccountNote } from './note';
 import { AccountNumberFields } from './number_fields';
+import { RemoteProfileNotice } from './remote_notice';
 import classes from './styles.module.scss';
 import { AccountSubscriptionForm } from './subscription_form';
 import { AccountTabs } from './tabs';
@@ -136,6 +137,8 @@ export const AccountHeader: React.FC<{
           </div>
 
           <AccountNumberFields accountId={accountId} />
+
+          {!suspendedOrHidden && <RemoteProfileNotice account={account} />}
 
           {!isMe && !suspendedOrHidden && (
             <FamiliarFollowers

@@ -137,6 +137,8 @@
   "account.open_original_page": "Open original page",
   "account.pending": "Pending",
   "account.posts": "Posts",
+  "account.remote_profile_notice": "Information about remote users may not be up to date. Click here to see the latest information on their server.",
+  "account.remote_profile_unavailable": "Information about remote users may not be up to date.",
   "account.requested_follow": "{name} has requested to follow you",
   "account.share": "Share @{name}'s profile",
   "account.statuses_counter": "{count, plural, one {{counter} post} other {{counter} posts}}",

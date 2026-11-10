@@ -136,6 +136,8 @@
   "account.open_original_page": "元のページを開く",
   "account.pending": "承認待ち",
   "account.posts": "投稿",
+  "account.remote_profile_notice": "リモートユーザーの情報は、最新ではないことがあります。ここをクリックすると、リモートの最新情報を確認できます。",
+  "account.remote_profile_unavailable": "リモートユーザーの情報は、最新ではないことがあります。",
   "account.requested_follow": "{name}さんがあなたにフォローリクエストしました",
   "account.share": "@{name}さんのプロフィールを共有する",
   "account.statuses_counter": "{count, plural, other {{counter} 投稿}}",

@@ -1,15 +1,13 @@
 @use '@/styles/mastodon/mixins';
 
 .mainStatus {
-  border-bottom: var(--bw-default) solid
-    var(--color-border-emphasized, var(--color-border-input));
+  border-bottom: var(--border-default);
 }
 
 .thread {
   display: flex;
   flex-direction: column;
-  border-block-end: var(--bw-default) solid
-    var(--color-border-emphasized, var(--color-border-input));
+  border-block-end: var(--border-default);
 
   > article {
     padding-inline: var(--space-4);
@@ -26,8 +24,7 @@
     }
 
     &[data-connect-next='false'] {
-      border-block-end: var(--bw-default) solid
-        var(--color-border-emphasized, var(--color-border-input));
+      border-block-end: var(--border-default);
     }
   }
 }

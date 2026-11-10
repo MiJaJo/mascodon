@@ -5,33 +5,33 @@ import { pathToFileURL } from 'node:url';
 
 import { compileString } from 'sass';
 
-const emphasized = 'var(--color-border-emphasized, var(--color-border-input))';
-
 describe('thread and post detail borders', () => {
-  it('uses the visible border for the legacy thread and detail separators', () => {
+  it('keeps the legacy thread line visible and detail separators unchanged', () => {
     const { css } = compileString("@use 'app/javascript/styles/application';", {
       loadPaths: [process.cwd(), 'node_modules'],
     });
 
-    expect(css).toContain(`--thread-line-color: ${emphasized};`);
     expect(css).toMatch(
-      /\.status--first-in-thread\s*\{\s*border-top: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /--thread-line-color:\s*var\(\s*--color-border-emphasized,\s*var\(--color-border-input\)\s*\);/,
     );
     expect(css).toMatch(
-      /\.detailed-status\s*\{[^}]*border-top: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.status--first-in-thread\s*\{\s*border-top: 1px solid var\(--color-border-primary\);/,
     );
     expect(css).toMatch(
-      /\.detailed-status__meta__line\s*\{[^}]*border-bottom: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.detailed-status\s*\{[^}]*border-top: 1px solid var\(--color-border-primary\);/,
     );
     expect(css).toMatch(
-      /\.detailed-status__action-bar\s*\{[^}]*border-top: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);[^}]*border-bottom: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.detailed-status__meta__line\s*\{[^}]*border-bottom: 1px solid var\(--color-border-primary\);/,
+    );
+    expect(css).toMatch(
+      /\.detailed-status__action-bar\s*\{[^}]*border-top: 1px solid var\(--color-border-primary\);[^}]*border-bottom: 1px solid var\(--color-border-primary\);/,
     );
     expect(css).toMatch(
       /\.status\s*\{[^}]*border-bottom: 1px solid var\(--color-border-primary\);/,
     );
   });
 
-  it('uses the visible border for redesigned thread lines and detail separators', () => {
+  it('keeps redesigned thread lines visible and detail separators unchanged', () => {
     const { css } = compileString(
       `
       @use 'app/javascript/mastodon/components/status/prepend.module';
@@ -60,16 +60,16 @@ describe('thread and post detail borders', () => {
       /\.connectNextReply::after\s*\{[^}]*border-inline-start: var\(--bw-thick\) solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
     );
     expect(css).toMatch(
-      /\.meta\s*\{[^}]*border-block-start: var\(--bw-default\) solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.meta\s*\{[^}]*border-block-start: var\(--border-default\);/,
     );
     expect(css).toMatch(
-      /\.mainStatus\s*\{\s*border-bottom: var\(--bw-default\) solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.mainStatus\s*\{\s*border-bottom: var\(--border-default\);/,
     );
     expect(css).toMatch(
-      /\.thread\s*\{[^}]*border-block-end: var\(--bw-default\) solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.thread\s*\{[^}]*border-block-end: var\(--border-default\);/,
     );
     expect(css).toMatch(
-      /\.thread > article\[data-connect-next=false\]\s*\{\s*border-block-end: var\(--bw-default\) solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+      /\.thread > article\[data-connect-next=false\]\s*\{\s*border-block-end: var\(--border-default\);/,
     );
     expect(css).toMatch(
       /\.variantFeed\s*\{\s*border-bottom: var\(--border-thin\);/,
