@@ -93,7 +93,8 @@
     position: absolute;
     inset-block: 0;
     inset-inline-start: 0;
-    border-inline-start: var(--bw-thick) solid var(--color-border-primary);
+    border-inline-start: var(--bw-thick) solid
+      var(--color-border-emphasized, var(--color-border-input));
     margin-inline-start: calc(var(--avatar-size) / 2 - 1px);
     justify-self: end;
   }
