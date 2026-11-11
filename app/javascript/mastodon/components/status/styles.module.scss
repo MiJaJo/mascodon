@@ -179,6 +179,10 @@
   // Account for the 2px from the padding/margin in children
   padding: calc(var(--space-1) - 2px) 0;
 
+  button {
+    border: 1px solid var(--color-border-emphasized, var(--color-border-input));
+  }
+
   button:focus-visible {
     outline-offset: 0;
   }

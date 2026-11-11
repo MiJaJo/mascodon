@@ -59,6 +59,10 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   gap: 8px;
+
+  button:not(:hover, :focus) {
+    border-color: var(--color-border-emphasized, var(--color-border-input));
+  }
 }
 
 .tagsList {

@@ -9232,6 +9232,7 @@ noscript {
     text-decoration: none;
     padding: 4px 12px;
     background: var(--color-bg-brand-softest);
+    border: 1px solid var(--color-border-emphasized, var(--color-border-input));
     border-radius: 4px;
     font-weight: bold;
 
