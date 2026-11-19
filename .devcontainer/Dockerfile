@@ -2,9 +2,9 @@
 FROM mcr.microsoft.com/devcontainers/ruby:4.0-trixie
 
 # Install the exact Ruby version required by the project.
-ENV RUBY_VERSION=4.0.9 \
-    RUBY_DOWNLOAD_URL=https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.9.tar.gz \
-    RUBY_DOWNLOAD_SHA256=c35350682ff050b79702d57ade4516e7336063f510155d19fb2fb5b3f3909511 \
+ENV RUBY_VERSION=4.0.10 \
+    RUBY_DOWNLOAD_URL=https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.10.tar.gz \
+    RUBY_DOWNLOAD_SHA256=b53eef3371fa5d3e3b74340edcd015f06d5d8853968d4e539a5264fce41ed9f1 \
     PATH=/usr/local/rubies/current/bin:${PATH}
 COPY .ruby-version /tmp/mastodon-ruby-version
 RUN test "$(cat /tmp/mastodon-ruby-version)" = "$RUBY_VERSION" || \

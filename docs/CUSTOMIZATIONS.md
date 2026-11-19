@@ -149,8 +149,8 @@
 
 ### OPS-01: Dev Container
 
-- 状態: 有効。`.devcontainer/devcontainer.json` の作業ディレクトリは `/workspaces/mastodon`。`.devcontainer/Dockerfile` は `.ruby-version` と一致する Ruby のバージョン・URL・チェックサムでインストールし、不一致ならビルドを失敗させる。手順は `docs/DEVELOPMENT.md`。
-- 確認: 上流の Ruby 更新時に `.ruby-version` と Dockerfile のバージョン・URL・チェックサムを同時に見直し、コンテナーを再ビルドする。固定 workspace path の必要性も環境変更時に確認する。
+- 状態: 有効。`.devcontainer/devcontainer.json` の作業ディレクトリは `/workspaces/mastodon`。`.devcontainer/Dockerfile` は `.ruby-version` と一致する Ruby のバージョン・URL・チェックサムでインストールし、不一致ならビルドを失敗させる。`.devcontainer/compose.yaml` は `.env.development` をアプリコンテナーへ渡す。手順は `docs/DEVELOPMENT.md`。
+- 確認: 上流の Ruby 更新時に `.ruby-version` と Dockerfile のバージョン・URL・チェックサムを同時に見直し、コンテナーを再ビルドする。固定 workspace path の必要性と `.env.development` の読み込みも環境変更時に確認する。
 - 履歴: `90c33ce052`, `a9354d9462`。
 
 ## 検証の実施
