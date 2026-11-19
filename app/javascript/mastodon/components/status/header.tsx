@@ -26,7 +26,7 @@ import { accountStatusLinkProps, statusLink } from './utils';
 interface StatusRedesignHeaderProps {
   status: Pick<
     AccountStatusShape,
-    'id' | 'account' | 'created_at' | 'visibility' | 'mentions'
+    'id' | 'account' | 'created_at' | 'edited_at' | 'visibility' | 'mentions'
   >;
   className?: string;
   featured?: boolean;
@@ -109,7 +109,7 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
       </Link>
 
       <div className={classes.contents}>
-        <p className={classes.name}>
+        <div className={classes.name}>
           {displayName}
           &bull;
           <Link
@@ -121,7 +121,18 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
           >
             <RelativeTimestamp timestamp={status.created_at} />
           </Link>
-        </p>
+          {status.edited_at && (
+            <Badge
+              className={classes.editedBadge}
+              label={
+                <FormattedMessage
+                  id='status.edited_badge'
+                  defaultMessage='Edited'
+                />
+              }
+            />
+          )}
+        </div>
 
         <p className={classes.handle}>
           <Link
