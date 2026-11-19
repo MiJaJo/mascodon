@@ -1,9 +1,15 @@
-import type React from 'react';
+import { useCallback } from 'react';
+
+import { FormattedMessage } from 'react-intl';
 
 import classNames from 'classnames';
 
+import { changeComposeSensitivity } from '@/mastodon/actions/compose';
+import { Button } from '@/mastodon/components/button';
+import { StatusImageGrid } from '@/mastodon/components/status/image';
 import { StatusQuotePending } from '@/mastodon/components/status/quote';
-import { useAppSelector } from '@/mastodon/store';
+import { attachmentAspectRatio } from '@/mastodon/components/status/utils';
+import { useAppDispatch, useAppSelector } from '@/mastodon/store';
 
 import classes from './attachments.module.scss';
 import { ComposePoll } from './poll';
@@ -11,6 +17,8 @@ import { ComposeQuote } from './quote';
 import {
   selectComposeAttachments,
   selectComposeHasAttachments,
+  selectComposeSensitive,
+  selectComposeType,
 } from './selectors';
 import { ComposeUpload } from './upload';
 
@@ -40,29 +48,70 @@ const ComposeMediaAttachments: React.FC = () => {
     Math.max(Number(state.compose.get('pending_media_attachments')), 0),
   );
   const totalAttachments = attachments.length + pendingAttachments;
+  const { mediaSensitive, sensitive } = useAppSelector(selectComposeSensitive);
+  const type = useAppSelector(selectComposeType);
 
-  if (totalAttachments === 1) {
-    return (
-      <div className={classes.mediaSingle}>
-        <ComposeUpload id={attachments.at(0)?.id} single />
-      </div>
-    );
-  }
+  const dispatch = useAppDispatch();
+  const onShowMedia = useCallback(() => {
+    dispatch(changeComposeSensitivity());
+  }, [dispatch]);
 
   return (
-    <div
+    <StatusImageGrid
+      count={totalAttachments}
       className={classNames(
-        classes.mediaGrid,
+        classes.mediaRoot,
+        totalAttachments === 1 && classes.mediaLockAspect,
         totalAttachments > 4 && classes.mediaGridExtended,
       )}
-      data-number={totalAttachments}
+      style={
+        {
+          ['--aspect']:
+            totalAttachments === 1
+              ? attachmentAspectRatio(attachments[0])
+              : undefined,
+        } as React.CSSProperties
+      }
     >
-      {attachments.map(({ id }) => (
-        <ComposeUpload key={id} id={id} />
+      {attachments.map(({ id }, index) => (
+        <ComposeUpload
+          key={id}
+          id={id}
+          showMediaControls={index === 1 || totalAttachments === 1}
+          single={totalAttachments === 1}
+          data-index={index}
+        />
       ))}
       {[...Array(pendingAttachments).keys()].map((_, index) => (
-        <ComposeUpload key={index} className={classes.mediaUploadPending} />
+        <ComposeUpload
+          key={index}
+          className={classes.mediaUploadPending}
+          data-index={attachments.length + index}
+        />
       ))}
-    </div>
+      {(mediaSensitive || sensitive) && (
+        <div className={classes.mediaSpoilerShowButton}>
+          {type !== 'message' && type !== 'replyPrivate' ? (
+            <FormattedMessage
+              id='compose.sensitive.media_blur_warning'
+              defaultMessage='Media will be blurred on the published post'
+            />
+          ) : (
+            <FormattedMessage
+              id='compose.sensitive.media_blur_warning.message'
+              defaultMessage='Media will be blurred for recipients'
+            />
+          )}
+          {!sensitive && (
+            <Button variant='solid' size='xs' onClick={onShowMedia}>
+              <FormattedMessage
+                id='compose.sensitive.media_blur_undo'
+                defaultMessage='Undo'
+              />
+            </Button>
+          )}
+        </div>
+      )}
+    </StatusImageGrid>
   );
 };

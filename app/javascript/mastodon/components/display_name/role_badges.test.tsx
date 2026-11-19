@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { cleanup, render, screen } from '@testing-library/react';
 
-import { StatusRedesignHeader } from '@/mastodon/components/status/header';
+import { StatusHeader } from '@/mastodon/components/status/header';
 import {
   accountFactoryImmutable,
   accountFactoryState,
@@ -67,12 +67,12 @@ describe('timeline role badges', () => {
     expect(screen.queryByRole('img', { name: 'Owner' })).toBeNull();
   });
 
-  it('renders the author badges next to the handle in the redesigned header', () => {
+  it('renders the author badges next to the handle in the timeline header', () => {
     const account = { ...accountFactoryState({ roles }), acct: 'testuser' };
     const { rerender } = render(
       <IntlProvider locale='en'>
         <MemoryRouter>
-          <StatusRedesignHeader
+          <StatusHeader
             status={{
               id: '123',
               account,
@@ -93,7 +93,7 @@ describe('timeline role badges', () => {
     rerender(
       <IntlProvider locale='en'>
         <MemoryRouter>
-          <StatusRedesignHeader
+          <StatusHeader
             status={{
               id: '123',
               account: { ...account, roles: [] },
@@ -114,7 +114,7 @@ describe('timeline role badges', () => {
     const { rerender } = render(
       <IntlProvider locale='en'>
         <MemoryRouter>
-          <StatusRedesignHeader
+          <StatusHeader
             status={{
               id: '123',
               account,
@@ -133,7 +133,7 @@ describe('timeline role badges', () => {
     rerender(
       <IntlProvider locale='en'>
         <MemoryRouter>
-          <StatusRedesignHeader
+          <StatusHeader
             showEditedBadge={false}
             status={{
               id: '123',
@@ -153,7 +153,7 @@ describe('timeline role badges', () => {
     rerender(
       <IntlProvider locale='en'>
         <MemoryRouter>
-          <StatusRedesignHeader
+          <StatusHeader
             status={{
               id: '123',
               account,

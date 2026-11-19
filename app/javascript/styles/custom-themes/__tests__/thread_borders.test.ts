@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { compileString } from 'sass';
 
 describe('thread and post detail borders', () => {
-  it('keeps the legacy thread line visible and detail separators unchanged', () => {
+  it('keeps legacy-compatible thread lines and feed separators visible', () => {
     const { css } = compileString("@use 'app/javascript/styles/application';", {
       loadPaths: [process.cwd(), 'node_modules'],
     });
@@ -16,15 +16,6 @@ describe('thread and post detail borders', () => {
     );
     expect(css).toMatch(
       /\.status--first-in-thread\s*\{\s*border-top: 1px solid var\(--color-border-primary\);/,
-    );
-    expect(css).toMatch(
-      /\.detailed-status\s*\{[^}]*border-top: 1px solid var\(--color-border-primary\);/,
-    );
-    expect(css).toMatch(
-      /\.detailed-status__meta__line\s*\{[^}]*border-bottom: 1px solid var\(--color-border-primary\);/,
-    );
-    expect(css).toMatch(
-      /\.detailed-status__action-bar\s*\{[^}]*border-top: 1px solid var\(--color-border-primary\);[^}]*border-bottom: 1px solid var\(--color-border-primary\);/,
     );
     expect(css).toMatch(
       /\.status\s*\{[^}]*border-bottom: 1px solid var\(--color-border-primary\);/,
@@ -37,7 +28,7 @@ describe('thread and post detail borders', () => {
       @use 'app/javascript/mastodon/components/status/prepend.module';
       @use 'app/javascript/mastodon/components/status/styles.module';
       @use 'app/javascript/mastodon/components/status/meta.module';
-      @use 'app/javascript/mastodon/features/status/redesign.module';
+      @use 'app/javascript/mastodon/features/status/styles.module' as featureStatus;
       `,
       {
         loadPaths: [process.cwd()],

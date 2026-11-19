@@ -202,8 +202,8 @@ const StatusTimestampMeta: React.FC<
             <FormattedDateWrapper
               value={createdAt}
               year='numeric'
-              month='short'
-              day='2-digit'
+              month='numeric'
+              day='numeric'
               hour='2-digit'
               minute='2-digit'
             />
@@ -269,11 +269,7 @@ function statusVisibilityText(visibility: StatusVisibility) {
       );
     case 'direct':
       return (
-        <FormattedMessage
-          id='privacy.message.short'
-          defaultMessage='Message'
-          description='Message refers to a direct message. For languages where this is confusing, "chat" or "direct message" can be used.'
-        />
+        <FormattedMessage id='privacy.message.short' defaultMessage='Private' />
       );
 
     default:

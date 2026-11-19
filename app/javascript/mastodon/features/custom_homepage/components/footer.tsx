@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { isRedesignEnabled } from '@/mastodon/utils/environment';
 import { fetchServer } from 'mastodon/actions/server';
 import { useAppDispatch, useAppSelector } from 'mastodon/store';
 import { getContactHref } from 'mastodon/utils/contact_link';
@@ -26,7 +25,7 @@ export const Footer = () => {
     <footer
       className={classNames(
         classes.minimalFooter,
-        isRedesignEnabled() && classes.minimalFooterRedesign,
+        classes.minimalFooterRedesign,
       )}
     >
       <div className={classes.contact}>

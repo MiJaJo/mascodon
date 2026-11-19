@@ -555,81 +555,9 @@ ja:
     email_subscriptions:
       accounts:
         account: アカウント
-        empty:
-          hint: まだ購読者がいるアカウントはありません。
-          no_lists_yet: まだリストはありません
-        last_email: 最終メール
-        lead: 機能を有効にして購読者がいるアカウントが下に表示されます。
-        show:
-          confirm_disable_feature: "%{name} のメールニュースレターを無効にしますか？このアカウントには今後メール更新は送信されません。ユーザーはアカウント設定で再度機能を有効にできます。この機能へのアクセスを完全に取り除くには、ロールでそのアカウントの権限を編集してください。"
-          confirm_remove_subscriber: "%{email} は今後 %{name} からメールを受け取りません。この操作は元に戻せません。"
-          consent: 購読者はメールで投稿を受け取ることにのみ同意しています。この一覧を他の目的に使用しないでください。
-          date: 登録日
-          disable_feature: 機能を無効化
-          disabled: この機能は無効化され、この一覧へのメール送信は停止されました。
-          email: メールアドレス
-          empty:
-            hint: まだこのアカウントを購読している人はいません。
-            no_subscribers_yet: まだ購読者はいません
-          enable_feature: 機能を有効化
-          no_access_html: このアカウントはこの機能を有効化するのに必要な権限を失いました。<a href="%{roles_path}">ロール</a>で変更してください。
-          title: "%{name} のメールニュースレター"
-          view_account: アカウントを表示
-        status: 状態
-        subscribers: 購読者
-        title: メーリングリスト
-      additional_footer_texts:
-        show:
-          title: 追加フッターテキスト
       compliance_settings:
-        additional_footer_text:
-          action: 管理
-          hint: ニュースレターのメールのフッターにのみ表示される任意のテキスト
-          title: 追加フッターテキスト
-        lead: メールニュースレターは、運用している地域によってはマーケティングメールとみなされる場合があります。
         privacy_policy:
-          action: 管理
-          hint: このポリシーはすべてのメールのフッターにリンクされます
           title: プライバシーポリシー
-        title: コンプライアンス設定
-      danger_zone:
-        disable_feature:
-          action: 無効化
-          hint: すべてのアカウントで機能を無効にします
-          title: 機能を無効化
-        erase_all_data:
-          action: データを消去
-          hint: すべてのメーリングリスト内のメールを完全に削除します
-          title: すべてのデータを消去
-        title: 危険な操作
-      disabled_msg: メールサブスクリプションを無効化しました。
-      index:
-        disabled:
-          cannot_be_enabled: あなたの技術提供者はこの機能をこのサーバーで有効化していません。
-          description: この機能により、指定したアカウントはプロフィールにウィジェットを追加でき、Mastodon アカウントを持たない訪問者もメールで投稿を受け取れるようになります。
-          get_started: 始めましょう
-        lead: このサーバーの専用アカウントから投稿をメールで受け取れるようにします。
-        title: メールニュースレター
-      purged_msg: すべてのメールサブスクリプションデータを消去中です。
-      roles:
-        accounts: アカウント
-        edit_role: ロールを編集
-        empty:
-          hint: この機能を使用する権限を持つ人はいません。
-          no_roles_added: まだロールは追加されていません
-        lead: 以下のロールを持つアカウントはプロフィールでこの機能を有効化できます。
-        manage_roles: ロールを管理
-        role_name: ロール名
-        title: ロール
-      setups:
-        show:
-          enable_feature: 機能を有効化
-          important_information: 重要なお知らせ
-          list:
-            1_permission_explanation: この機能が有効になると、指定された権限を持つアカウントはプロフィールにメール登録フォームを追加できます。
-            2_feature_explanation: 訪問者がアカウントのプロフィールページで登録し、購読を確認すると、そのアカウントが新しい公開投稿を行ったときにメール更新を受け取るようになります。
-            3_privacy_policy_warning: サーバー管理者は収集された個人情報（メールアドレス）にアクセスできます。そのため、この機能を使う前にサーバーのプライバシーポリシーと利用規約を更新する必要があります。
-            4_cost_warning: ホスティング構成によってはメール送信に費用がかかる場合があります。機能を有効にするとメール送信量が大幅に増える可能性があるため、事前にホスティング事業者と相談してください。
     export_domain_allows:
       new:
         title: ドメイン許可をインポート
@@ -793,95 +721,11 @@ ja:
       new:
         title: 新規IPルール
       no_ip_block_selected: 何も選択されていないためIPルールを変更しませんでした
-      reset: "リセット"
-      search: "検索"
+      search: 検索
       title: IPルール
     moderation_subscriptions:
-      add_new: "購読を追加"
-      advisory_action: "措置: %{action}"
-      advisory_actions:
-        accept: "許可"
-        limit: "制限"
-        reject: "停止"
-      apply_automatically: "勧告を自動的に適用"
       apply_conditions:
-        always: "常に"
-        never: "しない"
-        safely: "関係を壊さない場合のみ"
-      apply_conditions_hint:
-        always: "推奨される措置を常に自動的に適用します。完全に信頼できるリストにのみ使用してください。"
-        never: "推奨される措置を自動的に適用せず、常に提案を作成します。"
-        safely: "ローカルユーザーの既存のフォロー関係を壊さない限り、推奨される措置を適用します。関係が壊れる場合は代わりに提案を作成します。"
-      delete: "削除"
-      destroyed_msg: "モデレーション購読を削除しました"
-      empty: "モデレーションリストはまだ購読されていません。"
-      last_synced_at: "最終同期日時"
-      list_action: "購読の種類"
-      list_actions:
-        accept: "許可リスト"
-        default: "混合（許可と拒否）"
-        reject: "ブロックリスト"
-      list_actions_hint:
-        accept: "措置が指定されていない項目は許可として扱われます。ブロックは無視されます。"
-        default: "措置が指定されていない項目はブロックとして扱われます。ブロックと許可はそれぞれ指定どおりに扱われます。"
-        reject: "措置が指定されていない項目はブロックとして扱われます。許可は無視されます。"
-      list_actions_short:
-        accept: "許可リスト"
-        default: "混合"
-        reject: "ブロックリスト"
-      name: "名前"
-      new:
-        create: "購読"
-        title: "新しいモデレーション購読"
-      override_unattributed: "手動のブロックを上書き"
-      override_unattributed_hint: "勧告の自動適用時に、この購読が既存の手動ブロックを自動的に強化または引き継ぐことを許可します。"
-      policies:
-        apply_advisories: "勧告を自動的に適用"
-        apply_advisories_safely: "関係を壊さない勧告を自動的に適用"
-        apply_retractions: "勧告の撤回を自動的に適用"
-      priority: "優先順位"
-      priority_hint: "モデレーション購読は優先順位の順に評価され、番号が小さい購読は番号が大きい購読より優先されます。"
-      retract_automatically: "勧告の撤回を自動的に適用"
-      retract_automatically_hint: "購読から対応する項目が削除されたときに、適用済みのポリシー変更を撤回または緩和することを許可します。自動撤回が有効で、優先順位の低いリストに同等の勧告がある場合は、それを採用します。無効の場合は代わりに提案を作成します。"
-      show:
-        delete_confirm: "このモデレーション購読を削除しますか？"
-        edit: "購読を編集"
-        empty: "この購読にはまだ勧告がありません。"
-        title: "モデレーション購読: %{name}"
-      tabs:
-        logs: "ログ"
-        subscriptions: "購読"
-        suggestions: "提案"
-      title: "モデレーション購読"
-      type: "種類"
-      types:
-        csv_list: "CSVリスト"
-      url: "URL"
-    moderation_subscriptions_logs:
-      title: "モデレーション購読のログ"
-    moderation_suggestions:
-      actions:
-        accept: "許可"
-        limit: "制限"
-        reject: "停止"
-        retract: "現在のポリシーを撤回"
-      applied_msg: "%{target_key}への提案を適用しました"
-      apply_accept: "許可"
-      apply_limit: "制限"
-      apply_reject: "停止"
-      apply_retract: "撤回"
-      current_states:
-        accept: "現在許可中"
-        limit: "現在制限中"
-        reject: "現在停止中"
-      description: "モデレーション購読からの提案を優先順位順に表示しています。"
-      destroyed_msg: "%{target_key}への提案を破棄しました"
-      dismiss: "提案を破棄"
-      empty: "現在モデレーションの提案はありません。"
-      retracted_msg: "%{target_key}のポリシーを撤回しました"
-      suggested_from_html: "%{link}からの提案"
-      title: "モデレーションの提案"
-      unable_to_apply_msg: "%{target_key}への提案を適用できませんでした"
+        safely: つながりを壊さない場合のみ
     relationships:
       title: "%{acct} さんのフォロー・フォロワー"
     relays:
@@ -913,11 +757,7 @@ ja:
       actions:
         delete_description_html: 報告された投稿やコレクションは削除され、同じアカウントによる今後の違反をエスカレートしやすくするためにストライクが記録されます。
         mark_as_sensitive_description_html: 報告された投稿のメディアは閲覧注意となり、ストライクが記録され、同じアカウントによる今後の違反行為のエスカレーションに役立てられます。
-        other_description_html: アカウントの動作を制御するためのオプションや、報告されたアカウントへの通信をカスタマイズするためのオプションを確認してください。
         resolve_description_html: 報告されたアカウントに対していかなる措置も取られず、ストライクも記録されず、報告は終了します。
-        silence_description_html: このアカウントは、すでにフォローしている人、または手動で検索した人にしか見えないため、リーチが極端に制限されます。いつでも元に戻すことができます。このアカウントに対するすべての通報をクローズします。
-        suspend_description_html: アカウントとそのすべての内容にアクセスできなくなり、最終的に削除され、やり取りは不可能になります。
-          30日以内であれば元に戻すことができます。このアカウントに対するすべての通報をクローズします。
       actions_description_html: このレポートへのアクションを決定してください。アカウントへ懲罰的な措置を取った場合、<strong>Span</strong>カテゴリが選択されている場合を除き、メール通知が送信されます。
       actions_description_remote_html: この通報を解決するためのアクションを選択してください。これは<strong>あなたの</strong>サーバーがこのリモートアカウントと通信し、そのコンテンツを処理する時のみ影響します。
       actions_no_posts: 削除対象となる投稿がレポートに含まれていません
@@ -1231,17 +1071,7 @@ ja:
         disabled: 誰にも許可しない
         users: ログイン済みローカルユーザーのみ許可
       external:
-        directory: "サーバーディレクトリ"
-        opt_in_server_directory:
-          description: "https://joinmastodon.org/servers に掲載されているものなど、サーバーディレクトリにこのサーバーを掲載することを許可します。"
-          title: "サーバーディレクトリへの掲載を許可"
-        opt_in_server_recommendation:
-          description: "公式Mastodonクライアントなどのアプリで、登録時にこのサーバーをおすすめとして表示することを許可します。"
-          title: "サーバーのおすすめへの掲載を許可"
-        preamble: "サーバーの情報を他のサービスとどの程度共有するか、またサーバーをどの程度発見可能にするかを管理します。"
-        privacy: "プライバシー"
-        publish_statistics: "統計を公開"
-        title: "外部からの発見"
+        privacy: プライバシー
       feed_access:
         modes:
           authenticated: ログイン済みユーザーのみ
@@ -2768,7 +2598,6 @@ ja:
     nickname_hint: セキュリティキーの名前を入力してください
     not_enabled: まだセキュリティキーを有効にしていません
     not_supported: このブラウザはセキュリティキーに対応していないようです
-    otp_required: セキュリティキーを使用するには、まず二要素認証を有効にしてください。
     registered_on: "%{date}に登録"
   wrapstodon:
     description: "%{name} が今年 Mastodon をどのように使ったかを見てみましょう！"
