@@ -116,7 +116,7 @@
 ### CUST-12: 日本語表示・日付
 
 - 状態: 有効。
-- 期待: 独自に補完・修正した日本語訳を維持し、日本語の日付・時刻書式では月日をゼロ埋めしない。フロントエンドの日付表示も月日を数値で表示するよう調整されている。ただし翻訳ファイル内の全差分が独自仕様とは限らない。
+- 期待: 独自に補完・修正した日本語訳を維持し、日本語の日付・時刻書式では月日をゼロ埋めしない。フロントエンドの日付表示も月日を数値で表示するよう調整されている。ただし翻訳ファイル内の全差分が独自仕様とは限らない。 `mastodon-main` の取り込みで日本語訳が衝突した場合は、 `mastodon-main` を正として独自に補完した日本語訳は破棄する。
 - 実装: `config/locales/ja.yml` の `date.formats`・`time.formats`、`config/locales/devise.ja.yml`、`config/locales/doorkeeper.ja.yml`、`config/locales/simple_form.ja.yml`、`app/javascript/mastodon/locales/ja.json`、`app/javascript/mastodon/utils/time.ts`、`app/javascript/mastodon/components/relative_timestamp/index.tsx` など。日付変更の全対象は `git show --stat 8f96dbf1fc` を参照する。
 - 確認: 翻訳キーの追加・削除・上流更新を照合し、欠落や英語へのフォールバックを確認する。投稿時刻、プロフィール、通知、告知、規約などで日本語・その他のロケールの表示を確認する。個々の翻訳と日付書式の網羅的テストは未確認。
 - 履歴: `59fe8cf789`, `84d390450d`, `8aaf89ce3c`, `1ab7630722`, `8f96dbf1fc`, `c71b49abef`, `9c6c345772`, `650dc351c1`。
