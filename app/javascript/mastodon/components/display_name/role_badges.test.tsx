@@ -109,7 +109,7 @@ describe('timeline role badges', () => {
     expect(screen.getByText('@testuser')).toBeTruthy();
   });
 
-  it('renders an edited badge next to the timestamp in the redesigned header', () => {
+  it('renders an edited badge outside the detailed status view', () => {
     const account = { ...accountFactoryState(), acct: 'testuser' };
     const { rerender } = render(
       <IntlProvider locale='en'>
@@ -129,6 +129,26 @@ describe('timeline role badges', () => {
     );
 
     expect(screen.getByText('Edited')).toBeTruthy();
+
+    rerender(
+      <IntlProvider locale='en'>
+        <MemoryRouter>
+          <StatusRedesignHeader
+            showEditedBadge={false}
+            status={{
+              id: '123',
+              account,
+              created_at: '2023-01-01T00:00:00.000Z',
+              edited_at: '2023-01-02T00:00:00.000Z',
+              visibility: 'public',
+              mentions: [],
+            }}
+          />
+        </MemoryRouter>
+      </IntlProvider>,
+    );
+
+    expect(screen.queryByText('Edited')).toBeNull();
 
     rerender(
       <IntlProvider locale='en'>

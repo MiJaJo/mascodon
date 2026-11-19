@@ -30,12 +30,14 @@ interface StatusRedesignHeaderProps {
   >;
   className?: string;
   featured?: boolean;
+  showEditedBadge?: boolean;
 }
 
 export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
   status,
   className,
   featured,
+  showEditedBadge = true,
 }) => {
   const account = status.account;
   const handle = useAccountHandle(account);
@@ -121,7 +123,7 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
           >
             <RelativeTimestamp timestamp={status.created_at} />
           </Link>
-          {status.edited_at && (
+          {showEditedBadge && status.edited_at && (
             <Badge
               className={classes.editedBadge}
               label={

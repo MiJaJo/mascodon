@@ -140,9 +140,9 @@
 ### CUST-15: タイムラインの編集済み表示
 
 - 状態: 有効。
-- 期待: 新 UI のタイムラインでは、編集日時を持つ投稿の相対時刻の右側に詳細画面と同じ「編集済み」バッジを表示する。未編集の投稿には表示しない。
+- 期待: 新 UI のタイムラインでは、編集日時を持つ投稿の相対時刻の右側に詳細画面と同じ「編集済み」バッジを表示する。未編集の投稿には表示せず、既に編集情報がある投稿詳細画面にも追加表示しない。
 - 実装: `app/javascript/mastodon/components/status/header.tsx` と `header.module.scss`。ラベルは `status.edited_badge` を再利用する。
-- テスト: `app/javascript/mastodon/components/display_name/role_badges.test.tsx`。
+- テスト: `app/javascript/mastodon/components/display_name/role_badges.test.tsx`。編集済み、未編集、投稿詳細相当の表示抑止を確認する。
 - 確認: 編集済み・未編集、短い・長い投稿者名、モバイル・デスクトップ、ライト・ダーク、投稿詳細との表示を確認する。
 
 ## 運用・開発上の関連変更

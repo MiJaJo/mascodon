@@ -201,7 +201,11 @@ export const StatusRedesign: React.FC<StatusRedesignProps> = ({
           />
         )}
 
-        <StatusRedesignHeader status={status} featured={featured} />
+        <StatusRedesignHeader
+          status={status}
+          featured={featured}
+          showEditedBadge={variant !== 'page'}
+        />
 
         <div
           className={classNames(
