@@ -246,8 +246,10 @@ const ExpandedNavigationPanel: React.FC<NavigationPanelProps> = ({
             {publicFeeds}
             <ManualLink />
           </ul>
-          <footer className={classes.footer}>
+          <div className={classes.loggedOutContent}>
             {disabledAccountId ? <DisabledAccountBanner /> : <LoggedOutInfo />}
+          </div>
+          <footer className={classes.footer}>
             <FooterLinks multiColumn={multiColumn} />
           </footer>
         </>

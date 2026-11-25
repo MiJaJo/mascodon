@@ -666,6 +666,12 @@ RSpec.describe ActivityPub::Activity::Create do
       end
 
       context 'with more than four media attachments' do
+        before do
+          5.times do |i|
+            stub_request(:get, "http://example.com/attachment#{i}.png").to_return(request_fixture('avatar.txt'))
+          end
+        end
+
         let(:object_json) do
           build_object(
             attachment: Array.new(5) do |i|

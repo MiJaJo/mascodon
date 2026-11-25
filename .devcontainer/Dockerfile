@@ -1,5 +1,5 @@
 # For details, see https://github.com/devcontainers/images/tree/main/src/ruby
-FROM mcr.microsoft.com/devcontainers/ruby:4.0-trixie
+FROM mcr.microsoft.com/devcontainers/ruby:4.1-trixie
 
 # Install the exact Ruby version required by the project.
 ENV RUBY_VERSION=4.0.10 \

@@ -82,12 +82,12 @@ export const StatusContent: React.FC<
           classes.root,
           isCollapsed && classes.collapsed,
         )}
+        ref={onRef}
         style={style}
       >
         {text.trim().length > 0 && (
           <EmojiHTML
             className={classes.text}
-            ref={onRef}
             lang={language}
             htmlString={prepareSingleEmojiContent(text)}
             extraEmojis={status.emojis}
