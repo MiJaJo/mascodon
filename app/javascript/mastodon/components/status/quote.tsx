@@ -62,7 +62,7 @@ export const StatusQuote: React.FC<StatusQuoteProps> = (props) => {
 
   if (quoteError) {
     return (
-      <Card unclickable>
+      <Card className={classes.quote} unclickable>
         <CardBody className={classNames(classes.body, classes.error)} noClamp>
           {quoteError}
         </CardBody>
@@ -85,7 +85,7 @@ export const StatusQuotePending: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Card onDelete={onCancel}>
+    <Card className={classes.quote} onDelete={onCancel}>
       <CardTitle
         className={classes.title}
         image={<Skeleton width={20} height={20} style={{ display: 'block' }} />}
@@ -126,6 +126,7 @@ export const QuotedStatus: React.FC<{
 
   return (
     <Card
+      className={classes.quote}
       onDelete={onDelete}
       onClick={!disableOpen ? onOpenClick : undefined}
       onAuxClick={!disableOpen ? onOpenClick : undefined}

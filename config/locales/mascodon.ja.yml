@@ -1,0 +1,275 @@
+ja:
+  admin:
+    account_actions:
+      notification_title: "ユーザーへの通知とメッセージ"
+      text_box_title: "この操作による影響"
+      title: "@%{acct} にモデレーション操作を実行:"
+      types:
+        delete: "投稿を削除"
+        disable: "アカウントを凍結"
+        mark_as_sensitive: "投稿を閲覧注意にする"
+        none: "警告を送信"
+        sensitive: "アカウントを閲覧注意にする"
+        silence: "アカウントを制限"
+        suspend: "アカウントを停止"
+    action_logs:
+      action_types:
+        update_tag: "ハッシュタグを更新"
+    dashboard:
+      pending_server_checks_html:
+        one: "サーバーに未確認の問題が<strong>%{count}件</strong>あります。詳しくは<a href=\"%{url}\">サーバーの状態</a>をご確認ください。"
+        other: "サーバーに未確認の問題が<strong>%{count}件</strong>あります。詳しくは<a href=\"%{url}\">サーバーの状態</a>をご確認ください。"
+    email_subscriptions:
+      accounts:
+        empty:
+          hint: "まだ登録者のいるアカウントはありません。"
+          no_lists_yet: "リストはまだありません"
+        last_email: "最後のメール"
+        lead: "機能を有効にし、登録者がいるアカウントが以下に表示されます。"
+        show:
+          confirm_disable_feature: "%{name} のメールニュースレターを無効にしますか？このアカウントからのメール更新は送信されなくなります。ユーザーはアカウント設定から再び有効にできます。完全に利用できないようにするには、ロールのアカウント権限を編集してください。"
+          confirm_remove_subscriber: "%{email} は %{name} からメールを受信しなくなります。この操作は取り消せません。"
+          consent: "登録者が同意しているのは投稿のメール受信のみです。このリストを他の目的に使用しないでください。"
+          date: "登録日"
+          disable_feature: "機能を無効にする"
+          disabled: "機能が無効になり、このリストへのメール送信は停止しています。"
+          email: "メールアドレス"
+          empty:
+            hint: "まだ誰もこのアカウントを登録していません。"
+            no_subscribers_yet: "まだ登録者はいません"
+          enable_feature: "機能を有効にする"
+          no_access_html: "このアカウントには機能を有効にするための権限がありません。<a href=\"%{roles_path}\">ロール</a>で変更してください。"
+          title: "%{name} のメールニュースレター"
+          view_account: "アカウントを表示"
+        status: "状態"
+        subscribers: "登録者"
+        title: "メーリングリスト"
+      additional_footer_texts:
+        show:
+          title: "追加のフッターテキスト"
+      compliance_settings:
+        additional_footer_text:
+          action: "管理"
+          hint: "ニュースレターメールのフッターだけに表示する任意のテキスト"
+          title: "追加のフッターテキスト"
+        lead: "運営地域の法令によっては、メールニュースレターがマーケティングメールに該当する場合があります。"
+        privacy_policy:
+          action: "管理"
+          hint: "すべてのメールのフッターからこのポリシーへリンクされます"
+        title: "コンプライアンス設定"
+      danger_zone:
+        disable_feature:
+          action: "無効にする"
+          hint: "すべてのアカウントで機能をオフにします"
+          title: "機能を無効にする"
+        erase_all_data:
+          action: "データを消去"
+          hint: "すべてのメーリングリストにあるメールアドレスを完全に削除します"
+          title: "すべてのデータを消去"
+        title: "危険な操作"
+      disabled_msg: "メール登録を無効にしました。"
+      index:
+        disabled:
+          cannot_be_enabled: "技術提供元がこのサーバーで機能を有効にしていません。"
+          description: "指定したアカウントのプロフィールにウィジェットを追加し、Mastodonアカウントを持たない訪問者が投稿をメールで受信できるようにします。"
+          get_started: "始める"
+        lead: "訪問者が、このサーバー上の指定アカウントの投稿をメールで受信できるようにします。"
+        title: "メールニュースレター"
+      purged_msg: "すべてのメール登録データを消去しています。"
+      roles:
+        accounts: "アカウント"
+        edit_role: "ロールを編集"
+        empty:
+          hint: "この機能を利用できる人はいません。"
+          no_roles_added: "ロールが追加されていません"
+        lead: "以下のロールを持つアカウントは、プロフィールでこの機能を有効にできます。"
+        manage_roles: "ロールを管理"
+        role_name: "ロール名"
+        title: "ロール"
+      setups:
+        show:
+          enable_feature: "機能を有効にする"
+          important_information: "重要な情報"
+          list:
+            1_permission_explanation: "この機能を有効にすると、指定された権限を持つアカウントのプロフィールにメール登録フォームを追加できます。"
+            2_feature_explanation: "訪問者がプロフィールで登録し、メールを確認すると、そのアカウントが新しい公開投稿を作成した際にメール更新を受信するようになります。"
+            3_privacy_policy_warning: "サーバー管理者は収集した個人情報（メールアドレス）へアクセスできます。使用前にサーバーのプライバシーポリシーと利用規約を更新してください。"
+            4_cost_warning: "ホスティング環境によってはメール送信に料金がかかります。送信量が大幅に増える可能性があるため、プロバイダーと相談してから有効にしてください。"
+    ip_blocks:
+      reset: "リセット"
+    moderation_subscriptions:
+      add_new: "購読を追加"
+      advisory_action: "操作: %{action}"
+      advisory_actions:
+        accept: "許可"
+        limit: "制限"
+        reject: "停止"
+      apply_automatically: "勧告を自動適用"
+      apply_conditions:
+        always: "常に適用"
+        never: "適用しない"
+      apply_conditions_hint:
+        always: "推奨操作を常に自動適用します。完全に信頼できるリストにのみ使用してください。"
+        never: "推奨操作を自動適用せず、常に提案を作成します。"
+        safely: "ローカルユーザーとの既存のフォロー関係を損なわない場合に限り、推奨操作を適用します。損なう場合は提案を作成します。"
+      delete: "削除"
+      destroyed_msg: "モデレーション購読を削除しました"
+      empty: "モデレーションリストの購読はまだありません。"
+      last_synced_at: "最終同期日時"
+      list_action: "購読種別"
+      list_actions:
+        accept: "許可リスト"
+        default: "混合（許可と拒否）"
+        reject: "拒否リスト"
+      list_actions_hint:
+        accept: "操作が指定されていない項目は許可されます。拒否指定は無視されます。"
+        default: "操作が指定されていない項目は拒否されます。許可指定と拒否指定の両方を適用します。"
+        reject: "操作が指定されていない項目は拒否されます。許可指定は無視されます。"
+      list_actions_short:
+        accept: "許可リスト"
+        default: "混合"
+        reject: "拒否リスト"
+      name: "名前"
+      new:
+        create: "購読する"
+        title: "新しいモデレーション購読"
+      override_unattributed: "手動ブロックを上書き"
+      override_unattributed_hint: "勧告を自動適用するとき、既存の手動ブロックをこの購読から自動的に強化・引き継げるようにします。"
+      policies:
+        apply_advisories: "勧告を自動適用"
+        apply_advisories_safely: "関係を損なわない勧告を自動適用"
+        apply_retractions: "撤回を自動適用"
+      priority: "優先度"
+      priority_hint: "モデレーション購読は優先度順に評価され、数値が小さい購読が大きい購読より優先されます。"
+      retract_automatically: "勧告を自動撤回"
+      retract_automatically_hint: "購読から対応項目が削除されたとき、ポリシー変更を撤回または弱めることを許可します。自動撤回が有効で、優先度の低いリストに同等の勧告がある場合は、その勧告を採用します。無効の場合は代わりに提案を作成します。"
+      show:
+        delete_confirm: "このモデレーション購読を削除してよろしいですか？"
+        edit: "購読を編集"
+        empty: "この購読にはまだ勧告がありません。"
+        title: "モデレーション購読: %{name}"
+      tabs:
+        logs: "ログ"
+        subscriptions: "購読"
+        suggestions: "提案"
+      title: "モデレーション購読"
+      type: "種類"
+      types:
+        csv_list: "CSVリスト"
+      url: "URL"
+    moderation_subscriptions_logs:
+      title: "モデレーション購読ログ"
+    moderation_suggestions:
+      actions:
+        accept: "許可"
+        limit: "制限"
+        reject: "停止"
+        retract: "現在のポリシーを撤回"
+      applied_msg: "%{target_key} への提案を適用しました"
+      apply_accept: "許可"
+      apply_limit: "制限"
+      apply_reject: "停止"
+      apply_retract: "撤回"
+      current_states:
+        accept: "現在は許可"
+        limit: "現在は制限"
+        reject: "現在は停止"
+      description: "モデレーション購読からの提案を優先度順に表示しています。"
+      destroyed_msg: "%{target_key} の提案を破棄しました"
+      dismiss: "提案を破棄"
+      empty: "現在、モデレーションの提案はありません。"
+      retracted_msg: "%{target_key} のポリシーを撤回しました"
+      suggested_from_html: "%{link} からの提案"
+      title: "モデレーションの提案"
+      unable_to_apply_msg: "%{target_key} への提案を適用できませんでした"
+    relays:
+      bidirectional: "双方向"
+      broadcast: "配信のみ"
+      opt_in: "参加"
+      opt_out: "参加しない"
+    reports:
+      actions:
+        disable_description_html: "アカウントを使用できなくしますが、投稿の削除や非表示は行いません。取り消し可能です。このアカウントへの通報をすべて解決済みにします。"
+        force_sensitive_descption_html: "このユーザーのすべてのメディアを閲覧注意としてマークします。取り消し可能です。このアカウントへの通報をすべて解決済みにします。"
+        silence_description_html: "既存のフォロワーまたは直接検索したユーザーにのみアカウントを表示し、到達範囲を大幅に制限します。いつでも取り消せます。このアカウントへの通報をすべて解決済みにします。"
+        suspend_description_html: "アカウントとすべての投稿へアクセスできなくなり、投稿は後に削除されます。30日以内なら取り消せます。このアカウントへの通報をすべて解決済みにします。"
+        warn_description_html: "他の操作を行わず、ユーザーへ警告を送信します。"
+      actions_description_html: "通報を解決する操作を選択してください。対象アカウントに処罰を行う場合、<strong>スパム</strong>以外では送信される通知メールに含める内容を選択できます。"
+      summary:
+        account_action_preamble_html:
+          one: "通報 <a href=\"%{report_path}\">#%{report}</a> の選択済み投稿%{count}件から"
+          other: "通報 <a href=\"%{report_path}\">#%{report}</a> の選択済み投稿%{count}件から"
+          zero: "通報 <a href=\"%{report_path}\">#%{report}</a>（投稿未選択）から"
+        action_preambles:
+          disable_html: "<strong>@%{acct}</strong> のアカウントを<strong>凍結</strong>しようとしています。影響は次のとおりです。"
+          none_html: "<strong>@%{acct}</strong> に<strong>警告</strong>しようとしています。影響は次のとおりです。"
+          sensitive_html: "<strong>@%{acct}</strong> のアカウントを<strong>閲覧注意</strong>として<strong>マーク</strong>しようとしています。影響は次のとおりです。"
+        actions:
+          disable_html: "アカウントを使用できなくしますが、投稿を削除または非表示にしません"
+          none_html: "他の操作を行わず、ユーザーへ警告を送信します"
+          sensitive_html: "このユーザーのすべてのメディアを閲覧注意としてマークします"
+    settings:
+      crawlers:
+        preamble: "検索エンジンクローラーなどの適切に動作するボットによるMastodonサーバーへのアクセスを制御します。悪意のあるボットはこの設定を無視する場合があるため、ネットワーク側でもブロックする必要があります。"
+        title: "クローラー制御"
+      external:
+        directory: "サーバーディレクトリ"
+        opt_in_server_directory:
+          description: "https://joinmastodon.org/servers などのサーバーディレクトリへの掲載を許可します。"
+          title: "サーバーディレクトリへ登録"
+        opt_in_server_recommendation:
+          description: "Mastodon公式クライアントなどのアプリで、登録時にこのサーバーを候補として勧めることを許可します。"
+          title: "サーバーの推薦を許可"
+        preamble: "このサーバーの情報を他のサービスとどの程度共有し、見つけやすくするかを設定します。"
+        publish_statistics: "統計情報を公開"
+        title: "外部での発見"
+    warning_presets:
+      dropdown:
+        delete: "削除"
+        mark_as_sensitive: "閲覧注意にする"
+  otp_authentication:
+    delete: "削除"
+    delete_confirmation: "二要素認証の方法から認証アプリを削除してよろしいですか？"
+  privacy:
+    relays_hint_html: "公開投稿をFediverseのさらに広い範囲へ配信する、あらかじめ設定されたリレーを追加で利用できます。"
+    view_relays: "リレーを管理"
+  relay_preferences:
+    explanation_html: "%{domain} が接続できるリレーです。<strong>Fediverseリレーは公開投稿をより広く届けるのに役立ちます。</strong>リレーを利用する場合、<strong>公開</strong>投稿はリレーと共有され、さらに転送されることがあります。その他の投稿はリレーへ送信されません。"
+    opt_in: "共有する"
+    relay: "リレー"
+    title: "リレーの設定"
+  statuses:
+    content_warnings:
+      show: "もっと見る"
+  simple_form:
+    hints:
+      admin_account_action:
+        include_rule_violations: "メールに、モデレーション操作の原因となったルール違反を含めます"
+        warning_preset: "任意です。定型文の末尾に独自の文面を追加することもできます"
+        warning_preset_explanation: "保存済みの定型文はまだありません。定型文は通報対応で繰り返し使用できるよう保存したメッセージです。"
+      form_admin_settings:
+        custom_robots_html: "<a href=\"%{path}\">構文</a>"
+        override_robots: "適切に動作するボットのアクセスルールを独自に設定できます"
+      relay:
+        acct: "username@domain の形式で入力してください。"
+        direction: "リレーへの参加方法"
+        directions:
+          bidirectional: "リレーへ配信し、他の参加者の投稿も受信します"
+          broadcast: "リレーへの配信だけを行います"
+        requires_opt_in: "このリレーへの参加を明示的に選択したユーザーの投稿だけを送信します"
+    labels:
+      admin_account_action:
+        canned_response_back_link: "定型文を管理"
+        include_rule_violatins: "通報されたルール違反を含める"
+      defaults:
+        setting_show_stats_in_feed: "フィードにリアクション統計を表示"
+      form_admin_settings:
+        custom_robots: "カスタムrobots.txt"
+        override_robots: "標準のrobots.txtを上書き"
+      relay:
+        acct: "リレーのハンドル"
+        direction: "参加レベル"
+        directions:
+          bidirectional: "双方向"
+          broadcast: "配信のみ"
+        requires_opt_in: "ユーザーの参加を必須にする"

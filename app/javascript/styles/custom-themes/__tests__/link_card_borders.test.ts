@@ -1,5 +1,8 @@
 // @vitest-environment node
 
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
 import { compileString } from 'sass';
 
 describe('custom theme link card borders', () => {
@@ -106,6 +109,28 @@ describe('default theme link card borders', () => {
     );
     expect(css).toMatch(
       /\.status-card\s*\{[^}]*border: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+    );
+    expect(css).toMatch(
+      /\.status__quote\s*\{[^}]*border: 1px solid var\(--color-border-emphasized, var\(--color-border-input\)\);/,
+    );
+
+    const { css: quoteCss } = compileString(
+      "@use 'app/javascript/mastodon/components/status/quote.module';",
+      {
+        loadPaths: [process.cwd()],
+        importers: [
+          {
+            findFileUrl(url) {
+              return url.startsWith('@/')
+                ? pathToFileURL(resolve('app/javascript', url.slice(2)))
+                : null;
+            },
+          },
+        ],
+      },
+    );
+    expect(quoteCss).toMatch(
+      /\.quote\s*\{[^}]*border-color: var\(--color-border-emphasized, var\(--color-border-input\)\);/,
     );
 
     compileString(

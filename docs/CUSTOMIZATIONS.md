@@ -19,7 +19,7 @@
 - 状態: 有効。旧 `origin/main` の `light-blue`, `light-orange`, `light-pastel`, `light-pink`, `light-red`, `light-white` を現行テーマ構造へ移植。現在の ID は順に `blue`, `orange`, `pastel`, `pink`, `red`, `white`。旧ブランチは現行ブランチの直接の祖先ではない。
 - 期待: 選択できるテーマと日本語表示名は、`blue` = くじら、`orange` = みかん、`pastel` = こんぺいとう、`pink` = さくらもち(かんさい)、`red` = もみじ、`white` = ゆきうさぎ、`beige` = らっかせい(ゆで)。`beige` は現行ブランチで新規追加。各テーマは旧デザイン由来のスタイルと現行 UI 用の色を持ち、ライト・ダーク双方を考慮する。
 - 実装: `config/themes.yml`、`config/locales/ja.yml` の `themes`、`app/javascript/styles/custom-themes/` の各エントリー、`_accent-theme.scss`、`legacy/` 内の各テーマ。旧版の参照例: `git show origin/main:config/themes.yml`、`git show origin/main:app/javascript/styles/blue/variables.scss`。リモート参照がない場合は履歴 `027d8bfde6` なども参照する。
-- 独自テーマのライト・ダーク表示では、投稿のリンクプレビュー枠を背景から区別しやすい色にする。標準・新 UI のリンクカードと動画プレビューを対象とする。標準テーマでもリンクプレビュー枠に入力欄用の境界色を使用する。
+- 独自テーマのライト・ダーク表示では、投稿のリンクプレビュー枠と引用投稿の枠を背景から区別しやすい色にする。標準・新 UI のリンクカード、引用投稿と動画プレビューを対象とする。標準テーマでもリンクプレビュー枠と引用投稿の枠に入力欄用の境界色を使用する。
 - プロフィールの補足情報枠とタブの区切り線にも見やすい境界色を使い、独自テーマの選択中タブにはテーマ色を使う。認証済みリンクの枠は緑色を維持しつつ見やすくする。
 - 標準・新 UI の投稿内ハッシュタグとプロフィールの注目ハッシュタグにも見やすい枠線を使い、操作時と選択中の表示を維持する。
 - 標準・新 UI のスレッド接続線にも同じ境界色を使う。投稿詳細と通常のタイムラインの投稿間の区切り線は変更しない。
@@ -117,7 +117,7 @@
 
 - 状態: 有効。
 - 期待: 独自に補完・修正した日本語訳を維持し、日本語の日付・時刻書式では月日をゼロ埋めしない。フロントエンドの日付表示も月日を数値で表示するよう調整されている。ただし翻訳ファイル内の全差分が独自仕様とは限らない。 `mastodon-main` の取り込みで日本語訳が衝突した場合は、 `mastodon-main` を正として独自に補完した日本語訳は破棄する。
-- 実装: `config/locales/ja.yml` の `date.formats`・`time.formats`、`config/locales/devise.ja.yml`、`config/locales/doorkeeper.ja.yml`、`config/locales/simple_form.ja.yml`、`app/javascript/mastodon/locales/ja.json`、`app/javascript/mastodon/utils/time.ts`、`app/javascript/mastodon/components/relative_timestamp/index.tsx` など。日付変更の全対象は `git show --stat 8f96dbf1fc` を参照する。
+- 実装: `config/locales/ja.yml` の `date.formats`・`time.formats`、`config/locales/mascodon.ja.yml`、`config/locales/devise.ja.yml`、`config/locales/doorkeeper.ja.yml`、`config/locales/simple_form.ja.yml`、`app/javascript/mastodon/locales/ja.json`、`app/javascript/mastodon/utils/time.ts`、`app/javascript/mastodon/components/relative_timestamp/index.tsx` など。日付変更の全対象は `git show --stat 8f96dbf1fc` を参照する。
 - 確認: 翻訳キーの追加・削除・上流更新を照合し、欠落や英語へのフォールバックを確認する。投稿時刻、プロフィール、通知、告知、規約などで日本語・その他のロケールの表示を確認する。個々の翻訳と日付書式の網羅的テストは未確認。
 - 履歴: `59fe8cf789`, `84d390450d`, `8aaf89ce3c`, `1ab7630722`, `8f96dbf1fc`, `c71b49abef`, `9c6c345772`, `650dc351c1`。
 
